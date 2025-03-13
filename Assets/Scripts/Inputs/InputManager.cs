@@ -4,11 +4,14 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
 
-    private InputActionManager inputActions;
+    private PlayerInput inputActions;
 
     void Awake()
     {
-        inputActions = new InputActionManager();
+        if (Instance == null)
+            Instance = this;
+        
+        inputActions = new();
     }
 
     void OnEnable()
@@ -25,13 +28,17 @@ public class InputManager : MonoBehaviour
     public Vector2 GetPlayerMovement() =>
         inputActions.Player.Move.ReadValue<Vector2>();
 
-    // public bool GetPlayerSprint(){
-    //    return inputActions.Player.Sprint.ReadValue<bool>(); 
-    // }
+    public bool GetPlayerSprint() =>
+        inputActions.Player.Sprint.ReadValue<bool>();
+
+    public bool GetPlayerJump() =>
+        inputActions.Player.Jump.triggered;
 
     public bool GetPlayerInteract() =>
         inputActions.Player.Interact.triggered;
     
+    public Vector2 GetLookDelta() =>
+        inputActions.Player.Look.ReadValue<Vector2>();
     public void PauseGame()
     {
         inputActions.Player.Disable();
