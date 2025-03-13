@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -28,17 +29,16 @@ public class InputManager : MonoBehaviour
     public Vector2 GetPlayerMovement() =>
         inputActions.Player.Move.ReadValue<Vector2>();
 
-    public bool GetPlayerSprint() =>
-        inputActions.Player.Sprint.ReadValue<bool>();
+    public float GetPlayerSprint() =>
+        // inputActions.Player.Sprint.ReadValue<bool>();
+        inputActions.Player.Sprint.ReadValue<float>();
 
-    public bool GetPlayerJump() =>
-        inputActions.Player.Jump.triggered;
+    public InputAction PlayerJump() =>
+        inputActions.Player.Jump;
 
-    public bool GetPlayerInteract() =>
-        inputActions.Player.Interact.triggered;
+    public InputAction PlayerInteract() =>
+        inputActions.Player.Interact;
     
-    public Vector2 GetLookDelta() =>
-        inputActions.Player.Look.ReadValue<Vector2>();
     public void PauseGame()
     {
         inputActions.Player.Disable();

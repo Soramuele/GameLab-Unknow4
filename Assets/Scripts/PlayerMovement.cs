@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerMovement;
-    private bool groundedPlayer;
 
     private InputManager inputManager;
     private Transform cameraTransform;
@@ -25,28 +25,24 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         cameraTransform = Camera.main.transform;
+        
+        // Inputs
+        inputManager.PlayerJump().performed += Jump;
+
     }
 
     void Update()
     {
-        // groundedPlayer = controller.isGrounded;
-        // if (groundedPlayer && playerMovement.y < 0)
-        // {
-        //     playerMovement.y = 0f;
-        // }
-
+        // Gravity();
         Movement();
         Sprint();
-
-        // Makes the player jump
-        if (inputManager.GetPlayerJump() && groundedPlayer)
-        {
-            playerMovement.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
-        }
-
-        // playerMovement.y += gravityValue * Time.deltaTime;
-        controller.Move(playerMovement * Time.deltaTime);
     }
+
+    // private void Gravity()
+    // {
+    //     if (controller.isGrounded && playerMovement.y < 0)
+    //         playerMovement.y = 0;
+    // }
 
     private void Movement()
     {
@@ -59,9 +55,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Sprint()
     {
-        if (inputManager.GetPlayerSprint())
+        if (inputManager.GetPlayerSprint() != 0)
         {
             // Perform sprint action
+            Debug.Log("Onions");
         }
+    }
+
+    private void Jump(InputAction.CallbackContext ctx)
+    {
+        Debug.Log(ctx);
+        // Makes the player jump
+        // if (ctx.performed && controller.isGrounded)
+        // {
+        //     playerMovement.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
+        // }
+
+        // // playerMovement.y += gravityValue * Time.deltaTime;
+        // controller.Move(playerMovement * Time.deltaTime);
     }
 }
