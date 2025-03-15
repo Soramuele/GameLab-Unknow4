@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
 
+   
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
-
+    
         
     private void Start()
     {
