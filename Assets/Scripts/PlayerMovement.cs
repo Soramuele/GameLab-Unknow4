@@ -27,22 +27,21 @@ public class PlayerMovement : MonoBehaviour
         cameraTransform = Camera.main.transform;
         
         // Inputs
-        inputManager.PlayerJump().performed += Jump;
-
+        inputManager.PlayerJump().started += Jump;
     }
 
     void Update()
     {
-        // Gravity();
+        Gravity();
         Movement();
         Sprint();
     }
 
-    // private void Gravity()
-    // {
-    //     if (controller.isGrounded && playerMovement.y < 0)
-    //         playerMovement.y = 0;
-    // }
+    private void Gravity()
+    {
+        if (controller.isGrounded && playerMovement.y < 0)
+            playerMovement.y = 0;
+    }
 
     private void Movement()
     {
