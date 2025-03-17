@@ -3196,7 +3196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: -1
   AutoEnableInputs: 1
-  XYAxis: {fileID: -282268154243993251, guid: b34ce0669f78d4542a9a24de9174d801, type: 3}
+  XYAxis: {fileID: 6938413954975937270, guid: ea4a578e689e3114e95a1954535f9732, type: 3}
   ZAxis: {fileID: 0}
 --- !u!1 &5052348297688690539
 GameObject:
@@ -3208,8 +3208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 189561349749703616}
   - component: {fileID: 1531740308576815142}
-  - component: {fileID: 5814647582340477661}
   - component: {fileID: 136498245014215855}
+  - component: {fileID: 5052348297688690540}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3217,6 +3217,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5052348297688690540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052348297688690539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc323ecb54923424289647097e2af224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 5
+  jumpHeight: 3
+  sprintSpeed: 3
+  gravityValue: -9.81
 --- !u!1 &5598248639815113640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,21 +3250,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5814647582340477661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5052348297688690539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84b3a2edb650ee24f959b739fa748e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 2
-  jumpHeight: 1
-  gravityValue: -9.81
 --- !u!114 &6122287347676573615
 MonoBehaviour:
   m_ObjectHideFlags: 0
