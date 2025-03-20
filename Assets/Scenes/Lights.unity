@@ -740,6 +740,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2317227733264835938, guid: 5d13d9de9fbf9e747ba2791469e108e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e7c9130e16f2dc04aa7dcd72fff8dca7, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d13d9de9fbf9e747ba2791469e108e8, type: 3}
       propertyPath: m_Name
       value: StimulusAreasTest
@@ -905,7 +909,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 8.06, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1572069241
 MeshRenderer:

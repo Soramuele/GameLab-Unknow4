@@ -8,11 +8,8 @@ public class BrightnessManager : MonoBehaviour
     public static BrightnessManager Instance;
 
     [Header("Light Settings")]
-    [SerializeField, Range(0, 100)] private float intensity = 1;
     [SerializeField] private float maxIntensity = 100;
-
-    // [Header("Duration")]
-    // [SerializeField, Range(0, 1)] private float time = .1f;
+    [SerializeField] private float intensity = 1;
     
     [Serializable]
     private class Lightning
@@ -31,6 +28,8 @@ public class BrightnessManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        lights.Clear();
     }
 
     // Start is called before the first frame update
@@ -46,16 +45,17 @@ public class BrightnessManager : MonoBehaviour
 
             lights.Add(lightning);
         }
-
-        StartCoroutine(IAddBrightness());
     }
 
-    // void OnValidate()
-    // {
-    //     Start();
-    //     foreach (var _light in lights)
-    //         _light.light.intensity = intensity;
-    // }
+    void OnValidate()
+    {
+        if (lights.Count == 0)
+            Start();
+        
+        if (lights.Count >= 1)
+            foreach(var _light in lights)
+                _light.light.intensity = intensity;
+    }
 
     public void AddBrightness()
     {
@@ -91,7 +91,7 @@ public class BrightnessManager : MonoBehaviour
             foreach(var _light in lights)
             {
                 if (_light.light.intensity >= _light.intensity)
-                _light.light.intensity = ++intensity;
+                    _light.light.intensity = intensity += 0.1f;
             }
             yield return new WaitForEndOfFrame();
         }
@@ -108,7 +108,7 @@ public class BrightnessManager : MonoBehaviour
             foreach(var _light in lights)
             {
                 if (_light.light.intensity > _light.intensity)
-                _light.light.intensity = --intensity;
+                    _light.light.intensity = intensity -= 0.1f;
             }
             yield return new WaitForEndOfFrame();
         }
