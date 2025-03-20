@@ -30,7 +30,6 @@ public class InputManager : MonoBehaviour
         inputActions.Player.Move.ReadValue<Vector2>();
 
     public float GetPlayerSprint() =>
-        // inputActions.Player.Sprint.ReadValue<bool>();
         inputActions.Player.Sprint.ReadValue<float>();
 
     public InputAction PlayerJump() =>
