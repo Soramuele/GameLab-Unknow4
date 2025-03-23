@@ -70,6 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a276afd2009e45ab42be0aa481ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxIntensity: 100
   intensity: 1
-  maxIntensity: 50
-  time: 0.1

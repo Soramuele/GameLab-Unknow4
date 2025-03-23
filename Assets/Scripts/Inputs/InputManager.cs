@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,11 +19,17 @@ public class InputManager : MonoBehaviour
     void OnEnable()
     {
         inputActions.Player.Enable();
+
+        inputActions.Player.Pause.started += PauseGame;
+        inputActions.UI.Unpause.started += UnpauseGame;
     }
 
     void OnDisable()
     {
         inputActions.Player.Disable();
+
+        inputActions.Player.Pause.started -= PauseGame;
+        inputActions.UI.Unpause.started -= UnpauseGame;
     }
 
 #region Player Inputs
@@ -38,10 +45,15 @@ public class InputManager : MonoBehaviour
     public InputAction PlayerInteract() =>
         inputActions.Player.Interact;
     
-    public void PauseGame()
+    public void PauseGame(InputAction.CallbackContext ctx)
     {
-        inputActions.Player.Disable();
-        inputActions.UI.Enable();
+        if (ctx.started)
+        {
+            inputActions.Player.Disable();
+            inputActions.UI.Enable();
+        }
+
+        OpenPauseMenu();
     }
 #endregion
 
@@ -49,10 +61,27 @@ public class InputManager : MonoBehaviour
     public bool UISelect() =>
         inputActions.UI.Select.triggered;
 
-    public void UnpauseGame()
+    public void UnpauseGame(InputAction.CallbackContext ctx)
     {
-        inputActions.UI.Disable();
-        inputActions.Player.Enable();
+        if (ctx.started)
+        {
+            inputActions.UI.Disable();
+            inputActions.Player.Enable();
+        }
+
+        ClosePauseMenu();
     }
     #endregion
+
+    private void OpenPauseMenu()
+    {
+        Debug.Log("Game is Paused");
+        FindObjectOfType<CinemachineInputProvider>().enabled = false;
+    }
+
+    private void ClosePauseMenu()
+    {
+        Debug.Log("Game is NOT paused anymore");
+        FindObjectOfType<CinemachineInputProvider>().enabled = true;
+    }
 }

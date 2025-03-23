@@ -8,8 +8,8 @@ public class BrightnessManager : MonoBehaviour
     public static BrightnessManager Instance;
 
     [Header("Light Settings")]
-    [SerializeField] private float maxIntensity = 100;
     [SerializeField] private float intensity = 1;
+    [SerializeField] private float maxIntensity = 100;
     
     [Serializable]
     private class Lightning
@@ -18,23 +18,24 @@ public class BrightnessManager : MonoBehaviour
         public float intensity;
     }
 
-    private List<Lightning> lights = new();
+    private List<Lightning> lights;
 
     private bool isAdding = false;
     private bool isSubtracting = false;
     private bool alreadySubtracted = true;
+    private bool isCollect = false;
 
     void Awake()
     {
         if (Instance == null)
             Instance = this;
-
-        lights.Clear();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        lights = new();
+
         foreach (var _lights in FindObjectsOfType<Light>())
         {
             var myLight = _lights.GetComponent<Light>();
@@ -47,14 +48,41 @@ public class BrightnessManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     void OnValidate()
     {
-        if (lights.Count == 0)
-            Start();
+        Start();
         
-        if (lights.Count >= 1)
-            foreach(var _light in lights)
-                _light.light.intensity = intensity;
+        // foreach(var _light in lights)
+        // {
+        //     // Debug.Log(_light);
+        //     try{
+        //         _light.light.intensity = intensity;
+        //     }
+        //     catch(Exception e)
+        //     {
+        //         Debug.Log(e.Message);
+        //     }
+        // }
+
+        for (int i = 0; i < lights.Count; i++)
+            try{
+                lights[i].light.intensity = intensity;
+            }
+            catch(Exception e)
+            {
+                Debug.Log(i + "\n" + e.Message);
+            }
+    }
+#endif
+
+    void FixedUpdate()
+    {
+        if (!isCollect && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Lights")
+        {
+            isCollect = true;
+            Start();
+        }
     }
 
     public void AddBrightness()
