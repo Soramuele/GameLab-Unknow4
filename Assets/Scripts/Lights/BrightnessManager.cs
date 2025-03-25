@@ -10,6 +10,7 @@ public class BrightnessManager : MonoBehaviour
     [Header("Light Settings")]
     [SerializeField] private float intensity = 1;
     [SerializeField] private float maxIntensity = 100;
+    private float intensityIncrement = 0.2f;
     
     [Serializable]
     private class Lightning
@@ -22,7 +23,6 @@ public class BrightnessManager : MonoBehaviour
 
     private bool isAdding = false;
     private bool isSubtracting = false;
-    private bool alreadySubtracted = true;
 
     void Awake()
     {
@@ -79,9 +79,12 @@ public class BrightnessManager : MonoBehaviour
     {
         if (!isAdding)
         {
-            if(isSubtracting)
+            Debug.LogWarning("Adding");
+            if (isSubtracting)
+            {
                 StopCoroutine(ISubtractBrightness());
-            isSubtracting = false;
+                isSubtracting = false;
+            }
 
             StartCoroutine(IAddBrightness());
         }
@@ -89,11 +92,14 @@ public class BrightnessManager : MonoBehaviour
 
     public void SubtractBrightness()
     {
-        if (!isSubtracting && !alreadySubtracted)
+        if (!isSubtracting && intensity > 1)
         {
-            if(isAdding)
+            Debug.LogWarning("Subtracting");
+            if (isAdding)
+            {
                 StopCoroutine(IAddBrightness());
-            isAdding = false;
+                isAdding = false;
+            }
 
             StartCoroutine(ISubtractBrightness());
         }
@@ -102,14 +108,13 @@ public class BrightnessManager : MonoBehaviour
     private IEnumerator IAddBrightness()
     {
         isAdding = true;
-        alreadySubtracted = false;
 
-        while(intensity < maxIntensity)
+        while (intensity < maxIntensity)
         {
-            foreach(var _light in lights)
+            intensity += intensityIncrement;
+            foreach (var _light in lights)
             {
-                if (_light.light.intensity >= _light.intensity)
-                    _light.light.intensity = intensity += 0.1f;
+                _light.light.intensity += intensityIncrement;
             }
             yield return new WaitForEndOfFrame();
         }
@@ -123,15 +128,18 @@ public class BrightnessManager : MonoBehaviour
 
         while(intensity > 1)
         {
+            intensity = intensity - intensityIncrement < 1 ? 1 : intensity - intensityIncrement;
             foreach(var _light in lights)
             {
                 if (_light.light.intensity > _light.intensity)
-                    _light.light.intensity = intensity -= 0.1f;
+                    if (_light.light.intensity - intensityIncrement < _light.intensity)
+                        _light.light.intensity = _light.intensity;
+                    else
+                        _light.light.intensity -= intensityIncrement;
             }
             yield return new WaitForEndOfFrame();
         }
 
         isSubtracting = false;
-        alreadySubtracted = true;
     }
 }
