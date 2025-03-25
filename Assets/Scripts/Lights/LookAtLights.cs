@@ -19,8 +19,9 @@ public class LookAtLights : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(eyes.position, Camera.main.transform.forward * 5f, Color.red);
-        if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out RaycastHit hit, 200f, lightLayer))
-            brightnessManager.AddBrightness();
+        if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out RaycastHit hit, 200f))
+            if (hit.collider.gameObject.layer == lightLayer)
+                brightnessManager.AddBrightness();
         else
             brightnessManager.SubtractBrightness();
     }
