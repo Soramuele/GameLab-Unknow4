@@ -23,7 +23,6 @@ public class BrightnessManager : MonoBehaviour
     private bool isAdding = false;
     private bool isSubtracting = false;
     private bool alreadySubtracted = true;
-    private bool isCollect = false;
 
     void Awake()
     {
@@ -75,15 +74,6 @@ public class BrightnessManager : MonoBehaviour
             }
     }
 #endif
-
-    void FixedUpdate()
-    {
-        if (!isCollect && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Lights")
-        {
-            isCollect = true;
-            Start();
-        }
-    }
 
     public void AddBrightness()
     {
