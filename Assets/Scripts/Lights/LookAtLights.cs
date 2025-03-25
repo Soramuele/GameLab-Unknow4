@@ -16,12 +16,11 @@ public class LookAtLights : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Debug.DrawRay(eyes.position, Camera.main.transform.forward * 5f, Color.red);
-        if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out RaycastHit hit, 200f))
-            if (hit.collider.gameObject.layer == lightLayer)
-                brightnessManager.AddBrightness();
+        if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out _, 200f, lightLayer))
+            brightnessManager.AddBrightness();
         else
             brightnessManager.SubtractBrightness();
     }
