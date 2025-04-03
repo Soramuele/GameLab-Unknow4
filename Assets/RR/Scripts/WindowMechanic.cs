@@ -7,7 +7,7 @@ public class WindowMechanic : MonoBehaviour
     // Start is called before the first frame update
     public Animator windowanimator;
     public GameObject player;
-  
+    public StudentMechanic timer;
     void Start()
     {
    
@@ -27,6 +27,10 @@ public class WindowMechanic : MonoBehaviour
         {
 
             windowanimator.SetBool("WindowOff", false);
+
+            timer.seconds = 0;
+
+            //off the effect function
         }
 
 

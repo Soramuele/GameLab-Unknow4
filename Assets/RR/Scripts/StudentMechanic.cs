@@ -11,7 +11,7 @@ public class StudentMechanic : MonoBehaviour
     private NavMeshAgent Agent;
     public WindowMechanic windowscript;
     public GameObject startposition;
-    float seconds;
+    public float seconds;
  
 
     

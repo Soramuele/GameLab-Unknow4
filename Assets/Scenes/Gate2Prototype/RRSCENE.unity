@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 1
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 2e7a8dc9439102542b75ff14434f3f3f, type: 2}
 --- !u!4 &1407993611
 Transform:
@@ -1529,6 +1529,7 @@ MonoBehaviour:
   Window: {fileID: 2331386201969463926}
   windowscript: {fileID: 9215171163900469404}
   startposition: {fileID: 1053408729}
+  seconds: 0
 --- !u!195 &1461845336
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1704,6 +1705,7 @@ GameObject:
   - component: {fileID: 1497929636}
   - component: {fileID: 1497929640}
   - component: {fileID: 1497929641}
+  - component: {fileID: 1497929642}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1822,6 +1824,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65cb5e69131591469c2be65cbdca1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1497929642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497929634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693b227b4a72ce34297d2421f6b265f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: {fileID: 1407993610}
+  window: {fileID: 9215171163900469404}
 --- !u!1 &1502665499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,6 +6600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowanimator: {fileID: 9215171163900469403}
   player: {fileID: 1497929634}
+  timer: {fileID: 1461845335}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
