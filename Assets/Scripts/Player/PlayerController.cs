@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 2.0f;
+    [SerializeField, Range(1f, 5f)] private float sprintMultiplier = 2;
     [SerializeField]
     private float jumpHeight = 0f;
     [SerializeField]
@@ -36,9 +37,13 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+
+        float sprint = inputManager.GetPlayerSprint();
+        if (sprint != 0)
+            move *= sprintMultiplier;
+
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-
        /* if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;

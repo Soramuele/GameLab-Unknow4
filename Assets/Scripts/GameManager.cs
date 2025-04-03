@@ -8,24 +8,22 @@ public class GameManager : MonoBehaviour
 
     private List<string> sceneNames = new();
 
+    public float InGameTimer { get; private set; }
+
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else
-            Destroy(gameObject);
         
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
             sceneNames.Add(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    void Update()
+    {
+        InGameTimer += Time.deltaTime;
+    }
 
     public void MoveToNextScene(string level)
     {
