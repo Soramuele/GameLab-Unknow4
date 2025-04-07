@@ -47,7 +47,7 @@ public class StudentMechanic : MonoBehaviour
     public void WindowClosing()
     {
 
-        if(seconds > 15 && !windowscript.windowanimator.GetBool("WindowOn"))
+        if(seconds > 15 && windowscript.windowanimator.GetBool("WindowOn"))
         
         {
             Agent.enabled = true;
@@ -60,7 +60,7 @@ public class StudentMechanic : MonoBehaviour
 
         if (Vector3.Distance(transform.position, Window.transform.position) < 2.5f)
         {
-            windowscript.windowanimator.SetBool("WindowOn", true);
+            windowscript.windowanimator.SetBool("WindowOn", false);
             Agent.SetDestination(startposition.transform.position);
 
             seconds = 0;

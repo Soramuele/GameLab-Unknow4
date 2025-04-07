@@ -26,7 +26,7 @@ public class WindowMechanic : MonoBehaviour
         if (Vector3.Distance(this.transform.position, player.transform.position) < 3 && Input.GetKeyDown(KeyCode.E))
         {
 
-            windowanimator.SetBool("WindowOn", false);
+            windowanimator.SetBool("WindowOn", true);
 
             timer.seconds = 0;
 
