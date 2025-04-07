@@ -23,7 +23,7 @@ public class StudentScript : MonoBehaviour
         temperature.weight = currentWeight;
 
 
-        if (window.windowanimator.GetBool("WindowOff") && currentWeight < 1f )
+        if (window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
             if (currentWeight < 1f)
             {
@@ -31,7 +31,7 @@ public class StudentScript : MonoBehaviour
                 if (currentWeight > 1f) currentWeight = 1f;
             }
         }
-        else if (!window.windowanimator.GetBool("WindowOff") && currentWeight > 0f )
+        else if (!window.windowanimator.GetBool("WindowOn") && currentWeight > 0f )
         {
 
             if (currentWeight > 0f)
