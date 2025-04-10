@@ -33,7 +33,7 @@ public class StudentMechanic : MonoBehaviour
 
 
 
-        print(seconds);
+        
    
 
         WindowClosing();
