@@ -29,18 +29,7 @@ public class StudentMechanic : MonoBehaviour
     void Update()
     {
         seconds += Time.deltaTime;
-
-
-
-
-        
-   
-
         WindowClosing();
-
-
-
-
 
     }
 

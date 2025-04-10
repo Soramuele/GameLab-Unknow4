@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -13,8 +14,8 @@ public class StudentScript : MonoBehaviour
     private float currentWeight = 0f;
     private float transitionSpeed = 0.08f;
     public GameObject chairtosit;
- 
-
+    public GameObject panel;
+    public CinemachineVirtualCamera virtualCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,16 @@ public class StudentScript : MonoBehaviour
         SitOnChair();
         StandUP();
 
+        Cursor.visible = false;
 
 
+       if(!panel.activeSelf) 
+        {
+
+            Cursor.lockState = CursorLockMode.Locked;
+
+        }
+        
 
 
 
@@ -63,21 +72,19 @@ public class StudentScript : MonoBehaviour
 
         if (Vector3.Distance(transform.position, chairtosit.transform.position) < 2f && Input.GetKeyDown(KeyCode.E))
         {
-            // Disable CharacterController to allow manual positioning
             characterController.enabled = false;
-
-            // Get the first child of the chair — your sit position
             Transform sitTransform = chairtosit.transform.GetChild(0);
-
-            // Move player to that position and rotation
             transform.position = sitTransform.position;
             transform.rotation = sitTransform.rotation;
-
-            // Optionally parent the player to the chair (so they move with it)
             transform.SetParent(chairtosit.transform, true);
-
             GetComponent<PlayerController>().enabled = false;
+            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = false;         
+            panel.SetActive(true);
+
+           
         }
+
+
     }
 
 
@@ -88,16 +95,17 @@ public class StudentScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !characterController.enabled)
         {
-            // Re-enable character controller and movement
+           
             characterController.enabled = true;
             GetComponent<PlayerController>().enabled = true;
   
 
-            // Unparent from the chair
+           
             transform.SetParent(null);
 
-            // Optional: Small upward push so they don't clip into the chair
             transform.position += Vector3.up * 0.1f;
+            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
+            panel.SetActive(false);
         }
 
 
