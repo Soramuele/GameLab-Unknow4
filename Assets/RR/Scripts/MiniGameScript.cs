@@ -1,24 +1,32 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MiniGameScript : MonoBehaviour
 {
-    public RectTransform customCursor;
+    //public RectTransform customCursor;
     public RectTransform boundaryImage;
     public RectTransform startPositionImage;
 
-
+    //public GameObject newcursor;
+    public GameObject Startscreen;
+    public GameObject Endscreen;
+    public GameObject level1;
+    public GameObject level2;
+    public GameObject level3;
+    public GameObject level4;
+    
+    private bool allowCursorMovement = false;
+    //private Vector2 previousMousePosition;
 
 
     void Start()
     {
-        customCursor.position = startPositionImage.position;
-        Cursor.lockState = CursorLockMode.Confined;
 
-
-
+       
 
 
     }
@@ -28,24 +36,98 @@ public class MiniGameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         
+        if (!allowCursorMovement) return;
+
 
         Vector2 mousePosition = Input.mousePosition;
+
         Rect boundaryRect = boundaryImage.rect;
- 
-        // Calculate the minimum and maximum x and y positions the cursor can move to
         float minX = boundaryImage.position.x - boundaryRect.width / 2;
         float maxX = boundaryImage.position.x + boundaryRect.width / 2;
         float minY = boundaryImage.position.y - boundaryRect.height / 2;
         float maxY = boundaryImage.position.y + boundaryRect.height / 2;
 
-        // Clamp the mouse position to stay inside the boundary
+
         float clampedX = Mathf.Clamp(mousePosition.x, minX, maxX);
         float clampedY = Mathf.Clamp(mousePosition.y, minY, maxY);
 
-        // Set the custom cursor's position to the clamped mouse position
-        customCursor.position = new Vector2(clampedX, clampedY);
-        
+
+         //customCursor.position= new Vector2(clampedX, clampedY);
+      
+
     }
 
+
+
+
+    void EnableCursorControl()
+    {
+        allowCursorMovement = true;
+    }
+
+
+    public void OnBreakEnter()  // walls touched
+    {
+        level1.SetActive(false);
+        level2.SetActive(false);
+        level3 .SetActive(false);
+        Startscreen.SetActive(true);
+        //newcursor.SetActive(false);
+    }
+
+    public void StartThegame()  
+    {
+        //newcursor.SetActive(true);
+        level1.SetActive(true);
+        Startscreen.SetActive(false);
+        //customCursor.position = startPositionImage.position;
+        //Invoke(nameof(EnableCursorControl), 1f);
+
+    }
+
+    public void Level2()
+    {
+        
+        level1.SetActive(false);
+        level2.SetActive(true);
+    }
+
+
+    public void Level3() 
+    {
+        level2.SetActive(false);
+        level3.SetActive(true);
+
+
+    }
+
+
+
+    public void Level4()
+    {
+
+        level3.SetActive(false);
+        level4.SetActive(true);
+
+
+
+
+    }
+
+
+
+    public void FinishThegame()
+    {
+
+        level3 .SetActive(false);
+        Endscreen.SetActive(true);
+        /// + UI
+
+
+    }
 }
