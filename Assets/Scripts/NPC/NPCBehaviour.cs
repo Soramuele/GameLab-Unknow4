@@ -3,10 +3,10 @@ using UnityEngine.AI;
 
 public class NPCBehaviour : MonoBehaviour
 {
-    [Header("NPC data")]
+    [Header("NPC Walking")]
     [SerializeField, Range(0, 50)] private float walkRange = 30;
     [SerializeField] private float lifeTime = 30;
-    public float range = 10f;
+    [SerializeField] private float range = 10f;
 
     private NavMeshAgent agent;
 
@@ -14,15 +14,18 @@ public class NPCBehaviour : MonoBehaviour
     private float startingTime;
     private float timePassed;
 
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
 
-        timePassed = startingTime = GameManager.Instance.InGameTimer;
     }
 
     void Start()
     {
+        startingTime = GameManager.Instance.InGameTimer;
+        timePassed = startingTime;
+
         WalkAround(false);
     }
 
@@ -35,6 +38,7 @@ public class NPCBehaviour : MonoBehaviour
         {
             timePassed = startingTime;
             Destroy(gameObject);
+            return;
         }
 
         // Patrolling();
@@ -70,40 +74,4 @@ public class NPCBehaviour : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
-
-    // private bool isWalkSet;
-    // private Vector3 walkPoint;
-
-    // private void Patrolling()
-    // {
-    //     if (!isWalkSet)
-    //         SearchWalkPoint();
-
-    //     if (isWalkSet)
-    //         agent.SetDestination(walkPoint);
-
-    //     // Check if destination is reached
-    //     Vector3 distanceToWalk = transform.position - walkPoint;
-    //     if (distanceToWalk.magnitude < 1.2f)
-    //         isWalkSet = false;
-    // }
-
-    // // Return random point in range
-    // private void SearchWalkPoint()
-    // {
-    //     // Set random point in range
-    //     float randomX = Random.Range(-walkRange, walkRange);
-    //     float randomZ = Random.Range(-walkRange, walkRange);
-
-    //     walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-    //     if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
-    //         isWalkSet = true;
-    // }
-
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.transform.CompareTag("NPC"))
-    //         isWalkSet = false;
-    // }
 }

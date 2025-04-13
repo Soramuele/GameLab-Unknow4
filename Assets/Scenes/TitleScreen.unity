@@ -297,63 +297,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -125}
   m_SizeDelta: {x: 320, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &404747918
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1471965342914678314, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275574391922799410, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
 --- !u!1 &457841649
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,17 +334,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -125}
   m_SizeDelta: {x: 320, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &473725184 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6198930827372248714, guid: 82cf1ec9da5639046a327cab5fb651f4, type: 3}
-  m_PrefabInstance: {fileID: 404747918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3532a203d68e1ce4490dc1b1fba49d44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &595798335
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,19 +416,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595798338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 473725184}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: QuitApplication
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &595798338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +601,7 @@ GameObject:
   - component: {fileID: 690934159}
   - component: {fileID: 690934158}
   - component: {fileID: 690934157}
+  - component: {fileID: 690934161}
   m_Layer: 5
   m_Name: Button - Play
   m_TagString: Untagged
@@ -731,19 +652,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 690934158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 473725184}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: MoveToNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Lights
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &690934158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +711,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 135}
   m_SizeDelta: {x: 320, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &690934161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690934156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262e5fd6942bce948aab1e3c40d7e043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  essentialScene:
+    sceneAsset: {fileID: 102900000, guid: afd1692b4caa8e940ad0e41c40b622e2, type: 3}
+    scenePath: Assets/Scenes/EssentialScene.unity
+  NextScene:
+    sceneAsset: {fileID: 102900000, guid: d9a46d132baf6e840a3d46f7f9fe04f7, type: 3}
+    scenePath: Assets/Scenes/Gate3Prototype/Level1.unity
 --- !u!1 &746567674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2186,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 223916709}
-  - {fileID: 404747918}
   - {fileID: 1746983291}
   - {fileID: 1372208517}

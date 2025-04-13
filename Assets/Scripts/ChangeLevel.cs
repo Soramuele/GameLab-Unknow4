@@ -13,9 +13,9 @@ public class ChangeLevel : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player")
-            if (sceneName != "" && canPass)
-                GameManager.Instance.MoveToNextScene(sceneName);
+        // if (collider.tag == "Player")
+        //     if (sceneName != "" && canPass)
+        //         GameManager.Instance.MoveToNextScene(sceneName);
     }
 
     private System.Collections.IEnumerator WaitThenDeactivateWall()
