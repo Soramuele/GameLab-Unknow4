@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b2016b229eb382f48a178c73d6cd67cd
+guid: 666ffd4a26e25684dac883c1c0d463dd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,14 +33,14 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sitting Idle
+      name: Neutral Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 129
+      lastFrame: 130
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0.75
+      level: 0.9
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
@@ -50,9 +50,9 @@ ModelImporter:
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
