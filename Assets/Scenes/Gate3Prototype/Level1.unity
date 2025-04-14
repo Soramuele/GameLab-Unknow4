@@ -1354,6 +1354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2715ed58d9a21874196ebff26ff1712c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
 --- !u!54 &1242242925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4338,5 +4341,5 @@ SceneRoots:
   - {fileID: 94410403}
   - {fileID: 407766429}
   - {fileID: 669010698}
-  - {fileID: 2098884787}
   - {fileID: 1242242929}
+  - {fileID: 2098884787}
