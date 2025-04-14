@@ -8,7 +8,7 @@ public class NPCSpawner : MonoBehaviour
     [SerializeField, Range(0.5f, 10f)] private float spawnRate = 3;
     [SerializeField] private int npcMax = 5;
     
-    private Dictionary<GameObject, bool> npcs = new Dictionary<GameObject, bool>();
+    private static Dictionary<GameObject, bool> npcs = new Dictionary<GameObject, bool>();
 
     private float timePassed;
 
@@ -36,7 +36,7 @@ public class NPCSpawner : MonoBehaviour
         // clone.transform.position = spawnPosition;
     }
 
-    private Vector3 GetRandomPosition()
+    private static Vector3 GetRandomPosition()
     {
         float spawnPosX = Random.Range(-24, 0);
         float spawnPosZ = Random.Range(-30, -33);
@@ -50,14 +50,14 @@ public class NPCSpawner : MonoBehaviour
         npcs.Add(npc, true);
     }
 
-    public void NPCIsUnused(GameObject npc)
+    public static void NPCIsUnused(GameObject npc)
     {
         if (npcs.ContainsKey(npc))
         {
             npcs[npc] = true;
             npc.transform.position = GetRandomPosition();
             npc.GetComponent<NPCWalking>().isAtDoor = false;
-            npc.GetComponent<NPCWalking>().agent.destination = Vector3.zero;
+            npc.GetComponent<NPCWalking>().Start();
         }
         else
         {

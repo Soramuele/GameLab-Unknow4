@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466555db799dbda47847ec523963f448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 5
   NPCEyes: {fileID: 1143542298013181887}
   playerDistance: 25
 --- !u!114 &6948024297441447418

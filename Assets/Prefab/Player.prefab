@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3971425336469812862}
   - component: {fileID: 8030170946384959864}
   - component: {fileID: 1915898342376943201}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6206620329365852950}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
