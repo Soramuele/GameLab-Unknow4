@@ -88,7 +88,7 @@ public class AffectsNew : MonoBehaviour
 
         {
 
-            getsblack += 0.2f;
+            getsblack += 0.4f;
             autoExposure.minLuminance.value = Mathf.Min(autoExposure.minLuminance.value - dicreaseStep, minLimit);
 
             if (autoExposure.minLuminance.value == 0.1f)
