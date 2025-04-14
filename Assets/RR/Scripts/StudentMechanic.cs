@@ -11,6 +11,7 @@ public class StudentMechanic : MonoBehaviour
     private NavMeshAgent Agent;
     public WindowMechanic windowscript;
     public GameObject startposition;
+    public Animator animatorwalk;
     public float seconds;
  
 
@@ -41,25 +42,31 @@ public class StudentMechanic : MonoBehaviour
         {
             Agent.enabled = true;
             Agent.SetDestination(Window.transform.position);
+            animatorwalk.SetBool("Walk", true);
           
         
         }
 
-
+      
 
         if (Vector3.Distance(transform.position, Window.transform.position) < 2.5f)
         {
             windowscript.windowanimator.SetBool("WindowOn", false);
             Agent.SetDestination(startposition.transform.position);
-
+            animatorwalk.SetBool("Walk", true);
             seconds = 0;
 
-
+        
 
         }
 
+        if (Vector3.Distance(transform.position, startposition.transform.position) < 1.5f && !windowscript.windowanimator.GetBool("WindowOn"))
+        {
 
-     
+            animatorwalk.SetBool("Walk", false);
+
+        }
+
     }
 
 }
