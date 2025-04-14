@@ -15,7 +15,7 @@ public class StudentScript : MonoBehaviour
     public GameObject chairtosit;
     public GameObject panel;
     public CinemachineVirtualCamera virtualCamera;
-
+    public CanvasGroup fade;
     
     private bool isPanelActive = false;
 
@@ -46,20 +46,23 @@ public class StudentScript : MonoBehaviour
     private void HandleWeightTransition()
     {
       
-        if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f)
+        if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
-            if (currentWeight < 1f)
+            if (currentWeight < 1f && fade.alpha < 1)
             {
                 currentWeight += transitionSpeed * Time.deltaTime;
                 if (currentWeight > 1f) currentWeight = 1f;
+                fade.alpha += transitionSpeed * Time.deltaTime;
             }
         }
-        else if (window.windowanimator.GetBool("WindowOn") && currentWeight > 0f)
+        else if (window.windowanimator.GetBool("WindowOn") && currentWeight > 0f  )
         {
-            if (currentWeight > 0f)
+            if (currentWeight > 0f && fade.alpha > 0)
             {
                 currentWeight -= transitionSpeed * Time.deltaTime;
+               
                 if (currentWeight < 0f) currentWeight = 0f;
+                fade.alpha -= transitionSpeed * Time.deltaTime;
             }
         }
     }
