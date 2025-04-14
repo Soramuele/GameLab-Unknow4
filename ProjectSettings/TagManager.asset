@@ -7,6 +7,7 @@ TagManager:
   - Route
   - Break
   - Start
+  - Volume
   layers:
   - Default
   - TransparentFX

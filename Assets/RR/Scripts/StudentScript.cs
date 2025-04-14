@@ -16,12 +16,15 @@ public class StudentScript : MonoBehaviour
     public GameObject panel;
     public CinemachineVirtualCamera virtualCamera;
     public CanvasGroup fade;
+
+    private StimuliManager stimuli;
+    private float something = 0;
     
     private bool isPanelActive = false;
 
     void Start()
     {
-        
+        stimuli = StimuliManager.Instance;
     }
 
     void Update()
@@ -48,16 +51,29 @@ public class StudentScript : MonoBehaviour
       
         if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
-            if (currentWeight < 1f && fade.alpha < 1)
+            if (something + 0.1f > 100)
+                something = 100;
+            else
+                something += 0.1f;
+            
+            stimuli.SubscribeDamagePercentage(this.gameObject, something);
+            
+            if (currentWeight < 1f && fade.alpha < 1 && stimuli.Ratio > 70)
             {
                 currentWeight += transitionSpeed * Time.deltaTime;
                 if (currentWeight > 1f) currentWeight = 1f;
                 fade.alpha += transitionSpeed * Time.deltaTime;
             }
         }
-        else if (window.windowanimator.GetBool("WindowOn") && currentWeight > 0f  )
+        else if (window.windowanimator.GetBool("WindowOn") )
         {
-            if (currentWeight > 0f && fade.alpha > 0)
+            if (something - 0.1f < 0)
+                something = 0;
+            else
+                something -= 0.1f;
+            
+            stimuli.SubscribeDamagePercentage(this.gameObject, something);
+            if (currentWeight > 0f && fade.alpha > 0 && stimuli.Ratio < 70)
             {
                 currentWeight -= transitionSpeed * Time.deltaTime;
                

@@ -18,7 +18,7 @@ public class StimuliManager : MonoBehaviour, IManager
     private SerializedDictionary<GameObject, float> damagePercentage = new SerializedDictionary<GameObject, float>();
 
     public float Ratio { 
-        get => (maxStimuli - currentStimuli) / maxStimuli;
+        get => 100 - ((currentStimuli / maxStimuli) * 100);
     }
 
     void Awake()
@@ -47,7 +47,7 @@ public class StimuliManager : MonoBehaviour, IManager
     /// <param name="damage">The percentage of stimuli you wish to apply (between 0 and 100)</param>
     public void SubscribeDamagePercentage(GameObject obj, float damage)
     {
-        if (damage >= 100)
+        if (damage > 100)
         {
             Debug.LogError("You sure? It's more than the max");
             Debug.Break();
@@ -79,7 +79,7 @@ public class StimuliManager : MonoBehaviour, IManager
 
         foreach(var item in damagePercentage.Values)
         {
-            var dmg = item * maxStimuli / 100f;
+            var dmg = (item / 100) * maxStimuli;
             
             damage += dmg;
         }

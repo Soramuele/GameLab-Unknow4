@@ -6,6 +6,8 @@ public class AddStimuli : MonoBehaviour
     [SerializeField] private float maxDistance = 20;
     [SerializeField] private float minDistance = 10;
 
+    private GameObject postProcessing;
+
     private StimuliManager stimuli;
     private GameObject player;
 
@@ -14,6 +16,8 @@ public class AddStimuli : MonoBehaviour
     {
         stimuli = StimuliManager.Instance;
         player = FindObjectOfType<PlayerController>().gameObject;
+
+        postProcessing = GameObject.FindGameObjectWithTag("Volume");
     }
 
     // Update is called once per frame
@@ -22,9 +26,10 @@ public class AddStimuli : MonoBehaviour
         var _dist = Vector3.Distance(transform.position, player.transform.position);
         if (_dist <= maxDistance)
         {
-            if (_dist <= minDistance)
+            if (_dist <= minDistance){
                 stimuli.SubscribeDamagePercentage(gameObject, 50);
-            else
+                postProcessing.SetActive(true);
+            }else
             {
                 var _range = maxDistance - minDistance;
                 var _pos = maxDistance - _dist;
@@ -36,6 +41,7 @@ public class AddStimuli : MonoBehaviour
         else
         {
             stimuli.UnsubscribeDamagePercentage(gameObject);
+            postProcessing.SetActive(false);
         }
     }
 }

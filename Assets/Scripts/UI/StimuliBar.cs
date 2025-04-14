@@ -15,5 +15,5 @@ public class StimuliBar : MonoBehaviour
 
     // Update is called once per frame
     void Update() =>
-        image.fillAmount = stimuli.Ratio;
+        image.fillAmount = stimuli.Ratio / 100;
 }

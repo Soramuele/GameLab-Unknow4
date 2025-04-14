@@ -16,11 +16,11 @@ public class AffectsVolume : MonoBehaviour
     private float currentIntensity;  
     private float transitionSpeed = 1f;  
     private float transitionTime = 0;
-    private float delayTime = 15;
+    private float delayTime = 5;
 
 
 
-    private float timeToFadeIn = 10f;  
+    private float timeToFadeIn = 6f;  
     private float timeToFadeOut = 2f;
 
     void Start()
@@ -74,7 +74,7 @@ public class AffectsVolume : MonoBehaviour
             transitionTime = 0f;   // Reset transition time
 
             // Reset delay time to wait before starting the next cycle
-            delayTime = 15;
+            delayTime = 5;
         }
 
         // Increment transition time to keep track of the transitions
