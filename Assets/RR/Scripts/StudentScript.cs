@@ -51,14 +51,14 @@ public class StudentScript : MonoBehaviour
       
         if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
-            if (something + 0.1f > 100)
+            if (something + 0.07f > 100)
                 something = 100;
             else
-                something += 0.1f;
+                something += 0.07f;
             
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
             
-            if (currentWeight < 1f && fade.alpha < 1 && stimuli.Ratio > 70)
+            if (currentWeight < 1f && fade.alpha < 1 && stimuli.Ratio > 10)
             {
                 currentWeight += transitionSpeed * Time.deltaTime;
                 if (currentWeight > 1f) currentWeight = 1f;
@@ -67,10 +67,10 @@ public class StudentScript : MonoBehaviour
         }
         else if (window.windowanimator.GetBool("WindowOn") )
         {
-            if (something - 0.1f < 0)
+            if (something - 0.07f < 0)
                 something = 0;
             else
-                something -= 0.1f;
+                something -= 0.07f;
             
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
             if (currentWeight > 0f && fade.alpha > 0 && stimuli.Ratio < 70)

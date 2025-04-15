@@ -10,7 +10,8 @@ public class MiniGameScript : MonoBehaviour
     //public RectTransform customCursor;
     public RectTransform boundaryImage;
     public RectTransform startPositionImage;
-
+    //public GameObject player;
+    //public GameObject door;
     //public GameObject newcursor;
     public GameObject Startscreen;
     public GameObject Endscreen;
@@ -59,7 +60,13 @@ public class MiniGameScript : MonoBehaviour
 
          //customCursor.position= new Vector2(clampedX, clampedY);
       
+       //if(Endscreen.activeInHierarchy && Vector3.Distance(player.transform.position, door.transform.position) < 2f && Input.GetKeyDown(KeyCode.E))
+       // {
 
+
+
+
+       // }
     }
 
 
@@ -130,4 +137,10 @@ public class MiniGameScript : MonoBehaviour
 
 
     }
+
+
+
+
+
+
 }

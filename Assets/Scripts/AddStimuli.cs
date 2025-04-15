@@ -16,7 +16,8 @@ public class AddStimuli : MonoBehaviour
     {
         stimuli = StimuliManager.Instance;
         player = FindObjectOfType<PlayerController>().gameObject;
-
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         postProcessing = GameObject.FindGameObjectWithTag("Volume");
     }
 
