@@ -3246,9 +3246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92d655053e91254e993f6a9c4df6812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 0}
-  musicMixerGroup: {fileID: 0}
-  soundFXMixerGroup: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  musicMixerGroup: {fileID: 2425808625476996439, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  soundFXMixerGroup: {fileID: 2692222941059642507, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
 --- !u!114 &3543109425569741579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4667,6 +4667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5a0be278cf796489a5bcee37fc36f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &8893816635576921831
 GameObject:
   m_ObjectHideFlags: 0

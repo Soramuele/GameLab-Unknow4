@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausable: 1
-  playerInputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
-  speed: 0
+  <playerInputs>k__BackingField: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
+  playerSpeed: 0
   sprintMultiplier: 0
   jumpForce: 0
 --- !u!114 &8012876380308685872
