@@ -5,9 +5,9 @@ namespace Unknown.Samuele
     public abstract class Interactable : MonoBehaviour
     {
         [Header("Prompt")]
-        [Tooltip("This will be the text that will show on the HUD when you will be able to interact with it")]
+        [Tooltip("This will be the text that will be shown on the HUD when you will be able to interact with it")]
         [SerializeField] private string prompt;
-        [Tooltip("(Alt) This will be the text that will show on the HUD when you will be able to interact with it")]
+        [Tooltip("Alternative text that will be shown on the HUD when you will be able to interact with it")]
         [SerializeField] private string promptAlt;
 
         public string Prompt { get => prompt; }
