@@ -240,26 +240,17 @@
             ]
         },
         {
-            "name": "UI",
+            "name": "Minigame",
             "id": "aabb7722-7ebf-4a37-90d3-31d9e0e21aa4",
             "actions": [
                 {
-                    "name": "Navigate",
+                    "name": "Move",
                     "type": "Value",
-                    "id": "86eb3e13-7455-4ba9-a929-3072634a5e62",
+                    "id": "afe41590-43f9-4b1d-b67a-666f3069530f",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "745d8e82-f7ff-4509-b3ea-df8b9bdea734",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Back",
@@ -269,125 +260,39 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Unpause",
-                    "type": "Button",
-                    "id": "8234af9d-7ab7-45c9-9255-30533c13ff6e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "f3411728-93c0-4b86-9813-6fb7c76bb19a",
-                    "path": "<Keyboard>/escape",
+                    "id": "7f1f23c1-9bfa-40cb-bf7a-ca57e6bd2886",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard_Mouse",
-                    "action": "Unpause",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c88b560d-86e0-46de-80cb-d3da645a4a30",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Unpause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c1cc46b-0f44-4fda-b934-bc7fe7cc079b",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard_Mouse",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7907aee0-ab8f-46c0-9b47-7b5b95bd5a97",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "WASD",
-                    "id": "7820a733-303d-409c-b724-5e26636482bb",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "fb532807-fd5f-4ffd-9c64-72082dea4b1a",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard_Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "9c4c4910-9f11-4489-a331-ac122a3e52f3",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard_Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "6fecc4a6-3b82-4937-8963-5e1b62906221",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard_Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "ec7e77c9-c51b-4a63-ac00-b2131235aae7",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard_Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "b9a2ff6c-194b-40f5-a32c-e3750ae2a021",
+                    "id": "8ca2ec99-d2be-4fde-97ec-a906200f03aa",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Navigate",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa3e124f-1700-48ec-a4e6-cd4771923162",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

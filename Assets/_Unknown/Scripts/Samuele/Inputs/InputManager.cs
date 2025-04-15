@@ -23,7 +23,7 @@ namespace Unknown.Samuele
             inputActions.Player.Enable();
 
             inputActions.Player.Pause.started += PauseGame;
-            inputActions.UI.Unpause.started += UnpauseGame;
+            inputActions.Minigame.Back.started += UnpauseGame;
         }
 
         void OnDisable()
@@ -31,7 +31,7 @@ namespace Unknown.Samuele
             inputActions.Player.Disable();
 
             inputActions.Player.Pause.started -= PauseGame;
-            inputActions.UI.Unpause.started -= UnpauseGame;
+            inputActions.Minigame.Back.started -= UnpauseGame;
         }
 
     #region Player Inputs
@@ -52,7 +52,7 @@ namespace Unknown.Samuele
             if (ctx.started)
             {
                 inputActions.Player.Disable();
-                inputActions.UI.Enable();
+                inputActions.Minigame.Enable();
             }
 
             OpenPauseMenu();
@@ -61,13 +61,13 @@ namespace Unknown.Samuele
 
     #region UI Inputs
         public bool UISelect() =>
-            inputActions.UI.Select.triggered;
+            inputActions.Minigame.Back.triggered;
 
         public void UnpauseGame(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
             {
-                inputActions.UI.Disable();
+                inputActions.Minigame.Disable();
                 inputActions.Player.Enable();
             }
 
