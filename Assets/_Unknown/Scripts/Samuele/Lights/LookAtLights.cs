@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class LookAtLights : MonoBehaviour
+namespace Unknown.Samuele
 {
-    [Header("Light LaryerMask")]
-    [SerializeField] private LayerMask lightLayer;
-
-    [SerializeField] private Transform eyes;
-
-    private BrightnessManager brightnessManager;
-
-    // Start is called the first frame before Update
-    void Start()
+    public class LookAtLights : MonoBehaviour
     {
-        brightnessManager = BrightnessManager.Instance;
-    }
+        [Header("Light LaryerMask")]
+        [SerializeField] private LayerMask lightLayer;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Debug.DrawRay(eyes.position, Camera.main.transform.forward * 5f, Color.red);
-        if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out _, 200f, lightLayer))
-            brightnessManager.AddBrightness();
-        else
-            brightnessManager.SubtractBrightness();
+        [SerializeField] private Transform eyes;
+
+        private BrightnessManager brightnessManager;
+
+        // Start is called the first frame before Update
+        void Start()
+        {
+            brightnessManager = BrightnessManager.Instance;
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            Debug.DrawRay(eyes.position, Camera.main.transform.forward * 5f, Color.red);
+            if (Physics.Raycast(eyes.transform.position, Camera.main.transform.forward, out _, 200f, lightLayer))
+                brightnessManager.AddBrightness();
+            else
+                brightnessManager.SubtractBrightness();
+        }
     }
 }
