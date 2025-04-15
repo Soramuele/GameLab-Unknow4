@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       propertyPath: m_Name
-      value: StudentOutsideStanding
+      value: StudentOutsideStanding 5
       objectReference: {fileID: 0}
     - target: {fileID: 8569978900448769459, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466555db799dbda47847ec523963f448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 5
   NPCEyes: {fileID: 3124734394643457322}
   playerDistance: 10
 --- !u!1 &3124734394643457322 stripped

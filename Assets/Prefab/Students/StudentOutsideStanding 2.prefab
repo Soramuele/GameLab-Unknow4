@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466555db799dbda47847ec523963f448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 5
   NPCEyes: {fileID: 3124734394643457322}
   playerDistance: 10
 --- !u!4 &2358876185533404919 stripped

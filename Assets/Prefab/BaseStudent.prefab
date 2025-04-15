@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306119076055766114}
   - component: {fileID: 635599562372776312}
+  - component: {fileID: 3161238590905223633}
   m_Layer: 8
   m_Name: BaseStudent
   m_TagString: Untagged
@@ -139,6 +140,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3161238590905223633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757297074613831737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466555db799dbda47847ec523963f448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  NPCEyes: {fileID: 1143542298013181887}
+  playerDistance: 15
 --- !u!1001 &545157288238092178
 PrefabInstance:
   m_ObjectHideFlags: 0
