@@ -106,13 +106,13 @@ public class StudentScript : MonoBehaviour
 
     public void StandUP()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !characterController.enabled)
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && !characterController.enabled)
         {
             characterController.enabled = true;
             GetComponent<PlayerController>().enabled = true;
 
             transform.SetParent(null);
-            transform.position += Vector3.up * 0.1f;
+            transform.position += Vector3.up * 0.3f;
             virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
 
             if (isPanelActive)

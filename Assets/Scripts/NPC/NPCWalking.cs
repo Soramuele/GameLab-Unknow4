@@ -41,8 +41,9 @@ public class NPCWalking : MonoBehaviour
         }
         else
         {
-            if (!agent.hasPath && !agent.pathPending)
+            if (Vector3.Distance(transform.position, outsideTransform) < checkDistance)
             {
+                agent.ResetPath();
                 gameObject.SetActive(false);
                 NPCSpawner.NPCIsUnused(gameObject);
             }
