@@ -14,14 +14,18 @@ public class NPCWalking : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent agent;
 
+    private Animator animator;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Start()
     {
         agent.SetDestination(doorTransform);
+        animator.SetBool("Walk", true);
     }
 
     // Update is called once per frame
