@@ -4,12 +4,10 @@ using UnityEngine.InputSystem;
 
 namespace Unknown.Samuele
 {
+    [CreateAssetMenu(fileName = "Inputs", menuName = "ScriptableObjects/Game Inputs")]
     public class InputHandler : ScriptableObject, GameControls.IPlayerActions, GameControls.IMinigameActions, GameControls.IUIActions
     {
-        public static InputHandler Instance { get; private set;}
-
         private GameControls _inputs;
-
         private LastInputMap lastInputMap = LastInputMap.None;
 
 #region Events
@@ -20,20 +18,19 @@ namespace Unknown.Samuele
         public event Action SprintEvent;
         public event Action SprintCancelledEvent;
         public event Action InteractEvent;
-        public event Action PauseEvent;
 
         // Minigame
         public event Action<Vector2> MovementEvent;
         public event Action BackEvent;
+
+        // Player + Minigame
+        public event Action PauseEvent;
+        
+        // UI
+        public event Action CloseUIEvent;
 #endregion Events
 
         public Vector2 GetLook { get; private set; }
-
-        void Awake()
-        {
-            if (Instance == null)
-                Instance = this;
-        }
 
         void OnEnable()
         {
@@ -69,8 +66,6 @@ namespace Unknown.Samuele
 
         private void SetUI()
         {
-            lastInputMap = LastInputMap.UI;
-
             _inputs.UI.Enable();
             _inputs.Player.Disable();
             _inputs.Minigame.Disable();
@@ -102,11 +97,12 @@ namespace Unknown.Samuele
 
         public void OnPause(InputAction.CallbackContext context)
         {
-            // if (context.phase == InputActionPhase.Performed)
-            // {
-            //     // TODO: Invoke pause event
-            //     SetUI();
-            // }
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PauseEvent?.Invoke();
+
+                SetUI();
+            }
         }
 #endregion Player
 
@@ -125,8 +121,21 @@ namespace Unknown.Samuele
 #region UI
         public void OnClose(InputAction.CallbackContext context)
         {
-            // TODO: Check last inputMap and set it back
-            throw new NotImplementedException();
+            // Check last inputMap and set it back
+            switch (lastInputMap)
+            {
+                case LastInputMap.Player:
+                    SetGameplay();
+                break;
+                case LastInputMap.MiniGame:
+                    SetMinigame();
+                break;
+                default:
+                    SetGameplay();
+                    Debug.LogWarning("You messed up someway");
+                    Debug.Break();
+                break;
+            }
         }
 #endregion UI
     }
@@ -135,7 +144,6 @@ namespace Unknown.Samuele
     {
         None,
         Player,
-        MiniGame,
-        UI
+        MiniGame
     }
 }

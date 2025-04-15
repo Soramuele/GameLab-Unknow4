@@ -737,10 +737,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   essentialScene:
     sceneAsset: {fileID: 102900000, guid: afd1692b4caa8e940ad0e41c40b622e2, type: 3}
-    scenePath: Assets/Scenes/EssentialScene.unity
+    scenePath: Assets/_Unknown/Scenes/Current/EssentialScene.unity
   NextScene:
     sceneAsset: {fileID: 102900000, guid: d9a46d132baf6e840a3d46f7f9fe04f7, type: 3}
-    scenePath: Assets/Scenes/Gate3Prototype/Level1.unity
+    scenePath: Assets/_Unknown/Scenes/Current/Level1.unity
 --- !u!1 &746567674
 GameObject:
   m_ObjectHideFlags: 0

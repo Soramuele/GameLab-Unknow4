@@ -264,13 +264,22 @@ namespace Unknown.Samuele
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""740d3d12-4083-4be4-b87a-db2d28abcb16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""852f61f6-c7a0-42ec-a34d-4a4e4ee6eda7"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -282,17 +291,6 @@ namespace Unknown.Samuele
                     ""name"": """",
                     ""id"": ""11766888-dd2e-4257-8197-e52b6aa28de7"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1b5cf3e1-8559-43f6-a0b9-9f4f2915b08b"",
-                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -376,6 +374,28 @@ namespace Unknown.Samuele
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27b10125-0ece-47b8-8941-38051efeaaaa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d8f8cb4-017a-4986-b06d-e95dda062ef7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -455,6 +475,7 @@ namespace Unknown.Samuele
             m_Minigame = asset.FindActionMap("Minigame", throwIfNotFound: true);
             m_Minigame_Movement = m_Minigame.FindAction("Movement", throwIfNotFound: true);
             m_Minigame_Back = m_Minigame.FindAction("Back", throwIfNotFound: true);
+            m_Minigame_Pause = m_Minigame.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Close = m_UI.FindAction("Close", throwIfNotFound: true);
@@ -599,12 +620,14 @@ namespace Unknown.Samuele
         private List<IMinigameActions> m_MinigameActionsCallbackInterfaces = new List<IMinigameActions>();
         private readonly InputAction m_Minigame_Movement;
         private readonly InputAction m_Minigame_Back;
+        private readonly InputAction m_Minigame_Pause;
         public struct MinigameActions
         {
             private @GameControls m_Wrapper;
             public MinigameActions(@GameControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Minigame_Movement;
             public InputAction @Back => m_Wrapper.m_Minigame_Back;
+            public InputAction @Pause => m_Wrapper.m_Minigame_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Minigame; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -620,6 +643,9 @@ namespace Unknown.Samuele
                 @Back.started += instance.OnBack;
                 @Back.performed += instance.OnBack;
                 @Back.canceled += instance.OnBack;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IMinigameActions instance)
@@ -630,6 +656,9 @@ namespace Unknown.Samuele
                 @Back.started -= instance.OnBack;
                 @Back.performed -= instance.OnBack;
                 @Back.canceled -= instance.OnBack;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IMinigameActions instance)
@@ -723,6 +752,7 @@ namespace Unknown.Samuele
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnBack(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

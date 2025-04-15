@@ -1,0 +1,63 @@
+using System;
+using UnityEngine;
+
+namespace Unknown.Samuele
+{
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerControls : PausableMonoBehaviour
+    {
+        [field: Header("Inputs")]
+        [field: SerializeField] public InputHandler playerInputs { get; private set; }
+
+        [Header("Player Data")]
+        [SerializeField] private float playerSpeed;
+        [SerializeField] private float sprintMultiplier;
+        [SerializeField] private float jumpForce;
+
+        private CharacterController controller;
+        
+        private Vector2 movement;
+        private float baseSprint = 1;
+        private float sprint;
+
+        public Transform cameraTransform { get; private set; }
+
+        void Start()
+        {
+            controller = GetComponent<CharacterController>();
+            cameraTransform = Camera.main.transform;
+            sprint = baseSprint;
+        }
+
+        void OnEnable()
+        {
+            playerInputs.MoveEvent += ctx => movement = ctx.normalized;
+            // playerInputs.JumpEvent += () => Jump;
+            // playerInputs.JumpCancelledEvent += () => StopJump;
+            playerInputs.SprintEvent += () => sprint = sprintMultiplier;
+            playerInputs.SprintCancelledEvent += () => sprint = baseSprint;
+        }
+
+        void OnDisable()
+        {
+            playerInputs.MoveEvent -= ctx => movement = ctx.normalized;
+            // playerInputs.JumpEvent -= () => Jump;
+            // playerInputs.JumpCancelledEvent -= () => StopJump;
+            playerInputs.SprintEvent -= () => sprint = sprintMultiplier;
+            playerInputs.SprintCancelledEvent -= () => sprint = baseSprint;
+        }
+
+        void Update()
+        {
+            Movement();
+        }
+
+        private void Movement()
+        {
+            Vector3 move = new Vector3(movement.x * sprint, 0f, movement.y * sprint);
+            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+
+            controller.Move(playerSpeed * Time.deltaTime * move);
+        }
+    }
+}

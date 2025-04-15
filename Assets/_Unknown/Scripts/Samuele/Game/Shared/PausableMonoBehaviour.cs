@@ -36,6 +36,7 @@ namespace Unknown.Samuele
             PostResume();
         }
 
+        // Use for coroutines and other function that cannot be stopped when disabling the script
         protected virtual void PostPause() {   }
         protected virtual void PostResume() {   }
     }
