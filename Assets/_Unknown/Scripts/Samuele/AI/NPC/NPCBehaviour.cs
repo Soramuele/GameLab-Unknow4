@@ -25,7 +25,7 @@ namespace Unknown.Samuele
 
         void Start()
         {
-            startingTime = GameManager.Instance.InGameTimer;
+            startingTime = Time.time;
             timePassed = startingTime;
 
             WalkAround(false);

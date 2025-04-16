@@ -20,12 +20,13 @@ namespace Unknown.Samuele
         public static event Action<string> SendPromptEvent;
         private bool eventAlreadySent = false;
 
-        // Start is called before the first frame update
-        void Start()
+        protected override void Awake()
         {
-            var playerControls = GetComponent<PlayerControls>();
-            interactionInput = playerControls.playerInputs;
-            cameraTransform = playerControls.cameraTransform;
+            base.Awake();
+            
+            cameraTransform = Camera.main.transform;
+            
+            interactionInput = GetComponent<PlayerControls>().playerInputs;    
         }
 
         void OnEnable() =>

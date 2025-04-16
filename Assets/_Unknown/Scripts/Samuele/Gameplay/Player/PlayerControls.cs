@@ -20,7 +20,7 @@ namespace Unknown.Samuele
         private float baseSprint = 1;
         private float sprint;
 
-        public Transform cameraTransform { get; private set; }
+        private Transform cameraTransform;
 
         void Start()
         {

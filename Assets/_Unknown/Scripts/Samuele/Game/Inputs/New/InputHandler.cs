@@ -31,6 +31,8 @@ namespace Unknown.Samuele
 #endregion Events
 
         public Vector2 GetLook { get; private set; }
+        private string lastControlScheme;
+        public string currentControlScheme { get; private set; } = "Keyboard";
 
         void OnEnable()
         {
@@ -42,8 +44,31 @@ namespace Unknown.Samuele
                 _inputs.Minigame.SetCallbacks(this);
                 _inputs.UI.SetCallbacks(this);
 
+                // Listener for changing control scheme
+                _inputs.Player.Move.started += UpdateControlScheme;
+                _inputs.Player.Interact.started += UpdateControlScheme;
+                _inputs.Player.Sprint.started += UpdateControlScheme;
+                _inputs.Player.Pause.started += UpdateControlScheme;
+                _inputs.Minigame.Pause.started += UpdateControlScheme;
+                _inputs.Minigame.Movement.started += UpdateControlScheme;
+                _inputs.Minigame.Back.started += UpdateControlScheme;
+                _inputs.UI.Close.started += UpdateControlScheme;
+
                 SetGameplay();
             }
+        }
+
+        void OnDisable()
+        {
+            // Listener for changing control scheme
+            _inputs.Player.Move.started -= UpdateControlScheme;
+            _inputs.Player.Interact.started -= UpdateControlScheme;
+            _inputs.Player.Sprint.started -= UpdateControlScheme;
+            _inputs.Player.Pause.started -= UpdateControlScheme;
+            _inputs.Minigame.Pause.started -= UpdateControlScheme;
+            _inputs.Minigame.Movement.started -= UpdateControlScheme;
+            _inputs.Minigame.Back.started -= UpdateControlScheme;
+            _inputs.UI.Close.started -= UpdateControlScheme;
         }
 
         private void SetGameplay()
@@ -69,6 +94,22 @@ namespace Unknown.Samuele
             _inputs.UI.Enable();
             _inputs.Player.Disable();
             _inputs.Minigame.Disable();
+        }
+
+        private void UpdateControlScheme(InputAction.CallbackContext context)
+        {
+            var device = context.control?.device;
+            if (device == null)
+                return;
+            
+            string newScheme = device is Gamepad ? "Controller" : "Keyboard";
+
+            if (newScheme != lastControlScheme)
+            {
+                lastControlScheme = newScheme;
+                currentControlScheme = newScheme;
+                Debug.Log($"Control scheme switched to {newScheme}");
+            }
         }
 
 #region Player
