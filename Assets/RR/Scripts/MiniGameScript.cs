@@ -19,6 +19,7 @@ public class MiniGameScript : MonoBehaviour
     public GameObject level2;
     public GameObject level3;
     public GameObject level4;
+
     
     private bool allowCursorMovement = false;
     //private Vector2 previousMousePosition;
@@ -133,6 +134,12 @@ public class MiniGameScript : MonoBehaviour
 
         level3 .SetActive(false);
         Endscreen.SetActive(true);
+
+
+        
+
+
+
         /// + UI
 
 
