@@ -57,7 +57,6 @@ public class NPCSpawner : MonoBehaviour
             npcs[npc] = true;
             npc.SetActive(true);
             npc.transform.position = GetRandomPosition();
-            npc.GetComponent<NPCWalking>().isAtDoor = false;
             npc.GetComponent<NPCWalking>().Start();
         }
         else

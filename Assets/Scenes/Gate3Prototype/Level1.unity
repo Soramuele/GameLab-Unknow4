@@ -63795,6 +63795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5522204867903452468}
+  - component: {fileID: 5522204867903452470}
   - component: {fileID: 5522204867903452469}
   m_Layer: 0
   m_Name: RevolvingDoor
@@ -64205,6 +64206,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 2851121988846077294}
   spinSpeed: 0.5
+  rotationSpeed: 90
+  doorCenter: {fileID: 2851121988846077294}
+  arcAngle: 90
+  angularSpeed: 90
+  radius: 1
+--- !u!65 &5522204867903452470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181673659405774734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.664506, y: 3.390699, z: 2.9970777}
+  m_Center: {x: 1.53186, y: 0.19681087, z: 6.652663e-15}
 --- !u!4 &5523499351526899585
 Transform:
   m_ObjectHideFlags: 0

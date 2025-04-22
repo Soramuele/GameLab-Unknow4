@@ -8,6 +8,7 @@ TagManager:
   - Break
   - Start
   - Volume
+  - Student
   layers:
   - Default
   - TransparentFX
