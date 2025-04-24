@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 306119076055766114}
   - component: {fileID: 635599562372776312}
   - component: {fileID: 3161238590905223633}
-  - component: {fileID: 6122318487382949570}
+  - component: {fileID: -3705137655415067643}
   m_Layer: 8
   m_Name: BaseStudent
   m_TagString: Student
@@ -156,7 +156,7 @@ MonoBehaviour:
   damage: 5
   NPCEyes: {fileID: 1143542298013181887}
   playerDistance: 15
---- !u!136 &6122318487382949570
+--- !u!136 &-3705137655415067643
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

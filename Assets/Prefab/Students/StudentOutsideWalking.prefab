@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1072169836537594944}
+    - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7850870440493296135}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
 --- !u!1 &5456613491046988947 stripped
 GameObject:
@@ -78,7 +81,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorTransform: {x: -14.451389, y: 1, z: -25.85633}
-  outsideTransform: {x: -14.5, y: 1, z: -50.5}
+  finalDestination: {x: -14.5, y: 1, z: -50.5}
   checkDistance: 1
-  isAtDoor: 0
   agent: {fileID: 0}
+--- !u!114 &7850870440493296135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456613491046988947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889d61dcdac5f3c41955c22a2e00f92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
