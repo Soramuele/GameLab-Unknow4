@@ -19,15 +19,20 @@ public class EndLevel : MonoBehaviour
     {
         if(gameScript.Endscreen.activeSelf && Vector3.Distance(this.transform.position, door.transform.position) < 3f && Input.GetKeyDown(KeyCode.E)) 
         {
-
+            
             dooranimation.enabled = true;
-        
+            
+
+        }
+
+        if(gameScript.Endscreen.activeSelf && this.transform.parent == null) 
+        {
+
+            gameScript.hintext.text = "leave the classroom";
         
         
         
         }
-
-
 
     }
 
@@ -38,6 +43,7 @@ public class EndLevel : MonoBehaviour
         if (other.CompareTag("NextLevel") && dooranimation.enabled)
         {
             UnityEditor.EditorApplication.isPlaying = false;
+            ///change the scene
         }
     }
 }

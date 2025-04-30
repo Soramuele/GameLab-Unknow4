@@ -37,7 +37,7 @@ public class StudentMechanic : MonoBehaviour
     public void WindowClosing()
     {
 
-        if(seconds > 15 && windowscript.windowanimator.GetBool("WindowOn"))
+        if(seconds > 25 && windowscript.windowanimator.GetBool("WindowOn"))
         
         {
             Agent.enabled = true;

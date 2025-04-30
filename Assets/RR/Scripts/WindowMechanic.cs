@@ -30,7 +30,7 @@ public class WindowMechanic : MonoBehaviour
 
             timer.seconds = 0;
 
-            //off the effect function
+            
         }
 
 

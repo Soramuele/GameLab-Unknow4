@@ -19,16 +19,16 @@ public class MiniGameScript : MonoBehaviour
     public GameObject level2;
     public GameObject level3;
     public GameObject level4;
-
-    
+    public TextMeshProUGUI hintext;
+    public WindowMechanic windowscript;
     private bool allowCursorMovement = false;
     //private Vector2 previousMousePosition;
 
 
     void Start()
     {
+        hintext.text = "Complete the game";
 
-       
 
 
     }
@@ -38,7 +38,7 @@ public class MiniGameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -59,6 +59,12 @@ public class MiniGameScript : MonoBehaviour
         float clampedY = Mathf.Clamp(mousePosition.y, minY, maxY);
 
 
+
+        
+
+      
+       
+        
          //customCursor.position= new Vector2(clampedX, clampedY);
       
        //if(Endscreen.activeInHierarchy && Vector3.Distance(player.transform.position, door.transform.position) < 2f && Input.GetKeyDown(KeyCode.E))
@@ -90,6 +96,7 @@ public class MiniGameScript : MonoBehaviour
 
     public void StartThegame()  
     {
+       
         //newcursor.SetActive(true);
         level1.SetActive(true);
         Startscreen.SetActive(false);
@@ -116,32 +123,16 @@ public class MiniGameScript : MonoBehaviour
 
 
 
-    public void Level4()
-    {
-
-        level3.SetActive(false);
-        level4.SetActive(true);
-
-
-
-
-    }
-
-
 
     public void FinishThegame()
     {
 
         level3 .SetActive(false);
         Endscreen.SetActive(true);
-
-
-        
-
+        hintext.text = "<s>Complete the game</s>";
 
 
         /// + UI
-
 
     }
 

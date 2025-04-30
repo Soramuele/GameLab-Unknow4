@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,12 +12,13 @@ public class StudentScript : MonoBehaviour
     [SerializeField] CharacterController characterController;
     public WindowMechanic window;
     private float currentWeight = 0f;
-    private float transitionSpeed = 0.08f;
+    private float transitionSpeed = 0.1f;
     public GameObject chairtosit;
     public GameObject panel;
     public CinemachineVirtualCamera virtualCamera;
     public CanvasGroup fade;
-
+    public GameObject standuppos;
+    public TextMeshProUGUI hint;
     private StimuliManager stimuli;
     private float something = 0;
     
@@ -35,7 +37,10 @@ public class StudentScript : MonoBehaviour
         StandUP();
 
         
-
+        if(hint.enabled)
+        {
+            
+        }
         
         if (!panel.activeSelf)
         {
@@ -51,10 +56,11 @@ public class StudentScript : MonoBehaviour
       
         if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
-            if (something + 0.07f > 100)
+            if (something + 0.04f > 100)
                 something = 100;
+                
             else
-                something += 0.07f;
+                something += 0.04f;
             
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
             
@@ -67,10 +73,11 @@ public class StudentScript : MonoBehaviour
         }
         else if (window.windowanimator.GetBool("WindowOn") )
         {
-            if (something - 0.07f < 0)
+            hint.enabled = false;
+            if (something - 0.02f < 0)
                 something = 0;
             else
-                something -= 0.07f;
+                something -= 0.02f;
             
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
             if (currentWeight > 0f && fade.alpha > 0 && stimuli.Ratio < 70)
@@ -81,6 +88,19 @@ public class StudentScript : MonoBehaviour
                 fade.alpha -= transitionSpeed * Time.deltaTime;
             }
         }
+
+        
+      if(something >= 70 && !window.windowanimator.GetBool("WindowOn"))
+        {
+
+            hint.enabled = true;
+
+        }
+
+
+
+
+
     }
 
     public void SitOnChair()
@@ -106,20 +126,25 @@ public class StudentScript : MonoBehaviour
 
     public void StandUP()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && !characterController.enabled)
+        if (Input.GetKeyDown(KeyCode.Space) && !characterController.enabled)
         {
+           
+            transform.position = standuppos.transform.position;
+            transform.rotation = standuppos.transform.rotation;
+
+            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
             characterController.enabled = true;
             GetComponent<PlayerController>().enabled = true;
-
             transform.SetParent(null);
-            transform.position += Vector3.up * 0.3f;
-            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
-
             if (isPanelActive)
             {
                 panel.SetActive(false); 
                 isPanelActive = false;  
             }
         }
+
+
+
+
     }
 }
