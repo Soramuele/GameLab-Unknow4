@@ -63,9 +63,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4194739937466013811}
-    - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3354424411554348049}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
 --- !u!1 &1200065270432287404 stripped
 GameObject:
@@ -84,29 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886630620d16bea4bbe507f5121707a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3354424411554348049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200065270432287404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 466555db799dbda47847ec523963f448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  NPCEyes: {fileID: 3124734394643457322}
-  playerDistance: 10
 --- !u!4 &2358876185533404919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 306119076055766114, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
-  m_PrefabInstance: {fileID: 2631198159532884629}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3124734394643457322 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143542298013181887, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
   m_PrefabInstance: {fileID: 2631198159532884629}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5698003322665665608

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Unknown.Samuele
@@ -6,8 +5,9 @@ namespace Unknown.Samuele
     [RequireComponent(typeof(CharacterController))]
     public class PlayerControls : PausableMonoBehaviour
     {
-        [field: Header("Inputs")]
-        [field: SerializeField] public InputHandler playerInputs { get; private set; }
+        [Header("Inputs")]
+        [SerializeField] private InputHandler playerInputs;
+        public InputHandler PlayerInputs => playerInputs;
 
         [Header("Player Data")]
         [SerializeField] private float playerSpeed;

@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
     [RequireComponent(typeof(PlayerControls))]
-    public class PlayerInteraction : PausableMonoBehaviour
+    public class PlayerInteraction : MonoBehaviour
     {
         [Header("Interaction")]
-        [SerializeField, Range(1, 10)] private float distance = 5f;
+        [SerializeField, Range(1, 10)] private float distance = 3.25f;
         [SerializeField] private LayerMask interactLayer;
 
         private InputHandler interactionInput;
@@ -15,18 +16,13 @@ namespace Unknown.Samuele
 
         private Ray ray;
         private Interactable interactable;
-        private bool isInteracting = false;
 
-        public static event Action<string> SendPromptEvent;
-        private bool eventAlreadySent = false;
+        public static UnityAction<string> SendPromptEvent;
 
-        protected override void Awake()
+        void Awake()
         {
-            base.Awake();
-            
+            interactionInput = GetComponent<PlayerControls>().PlayerInputs;
             cameraTransform = Camera.main.transform;
-            
-            interactionInput = GetComponent<PlayerControls>().playerInputs;    
         }
 
         void OnEnable() =>
@@ -47,34 +43,29 @@ namespace Unknown.Samuele
             {
                 if (hitInfo.collider.TryGetComponent<Interactable>(out var hit))
                 {
+                    if (interactable != null)
+                        interactable.DisableOutline();
+                    
                     interactable = hit;
-                    isInteracting = true;
+                    interactable.EnableOutline();
 
-                    if (!eventAlreadySent)
-                    {
-                        eventAlreadySent = true;
-                        SendPromptEvent?.Invoke(hit.Prompt != string.Empty ? hit.Prompt : "Can Interact");
-                    }
+                    SendPromptEvent?.Invoke(hit.Prompt);
                 }
-                else
-                    Debug.LogError("What?");
             }
             else
             {
+                if (interactable != null)
+                    interactable.DisableOutline();
+                
                 interactable = null;
-                isInteracting = false;
 
-                if (eventAlreadySent)
-                {
-                    eventAlreadySent = false;
-                    SendPromptEvent?.Invoke(string.Empty);
-                }
+                SendPromptEvent?.Invoke(string.Empty);
             }
         }
 
         private void InteractEvent()
         {
-            if (!isInteracting)
+            if (interactable == null)
                 return;
 
             // Interact with object

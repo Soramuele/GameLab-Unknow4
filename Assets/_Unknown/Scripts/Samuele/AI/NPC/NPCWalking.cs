@@ -30,24 +30,18 @@ namespace Unknown.Samuele
             animator.SetBool("Walk", true);
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnTriggerEnter(Collider other)
         {
-            if (!isAtDoor)
+            if (other.CompareTag("RevolvingDoor"))
             {
-                if (Vector3.Distance(transform.position, doorTransform) < checkDistance)
+                if (isAtDoor)
+                    agent.SetDestination(outsideTransform);
+                
+                if (!isAtDoor)
                 {
                     isAtDoor = true;
-                    agent.SetDestination(outsideTransform);
-                }
-            }
-            else
-            {
-                if (Vector3.Distance(transform.position, outsideTransform) < checkDistance)
-                {
-                    agent.ResetPath();
-                    gameObject.SetActive(false);
-                    NPCSpawner.NPCIsUnused(gameObject);
+                    // Get closest opening
+                    // Set destination to that opening
                 }
             }
         }

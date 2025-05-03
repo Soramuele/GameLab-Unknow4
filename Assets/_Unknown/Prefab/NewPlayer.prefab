@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8012876380308685872}
   m_Layer: 0
   m_Name: NewPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausable: 1
-  <playerInputs>k__BackingField: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
+  playerInputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
   playerSpeed: 0
   sprintMultiplier: 0
   jumpForce: 0
@@ -179,10 +179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausable: 1
-  distance: 5
+  distance: 3.25
   interactLayer:
     serializedVersion: 2
     m_Bits: 64
+  interactionInput: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
 --- !u!1 &4330742704960732773
 GameObject:
   m_ObjectHideFlags: 0

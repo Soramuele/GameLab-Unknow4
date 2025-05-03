@@ -9,9 +9,7 @@ namespace Unknown.Samuele
         {
             serializedObject.Update();
 
-            SerializedProperty needsKeyProp = serializedObject.FindProperty("needsKey");
             SerializedProperty keyProp = serializedObject.FindProperty("key");
-            SerializedProperty alwaysNeedsKeyProp = serializedObject.FindProperty("alwaysNeedsKey");
 
             SerializedProperty iterator = serializedObject.GetIterator();
             bool enterChildren = true;
@@ -29,7 +27,7 @@ namespace Unknown.Samuele
                 }
 
                 // Skip these — we'll draw them manually after needsKey
-                if (iterator.name == "key" || iterator.name == "alwaysNeedsKey")
+                if (iterator.name == "key")
                     continue;
 
                 EditorGUILayout.PropertyField(iterator, true);
@@ -38,7 +36,6 @@ namespace Unknown.Samuele
                 if (iterator.name == "needsKey" && iterator.boolValue)
                 {
                     EditorGUILayout.PropertyField(keyProp, true);
-                    EditorGUILayout.PropertyField(alwaysNeedsKeyProp, true);
                 }
             }
 

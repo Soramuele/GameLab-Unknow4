@@ -71,7 +71,8 @@ namespace Unknown.Samuele
             _inputs.UI.Close.started -= UpdateControlScheme;
         }
 
-        private void SetGameplay()
+#region Utilities
+        public void SetGameplay()
         {
             lastInputMap = LastInputMap.Player;
 
@@ -80,7 +81,7 @@ namespace Unknown.Samuele
             _inputs.UI.Disable();
         }
 
-        private void SetMinigame()
+        public void SetMinigame()
         {
             lastInputMap = LastInputMap.MiniGame;
 
@@ -89,7 +90,7 @@ namespace Unknown.Samuele
             _inputs.UI.Disable();
         }
 
-        private void SetUI()
+        public void SetUI()
         {
             _inputs.UI.Enable();
             _inputs.Player.Disable();
@@ -111,6 +112,7 @@ namespace Unknown.Samuele
                 Debug.Log($"Control scheme switched to {newScheme}");
             }
         }
+#endregion Utilities
 
 #region Player
         public void OnMove(InputAction.CallbackContext context)
@@ -136,6 +138,7 @@ namespace Unknown.Samuele
                 SprintCancelledEvent?.Invoke();
         }
 
+        // This is shared with MiniGame
         public void OnPause(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
