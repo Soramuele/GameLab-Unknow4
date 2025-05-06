@@ -3,26 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Route
-  - Break
-  - Start
-  - Volume
-<<<<<<< HEAD
-  - RevolvingDoor
-=======
-  - NextLevel
->>>>>>> origin/Gate3/Ruslan
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Interactable
-  - Lights
-  - NPC
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -5,6 +5,8 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unknown.Samuele;
+using Unknown.Jurrien;
 
 public class StudentScript : MonoBehaviour
 {
