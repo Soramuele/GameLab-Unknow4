@@ -6,14 +6,10 @@ namespace Unknown.Samuele
     {
         [SerializeField] private bool pausable;
 
-        private bool initialized = false;
-
         protected virtual void Awake()
         {
-            GameManager.Instance.GetGameplay().onPause += OnPause;
-            GameManager.Instance.GetGameplay().onResume += OnResume;
-
-            initialized = true;
+            // GameManager.Instance.GetGameplay().onPause += OnPause;
+            // GameManager.Instance.GetGameplay().onResume += OnResume;
         }
 
         public void OnPause()

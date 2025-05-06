@@ -46,31 +46,8 @@ namespace Unknown.Samuele
                 _inputs.Minigame.SetCallbacks(this);
                 _inputs.UI.SetCallbacks(this);
 
-                // Listener for changing control scheme
-                _inputs.Player.Move.started += UpdateControlScheme;
-                _inputs.Player.Interact.started += UpdateControlScheme;
-                _inputs.Player.Sprint.started += UpdateControlScheme;
-                _inputs.Player.Pause.started += UpdateControlScheme;
-                _inputs.Minigame.Pause.started += UpdateControlScheme;
-                _inputs.Minigame.Movement.started += UpdateControlScheme;
-                _inputs.Minigame.Back.started += UpdateControlScheme;
-                _inputs.UI.Close.started += UpdateControlScheme;
-
                 SetGameplay();
             }
-        }
-
-        void OnDisable()
-        {
-            // Listener for changing control scheme
-            _inputs.Player.Move.started -= UpdateControlScheme;
-            _inputs.Player.Interact.started -= UpdateControlScheme;
-            _inputs.Player.Sprint.started -= UpdateControlScheme;
-            _inputs.Player.Pause.started -= UpdateControlScheme;
-            _inputs.Minigame.Pause.started -= UpdateControlScheme;
-            _inputs.Minigame.Movement.started -= UpdateControlScheme;
-            _inputs.Minigame.Back.started -= UpdateControlScheme;
-            _inputs.UI.Close.started -= UpdateControlScheme;
         }
 
 #region Utilities

@@ -10,7 +10,7 @@ namespace Unknown.Samuele
 
         private Animator animator;
         private NavMeshAgent agent;
-        private Coroutine followEntrance;
+        private Coroutine followEntrance = null;
 
         // Start is called before the first frame update
         void Start()
@@ -54,7 +54,7 @@ namespace Unknown.Samuele
         {
             agent.SetDestination(destination);
             
-            yield return new WaitForSeconds(0.2f);
+            yield return null;
         }
     }
 }

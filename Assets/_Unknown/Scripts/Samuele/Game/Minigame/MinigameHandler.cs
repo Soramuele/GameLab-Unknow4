@@ -15,7 +15,7 @@ namespace Unknown.Samuele
         [Header("Screens")]
         [SerializeField] private GameObject mainScreen;
         [SerializeField] private GameObject endScreen;
-        [SerializeField] private MGLevel[] minigameLevels;
+        [SerializeField] private MGLevel[] minigameLevels = new MGLevel[3];
 
         private GameObject currentLevel;
         private int levelReached = 0;
@@ -30,14 +30,14 @@ namespace Unknown.Samuele
 
         void OnEnable()
         {
-            CameraManager.Instance.BlendingCompleteEvent += () => CameraManager.Instance.SwitchCamera(cam);
+            // CameraManager.Instance.BlendingCompleteEvent += () => CameraManager.Instance.SwitchCamera(cam);
             inputs.BackEvent += CloseMinigame;
             player.FinishReachedEvent += NextLevel;
         }
         
         void OnDisable()
         {
-            CameraManager.Instance.BlendingCompleteEvent -= () => CameraManager.Instance.SwitchCamera(cam);
+            // CameraManager.Instance.BlendingCompleteEvent -= () => CameraManager.Instance.SwitchCamera(cam);
             inputs.BackEvent -= CloseMinigame;
             player.FinishReachedEvent -= NextLevel;
         }
@@ -51,7 +51,7 @@ namespace Unknown.Samuele
 
         private void NextLevel()
         {
-            if (levelReached < minigameLevels.Length)
+            if (levelReached < minigameLevels.Length - 1)
             {
                 currentLevel.SetActive(false);
                 levelReached++;
@@ -60,9 +60,16 @@ namespace Unknown.Samuele
             }
             else
             {
+                // Stops player
+                player.CanMove = false;
+                player.gameObject.SetActive(false);
+
+                // Clear levels
                 currentLevel.SetActive(false);
                 levelReached = 0;
                 currentLevel = null;
+
+                // Show end screen
                 endScreen.SetActive(true);
             }
         }
@@ -70,17 +77,18 @@ namespace Unknown.Samuele
         private void SetupLevel()
         {
             currentLevel = minigameLevels[levelReached].gameObject;
+            currentLevel.SetActive(true);
             minigameLevels[levelReached].GetComponent<MGLevel>().StartGame();
         }
 
         private void CloseMinigame()
         {
-            // Switch back to gameplay inputs
-            inputs.SetGameplay();
+            // // Switch back to gameplay inputs
+            // inputs.SetGameplay();
 
-            // Go back to gameplay camera
-            CameraManager.Instance.RemoveCamera(cam);
-            CameraManager.Instance.SwitchToMainCamera();
+            // // Go back to gameplay camera
+            // CameraManager.Instance.RemoveCamera(cam);
+            // CameraManager.Instance.SwitchToMainCamera();
         }
         // TODO: Show appropriate level
         // TODO: Play the selected level

@@ -20090,6 +20090,7 @@ MonoBehaviour:
   npcPrefab: {fileID: 5456613491046988947, guid: bdb68eaf683185c4ea006bd02c4442ec, type: 3}
   spawnRate: 7.52
   npcMax: 5
+  destination: {fileID: 0}
 --- !u!4 &753915193
 Transform:
   m_ObjectHideFlags: 0

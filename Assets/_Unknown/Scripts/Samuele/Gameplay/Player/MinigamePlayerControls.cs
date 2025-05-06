@@ -25,6 +25,7 @@ namespace Unknown.Samuele
         {
             rb = GetComponent<Rigidbody2D>();
             gameObject.SetActive(false);
+            inputs.SetMinigame();
         }
 
         void OnEnable() =>
@@ -49,16 +50,21 @@ namespace Unknown.Samuele
         private void GetMovement(Vector2 move) =>
             playerMovement = move;
 
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!canMove) return;
+
             // Use objects name out of semplicity
-            switch (collision.collider.name)
+            switch (collision.name)
             {
                 case "EndBlock":
                     FinishReachedEvent?.Invoke();
                 break;
-                case "Playground":
+                case "Wall":
+                    Debug.Log("Colliding with Wall");
                     DieEvent?.Invoke();
+                    canMove = false;
+                    rb.velocity = Vector2.zero;
                 break;
             }
         }

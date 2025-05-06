@@ -9,6 +9,7 @@ namespace Unknown.Samuele
         [SerializeField] private GameObject npcPrefab;
         [SerializeField, Range(0.5f, 10f)] private float spawnRate = 3;
         [SerializeField] private int npcMax = 5;
+        [SerializeField] private Transform destination;
         
         private static Dictionary<GameObject, bool> npcs = new Dictionary<GameObject, bool>();
 
@@ -31,11 +32,9 @@ namespace Unknown.Samuele
         private void SpawnNPC()
         {
             var clone = Instantiate(npcPrefab, GetRandomPosition(), Quaternion.identity, transform);
+            clone.GetComponent<StudentMovement>().SetDestination(destination.position);
 
             SubscribeToUsedNPC(clone);
-
-            // var spawnPosition = GetRandomPosition();
-            // clone.transform.position = spawnPosition;
         }
 
         private static Vector3 GetRandomPosition()
@@ -59,8 +58,8 @@ namespace Unknown.Samuele
                 npcs[npc] = true;
                 npc.SetActive(true);
                 npc.transform.position = GetRandomPosition();
-                npc.GetComponent<NPCWalking>().isAtDoor = false;
-                npc.GetComponent<NPCWalking>().Start();
+                // npc.GetComponent<NPCWalking>().isAtDoor = false;
+                // npc.GetComponent<NPCWalking>().Start();
             }
             else
             {

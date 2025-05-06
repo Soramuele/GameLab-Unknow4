@@ -26,9 +26,6 @@ namespace Unknown.Samuele
 
         private void OnPlayerDie()
         {
-            // Disable player inputs
-            player.CanMove = false;
-
             // Spawn effects for the player death
             Instantiate(dieEffect, player.transform.position, Quaternion.identity);
             // PlayAudio of player death
@@ -53,7 +50,7 @@ namespace Unknown.Samuele
             // PlayAudio of player spawning
 
             // Wait a bit for spawn particles
-            yield return _particles.main.duration / 2;
+            yield return _particles.main.duration * 0.75f;
 
             // Enable player + player inputs
             player.gameObject.SetActive(true);

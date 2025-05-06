@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 768065368}
   - component: {fileID: 768065367}
   - component: {fileID: 768065366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WindowWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3113,7 +3113,7 @@ GameObject:
   - component: {fileID: 1280898878}
   - component: {fileID: 1280898877}
   - component: {fileID: 1280898876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WindowWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3970,7 +3970,7 @@ GameObject:
   - component: {fileID: 1711141035}
   - component: {fileID: 1711141034}
   - component: {fileID: 1711141033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WindowWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 3596273973552787509}
   - component: {fileID: 3596273973552787508}
   - component: {fileID: 3596273973552787507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WindowWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5545,13 +5545,13 @@ GameObject:
   - component: {fileID: 4577830071407306687}
   - component: {fileID: 4577830071407306689}
   - component: {fileID: 4577830071407306688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WorldShittiestLaptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2666088641101071401
 Transform:
   m_ObjectHideFlags: 0

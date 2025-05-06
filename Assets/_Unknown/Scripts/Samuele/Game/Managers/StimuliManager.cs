@@ -10,17 +10,16 @@ namespace Unknown.Samuele
         [Header("Stimuli Data")]
         [SerializeField] private float maxStimuli = 250f;
 
-        [Header("Heal")]
-        [SerializeField] private float timeBeforeHeal = 2.75f;
-        [SerializeField] private float amountOfHeal = 5.5f;
+        // [Header("Heal")]
+        // [SerializeField] private float timeBeforeHeal = 2.75f;
+        // [SerializeField] private float amountOfHeal = 5.5f;
 
         private float currentStimuli;
-        private float timePassed;
 
         private SerializedDictionary<GameObject, float> damagePercentage = new SerializedDictionary<GameObject, float>();
 
         public float Ratio { 
-            get => 100 - ((currentStimuli / maxStimuli) * 100);
+            get => 1 - (currentStimuli / maxStimuli);
         }
 
         void Awake()
@@ -81,7 +80,7 @@ namespace Unknown.Samuele
 
             foreach(var item in damagePercentage.Values)
             {
-                var dmg = (item / 100) * maxStimuli;
+                var dmg = item / 100 * maxStimuli;
                 
                 damage += dmg;
             }
