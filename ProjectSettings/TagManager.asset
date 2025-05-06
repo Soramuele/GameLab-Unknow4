@@ -8,7 +8,11 @@ TagManager:
   - Break
   - Start
   - Volume
+<<<<<<< HEAD
   - RevolvingDoor
+=======
+  - NextLevel
+>>>>>>> origin/Gate3/Ruslan
   layers:
   - Default
   - TransparentFX
