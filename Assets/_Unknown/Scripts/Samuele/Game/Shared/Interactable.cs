@@ -19,13 +19,6 @@ namespace Unknown.Samuele
             Prompt = prompt;
 
             outline = GetComponent<Outline>();
-            if (outline == null)
-            {
-                outline = gameObject.AddComponent<Outline>();
-                outline.OutlineMode = Outline.Mode.OutlineAll;
-                outline.OutlineColor = Color.white;
-                outline.OutlineWidth = 5f;
-            }
             outline.enabled = false;
         }
 

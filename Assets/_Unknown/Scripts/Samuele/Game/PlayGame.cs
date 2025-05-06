@@ -15,5 +15,10 @@ namespace Unknown.Samuele
 
             Debug.Log("I love Onions!");
         }
+
+        public void QuitGame()
+        {
+            UnityEditor.EditorApplication.ExitPlaymode();
+        }
     }
 }

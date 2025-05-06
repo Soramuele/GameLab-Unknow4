@@ -16,7 +16,11 @@ namespace Unknown.Samuele
         }
 
         // Update is called once per frame
-        void Update() =>
+        void Update()
+        {
             image.fillAmount = stimuli.Ratio / 100;
+
+            image.color = Color.Lerp(Color.white, Color.red, image.fillAmount);
+        }
     }
 }

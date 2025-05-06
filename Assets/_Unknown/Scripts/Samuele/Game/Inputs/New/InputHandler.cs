@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Unknown.Samuele
@@ -9,30 +9,32 @@ namespace Unknown.Samuele
     {
         private GameControls _inputs;
         private LastInputMap lastInputMap = LastInputMap.None;
+        private ActiveDevice lastControlScheme;
+        private ActiveDevice controlScheme = ActiveDevice.Keyboard;
 
 #region Events
         // Player
-        public event Action<Vector2> MoveEvent;
-        public event Action JumpEvent;
-        public event Action JumpCancelledEvent;
-        public event Action SprintEvent;
-        public event Action SprintCancelledEvent;
-        public event Action InteractEvent;
+        public UnityAction<Vector2> MoveEvent;
+        public UnityAction<Vector2> LookEvent;
+        public UnityAction JumpEvent;
+        public UnityAction JumpCancelledEvent;
+        public UnityAction SprintEvent;
+        public UnityAction SprintCancelledEvent;
+        public UnityAction InteractEvent;
 
         // Minigame
-        public event Action<Vector2> MovementEvent;
-        public event Action BackEvent;
+        public UnityAction<Vector2> MovementEvent;
+        public UnityAction BackEvent;
 
         // Player + Minigame
-        public event Action PauseEvent;
+        public UnityAction PauseEvent;
         
         // UI
-        public event Action CloseUIEvent;
-#endregion Events
+        public UnityAction CloseUIEvent;
 
-        public Vector2 GetLook { get; private set; }
-        private string lastControlScheme;
-        public string currentControlScheme { get; private set; } = "Keyboard";
+        // Change Input Device
+        public UnityAction<ActiveDevice> ChangeDeviceEvent;
+#endregion Events
 
         void OnEnable()
         {
@@ -103,31 +105,39 @@ namespace Unknown.Samuele
             if (device == null)
                 return;
             
-            string newScheme = device is Gamepad ? "Controller" : "Keyboard";
+            var newScheme = device is Gamepad ? ActiveDevice.Controller : ActiveDevice.Keyboard;
 
             if (newScheme != lastControlScheme)
             {
-                lastControlScheme = newScheme;
-                currentControlScheme = newScheme;
+                lastControlScheme = controlScheme;
+                controlScheme = newScheme;
+                
                 Debug.Log($"Control scheme switched to {newScheme}");
+                ChangeDeviceEvent?.Invoke(controlScheme);
             }
         }
 #endregion Utilities
 
-#region Player
+#region Player Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
+
+            UpdateControlScheme(context);
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            GetLook = context.ReadValue<Vector2>();
+            LookEvent?.Invoke(context.ReadValue<Vector2>());
+
+            UpdateControlScheme(context);
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             InteractEvent?.Invoke();
+
+            UpdateControlScheme(context);
         }
 
         public void OnSprint(InputAction.CallbackContext context)
@@ -136,6 +146,8 @@ namespace Unknown.Samuele
                 SprintEvent?.Invoke();
             if (context.phase == InputActionPhase.Canceled)
                 SprintCancelledEvent?.Invoke();
+
+            UpdateControlScheme(context);
         }
 
         // This is shared with MiniGame
@@ -147,22 +159,28 @@ namespace Unknown.Samuele
 
                 SetUI();
             }
-        }
-#endregion Player
 
-#region MiniGame
+            UpdateControlScheme(context);
+        }
+#endregion Player Input
+
+#region MiniGame Input
         public void OnMovement(InputAction.CallbackContext context)
         {
             MovementEvent?.Invoke(context.ReadValue<Vector2>());
+
+            UpdateControlScheme(context);
         }
 
         public void OnBack(InputAction.CallbackContext context)
         {
             BackEvent?.Invoke();
-        }
-#endregion MiniGame
 
-#region UI
+            UpdateControlScheme(context);
+        }
+#endregion MiniGame Input
+
+#region UI Input
         public void OnClose(InputAction.CallbackContext context)
         {
             // Check last inputMap and set it back
@@ -180,14 +198,24 @@ namespace Unknown.Samuele
                     Debug.Break();
                 break;
             }
+
+            UpdateControlScheme(context);
         }
-#endregion UI
+#endregion UI Input
     }
 
+#region Enums
     public enum LastInputMap
     {
         None,
         Player,
         MiniGame
     }
+
+    public enum ActiveDevice
+    {
+        Keyboard,
+        Controller
+    }
+#endregion Enums
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 namespace Unknown.Samuele
@@ -7,15 +8,23 @@ namespace Unknown.Samuele
         [Header("Inputs")]
         [SerializeField] private InputHandler inputs;
 
+        [Header("Computer Camera")]
+        [SerializeField] private CinemachineVirtualCamera cam;
+
         [Header("Minigame")]
-        [SerializeField] private Canvas minigameCanvas;
+        [SerializeField] private SceneReference minigameCanvas;
+
+        private CameraManager cameraManager;
+
+        void Start()
+        {
+            cameraManager = CameraManager.Instance;
+            cameraManager.AddCamera(cam);
+        }
 
         protected override void Interaction()
         {
-            // Open Minigame
-            var minigame = minigameCanvas.gameObject;
-            minigame.SetActive(true);
-            minigame.GetComponent<MinigameHandler>().SetupMinigame();
+            cameraManager.SwitchCamera(cam, true);
 
             // Switch input map
             inputs.SetMinigame();

@@ -8,16 +8,22 @@ namespace Unknown.Samuele
         [Header("Inputs")]
         [SerializeField] private InputHandler inputHandler;
 
+        private Vector2 playerLook;
+
         private CinemachineVirtualCamera vcam;
 
         void Start() =>
             vcam = GetComponent<CinemachineVirtualCamera>();
 
-        void OnEnable() =>
+        void OnEnable()
+        {
+            inputHandler.LookEvent += ctx => playerLook = ctx;
             CinemachineCore.GetInputAxis = CustomInputAxis;
+        }
 
         void OnDisable()
         {
+            inputHandler.LookEvent -= ctx => playerLook = ctx;
             CinemachineCore.GetInputAxis = null;
         }
 
@@ -25,8 +31,8 @@ namespace Unknown.Samuele
         {
             return axisName switch
             {
-                "Mouse X" => inputHandler.GetLook.x,
-                "Mouse Y" => inputHandler.GetLook.y,
+                "Mouse X" => playerLook.x,
+                "Mouse Y" => playerLook.y,
                 _ => 0f
             };
         }

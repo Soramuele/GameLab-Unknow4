@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class MinigamePlayerControls : MonoBehaviour
+    public class MinigamePlayerControls : PausableMonoBehaviour
     {
         [Header("Inputs")]
         [SerializeField] private InputHandler inputs;
@@ -12,12 +13,18 @@ namespace Unknown.Samuele
         [SerializeField] private float moveSpeed;
 
         private Vector2 playerMovement;
+        private bool canMove;
+        public bool CanMove { get => canMove; set => canMove = value; }
         private Rigidbody2D rb;
+
+        public UnityAction DieEvent;
+        public UnityAction FinishReachedEvent;
 
         // Start is called before the first frame update
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            gameObject.SetActive(false);
         }
 
         void OnEnable() =>
@@ -26,9 +33,12 @@ namespace Unknown.Samuele
         void OnDisable() =>
             inputs.MovementEvent -= GetMovement;
 
-        // Update is called once per fixed frame
+        // FixedUpdate is called once per fixed frame
         void FixedUpdate()
         {
+            if (!canMove)
+                return;
+            
             // Handle movement
             var _moveX = playerMovement.x * moveSpeed;
             var _moveY = playerMovement.y * moveSpeed;
@@ -38,5 +48,19 @@ namespace Unknown.Samuele
 
         private void GetMovement(Vector2 move) =>
             playerMovement = move;
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            // Use objects name out of semplicity
+            switch (collision.collider.name)
+            {
+                case "EndBlock":
+                    FinishReachedEvent?.Invoke();
+                break;
+                case "Playground":
+                    DieEvent?.Invoke();
+                break;
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8543367441592423663}
   - component: {fileID: 667822571325865189}
   m_Layer: 0
-  m_Name: Virtual Camera
+  m_Name: Player Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,12 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6d96ed7ade9524e87e2175ce0b8560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausable: 1
   distance: 3.25
   interactLayer:
     serializedVersion: 2
     m_Bits: 64
-  interactionInput: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
 --- !u!1 &4330742704960732773
 GameObject:
   m_ObjectHideFlags: 0

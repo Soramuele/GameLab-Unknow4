@@ -9,32 +9,56 @@ namespace Unknown.Samuele
         [SerializeField] private GameObject parent;
         [SerializeField] private TextMeshProUGUI prompt;
 
-        void Start() =>
+        private GameManager gameManager;
+
+        private ActiveDevice controls = ActiveDevice.Keyboard;
+        private string message;
+
+        void Start()
+        {
             parent.SetActive(false);
 
-        void OnEnable() =>
-            PlayerInteraction.SendPromptEvent += UpdateText;
+            gameManager = GameManager.Instance;
+        }
 
-        void OnDisable() =>
+        void OnEnable()
+        {
+            gameManager.ChangeDeviceEvent += UpdateInputIcon;
+            PlayerInteraction.SendPromptEvent += UpdateText;
+        }
+
+        void OnDisable()
+        {
+            gameManager.ChangeDeviceEvent -= UpdateInputIcon;
             PlayerInteraction.SendPromptEvent -= UpdateText;
+        }
+
+        private void UpdateInputIcon(ActiveDevice ctx)
+        {
+            controls = ctx;
+            UpdateText(message);
+        }
 
         private void UpdateText(string message)
         {
+            this.message = message;
             // Enable or disable the interaction prompt
             if (message == string.Empty)
+            {
                 parent.SetActive(false);
+                return;
+            }
             else
                 parent.SetActive(true);
             
             // Change controls key image based on current device
             var key = "";
-            var controls = GameManager.Instance.GetGameplay().currentControlScheme;
             switch (controls)
             {
-                case GameplayManager.ActiveDevice.Keyboard:
+                case ActiveDevice.Keyboard:
                     key = "e";
                 break;
-                case GameplayManager.ActiveDevice.Controller:
+                case ActiveDevice.Controller:
                     key = "xx";
                 break;
             }

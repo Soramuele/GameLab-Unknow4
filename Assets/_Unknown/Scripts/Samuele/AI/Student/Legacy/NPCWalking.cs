@@ -26,8 +26,7 @@ namespace Unknown.Samuele
 
         public void Start()
         {
-            agent.SetDestination(doorTransform);
-            animator.SetBool("Walk", true);
+            GetComponent<StudentMovement>().SetDestination(doorTransform);
         }
 
         void OnTriggerEnter(Collider other)
@@ -35,7 +34,7 @@ namespace Unknown.Samuele
             if (other.CompareTag("RevolvingDoor"))
             {
                 if (isAtDoor)
-                    agent.SetDestination(outsideTransform);
+                    GetComponent<StudentMovement>().SetDestination(outsideTransform);
                 
                 if (!isAtDoor)
                 {

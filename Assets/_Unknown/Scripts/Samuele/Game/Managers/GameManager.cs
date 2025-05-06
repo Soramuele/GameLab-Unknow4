@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
@@ -15,10 +16,15 @@ namespace Unknown.Samuele
         public GameplayManager GetGameplay() =>
             gameplayManager;
 
+        public UnityAction<ActiveDevice> ChangeDeviceEvent;
+
         void Awake()
         {
             if (Instance == null)
                 Instance = this;
+
+            // Randomize Random seed
+            Random.InitState(System.DateTime.Today.Millisecond);
         }
 
         void Start()
@@ -28,14 +34,14 @@ namespace Unknown.Samuele
             Cursor.visible = false;
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnEnable()
         {
-            // Check for active device
-            if (inputs.currentControlScheme == "Controller")
-                gameplayManager.ChangeActiveDevice(GameplayManager.ActiveDevice.Controller);
-            else
-                gameplayManager.ChangeActiveDevice(GameplayManager.ActiveDevice.Keyboard);
+            inputs.ChangeDeviceEvent += ctx => ChangeDeviceEvent?.Invoke(ctx);
+        }
+
+        void OnDisable()
+        {
+            inputs.ChangeDeviceEvent -= ctx => ChangeDeviceEvent?.Invoke(ctx);
         }
     }
 }
