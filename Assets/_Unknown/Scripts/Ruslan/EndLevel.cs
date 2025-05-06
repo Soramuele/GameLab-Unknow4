@@ -8,10 +8,16 @@ public class EndLevel : MonoBehaviour
     public Animator dooranimation;
     public GameObject door;
     public MiniGameScript gameScript;
+    public GameObject somethingPleaseWork;
 
     void Start()
     {
-        
+        if (!somethingPleaseWork.TryGetComponent<MiniGameScript>( out gameScript ) )
+        {
+            Debug.LogError("Can't find it!");
+
+            Debug.Break();
+        }
     }
 
     // Update is called once per frame

@@ -17,12 +17,11 @@ namespace Unknown.Samuele
         void Start()
         {
             parent.SetActive(false);
-
-            gameManager = GameManager.Instance;
         }
 
         void OnEnable()
         {
+            gameManager = GameManager.Instance;
             gameManager.ChangeDeviceEvent += UpdateInputIcon;
             PlayerInteraction.SendPromptEvent += UpdateText;
         }

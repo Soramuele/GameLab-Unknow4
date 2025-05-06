@@ -20,7 +20,7 @@ namespace Unknown.Ruslan
         public GameObject level1;
         public GameObject level2;
         public GameObject level3;
-        public GameObject level4;
+        // public GameObject level4;
         
         private bool allowCursorMovement = false;
         //private Vector2 previousMousePosition;
@@ -114,21 +114,6 @@ namespace Unknown.Ruslan
 
 
         }
-
-
-
-        public void Level4()
-        {
-
-            level3.SetActive(false);
-            level4.SetActive(true);
-
-
-
-
-        }
-
-
 
         public void FinishThegame()
         {

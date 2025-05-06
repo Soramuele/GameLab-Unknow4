@@ -14,20 +14,20 @@ namespace Unknown.Samuele
         [Header("Minigame")]
         [SerializeField] private SceneReference minigameCanvas;
 
-        private CameraManager cameraManager;
+        // private CameraManager cameraManager;
 
         void Start()
         {
-            cameraManager = CameraManager.Instance;
-            cameraManager.AddCamera(cam);
+            // cameraManager = CameraManager.Instance;
+            // cameraManager.AddCamera(cam);
         }
 
         protected override void Interaction()
         {
-            cameraManager.SwitchCamera(cam, true);
+            // cameraManager.SwitchCamera(cam, true);
 
             // Switch input map
-            inputs.SetMinigame();
+            // inputs.SetMinigame();
         }
     }
 }
