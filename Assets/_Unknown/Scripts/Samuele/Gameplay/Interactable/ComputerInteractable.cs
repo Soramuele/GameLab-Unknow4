@@ -1,5 +1,7 @@
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Unknown.Samuele
 {
@@ -12,22 +14,34 @@ namespace Unknown.Samuele
         [SerializeField] private CinemachineVirtualCamera cam;
 
         [Header("Minigame")]
-        [SerializeField] private SceneReference minigameCanvas;
+        [SerializeField] private SceneReference minigameScene;
 
-        // private CameraManager cameraManager;
+        private CameraManager cameraManager;
 
         void Start()
         {
-            // cameraManager = CameraManager.Instance;
-            // cameraManager.AddCamera(cam);
+            cameraManager = CameraManager.Instance;
+            cameraManager.AddCamera(cam);
         }
 
         protected override void Interaction()
         {
-            // cameraManager.SwitchCamera(cam, true);
+            cameraManager.SwitchCamera(cam);
 
             // Switch input map
-            // inputs.SetMinigame();
+            inputs.SetMinigame();
+
+            StartCoroutine(WaitForBlend());
+        }
+
+        private IEnumerator WaitForBlend()
+        {
+            yield return new WaitForSeconds(.1f);
+
+            while (cameraManager.IsBlending)
+                yield return null;
+            
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
     }
 }

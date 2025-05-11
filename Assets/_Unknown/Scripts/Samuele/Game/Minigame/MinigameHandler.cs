@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Unknown.Samuele
 {
@@ -11,6 +12,7 @@ namespace Unknown.Samuele
         [Header("PLayer")]
         [SerializeField] private MinigamePlayerControls player;
         [SerializeField] private CinemachineVirtualCamera cam;
+        [SerializeField] private Item reward;
 
         [Header("Screens")]
         [SerializeField] private GameObject mainScreen;
@@ -26,6 +28,12 @@ namespace Unknown.Samuele
             endScreen.SetActive(false);
             foreach(var level in minigameLevels)
                 level.gameObject.SetActive(false);
+
+            CameraManager.Instance.SwitchCamera(cam);
+            GameManager.Instance.GetGameplay().IsMinigameOn = true;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         void OnEnable()
@@ -45,13 +53,15 @@ namespace Unknown.Samuele
         public void StartMinigame()
         {
             mainScreen.SetActive(false);
+
+            Cursor.visible = false;
             
             SetupLevel();
         }
 
         private void NextLevel()
         {
-            if (levelReached < minigameLevels.Length)
+            if (levelReached < minigameLevels.Length - 1)
             {
                 currentLevel.SetActive(false);
                 levelReached++;
@@ -64,13 +74,15 @@ namespace Unknown.Samuele
                 levelReached = 0;
                 currentLevel = null;
                 endScreen.SetActive(true);
+                PlayerInventory.Instance.AddItem(reward);
             }
         }
 
         private void SetupLevel()
         {
             currentLevel = minigameLevels[levelReached].gameObject;
-            minigameLevels[levelReached].GetComponent<MGLevel>().StartGame();
+            currentLevel.SetActive(true);
+            currentLevel.GetComponent<MGLevel>().StartGame();
         }
 
         private void CloseMinigame()
@@ -81,6 +93,11 @@ namespace Unknown.Samuele
             // Go back to gameplay camera
             CameraManager.Instance.RemoveCamera(cam);
             CameraManager.Instance.SwitchToMainCamera();
+
+            GameManager.Instance.GetGameplay().IsMinigameOn = false;
+
+            // Close this scene
+            SceneManager.UnloadSceneAsync(3);
         }
         // TODO: Show appropriate level
         // TODO: Play the selected level

@@ -10,7 +10,7 @@ namespace Unknown.Samuele
         [SerializeField] private InputHandler inputs;
 
         [Header("Player Data")]
-        [SerializeField] private float moveSpeed;
+        [SerializeField] private float moveSpeed = 5f;
 
         private Vector2 playerMovement;
         private bool canMove;
@@ -40,24 +40,21 @@ namespace Unknown.Samuele
                 return;
             
             // Handle movement
-            var _moveX = playerMovement.x * moveSpeed;
-            var _moveY = playerMovement.y * moveSpeed;
-
-            rb.velocity = new Vector2(_moveX, _moveY);
+            rb.velocity = moveSpeed * Time.fixedDeltaTime * playerMovement;
         }
 
         private void GetMovement(Vector2 move) =>
             playerMovement = move;
 
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnTriggerEnter2D(Collider2D collider)
         {
             // Use objects name out of semplicity
-            switch (collision.collider.name)
+            switch (collider.name)
             {
                 case "EndBlock":
                     FinishReachedEvent?.Invoke();
                 break;
-                case "Playground":
+                case "Wall":
                     DieEvent?.Invoke();
                 break;
             }

@@ -6,13 +6,13 @@ namespace Unknown.Samuele
     {
         [Header("Interaction Prompt")]
         [Tooltip("This will be the text that will be shown on the HUD when you will be able to interact with it. \n Example: Press to <prompt>")]
-        [SerializeField] private string prompt;
+        [SerializeField] protected string prompt;
         [Tooltip("Alternative text that will be shown on the HUD when you will be able to interact with it. \n Example: Press to <promptAlt>")]
-        [SerializeField] private string promptAlt;
+        [SerializeField] protected string promptAlt;
 
         private Outline outline;
 
-        public string Prompt { get; private set; }
+        public string Prompt { get; protected set; }
 
         void Awake()
         {

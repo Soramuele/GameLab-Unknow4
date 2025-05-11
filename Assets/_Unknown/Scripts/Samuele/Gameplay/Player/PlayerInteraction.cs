@@ -43,9 +43,9 @@ namespace Unknown.Samuele
             {
                 if (hitInfo.collider.TryGetComponent<Interactable>(out var hit))
                 {
-                    if (interactable != null)
-                        interactable.DisableOutline();
-                    
+                    if (interactable != hit)
+                        interactable = null;
+
                     interactable = hit;
                     interactable.EnableOutline();
 

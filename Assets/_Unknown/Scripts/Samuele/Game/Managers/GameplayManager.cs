@@ -24,5 +24,9 @@ namespace Unknown.Samuele
             onResume?.Invoke();
         }
 #endregion Pause
+
+#region Minigame
+        public bool IsMinigameOn = false;
+#endregion Minigame
     }
 }

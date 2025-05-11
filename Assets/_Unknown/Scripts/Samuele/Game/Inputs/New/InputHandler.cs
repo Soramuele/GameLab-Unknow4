@@ -8,7 +8,7 @@ namespace Unknown.Samuele
     public class InputHandler : ScriptableObject, GameControls.IPlayerActions, GameControls.IMinigameActions, GameControls.IUIActions
     {
         private GameControls _inputs;
-        private LastInputMap lastInputMap = LastInputMap.None;
+        private LastInputMap lastInputMap = LastInputMap.Player;
         private ActiveDevice lastControlScheme;
         private ActiveDevice controlScheme = ActiveDevice.Keyboard;
 
@@ -46,31 +46,8 @@ namespace Unknown.Samuele
                 _inputs.Minigame.SetCallbacks(this);
                 _inputs.UI.SetCallbacks(this);
 
-                // Listener for changing control scheme
-                _inputs.Player.Move.started += UpdateControlScheme;
-                _inputs.Player.Interact.started += UpdateControlScheme;
-                _inputs.Player.Sprint.started += UpdateControlScheme;
-                _inputs.Player.Pause.started += UpdateControlScheme;
-                _inputs.Minigame.Pause.started += UpdateControlScheme;
-                _inputs.Minigame.Movement.started += UpdateControlScheme;
-                _inputs.Minigame.Back.started += UpdateControlScheme;
-                _inputs.UI.Close.started += UpdateControlScheme;
-
                 SetGameplay();
             }
-        }
-
-        void OnDisable()
-        {
-            // Listener for changing control scheme
-            _inputs.Player.Move.started -= UpdateControlScheme;
-            _inputs.Player.Interact.started -= UpdateControlScheme;
-            _inputs.Player.Sprint.started -= UpdateControlScheme;
-            _inputs.Player.Pause.started -= UpdateControlScheme;
-            _inputs.Minigame.Pause.started -= UpdateControlScheme;
-            _inputs.Minigame.Movement.started -= UpdateControlScheme;
-            _inputs.Minigame.Back.started -= UpdateControlScheme;
-            _inputs.UI.Close.started -= UpdateControlScheme;
         }
 
 #region Utilities
@@ -101,20 +78,20 @@ namespace Unknown.Samuele
 
         private void UpdateControlScheme(InputAction.CallbackContext context)
         {
-            var device = context.control?.device;
-            if (device == null)
-                return;
+            // var device = context.control?.device;
+            // if (device == null)
+            //     return;
             
-            var newScheme = device is Gamepad ? ActiveDevice.Controller : ActiveDevice.Keyboard;
+            // var newScheme = device is Gamepad ? ActiveDevice.Controller : ActiveDevice.Keyboard;
 
-            if (newScheme != lastControlScheme)
-            {
-                lastControlScheme = controlScheme;
-                controlScheme = newScheme;
+            // if (newScheme != lastControlScheme)
+            // {
+            //     lastControlScheme = controlScheme;
+            //     controlScheme = newScheme;
                 
-                Debug.Log($"Control scheme switched to {newScheme}");
-                ChangeDeviceEvent?.Invoke(controlScheme);
-            }
+            //     Debug.Log($"Control scheme switched to {newScheme}");
+            //     ChangeDeviceEvent?.Invoke(controlScheme);
+            // }
         }
 #endregion Utilities
 
@@ -135,7 +112,8 @@ namespace Unknown.Samuele
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            InteractEvent?.Invoke();
+            if (context.phase == InputActionPhase.Performed)
+                InteractEvent?.Invoke();
 
             UpdateControlScheme(context);
         }
@@ -153,14 +131,14 @@ namespace Unknown.Samuele
         // This is shared with MiniGame
         public void OnPause(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (context.phase == InputActionPhase.Started)
             {
                 PauseEvent?.Invoke();
 
                 SetUI();
-            }
 
-            UpdateControlScheme(context);
+                UpdateControlScheme(context);
+            }
         }
 #endregion Player Input
 
@@ -174,32 +152,38 @@ namespace Unknown.Samuele
 
         public void OnBack(InputAction.CallbackContext context)
         {
-            BackEvent?.Invoke();
+            if (context.phase == InputActionPhase.Started)
+            {
+                BackEvent?.Invoke();
 
-            UpdateControlScheme(context);
+                UpdateControlScheme(context);
+            }
         }
 #endregion MiniGame Input
 
 #region UI Input
         public void OnClose(InputAction.CallbackContext context)
         {
-            // Check last inputMap and set it back
-            switch (lastInputMap)
+            if (context.phase == InputActionPhase.Started)
             {
-                case LastInputMap.Player:
-                    SetGameplay();
-                break;
-                case LastInputMap.MiniGame:
-                    SetMinigame();
-                break;
-                default:
-                    SetGameplay();
-                    Debug.LogWarning("You messed up someway");
-                    Debug.Break();
-                break;
-            }
+                // Check last inputMap and set it back
+                switch (lastInputMap)
+                {
+                    case LastInputMap.Player:
+                        SetGameplay();
+                    break;
+                    case LastInputMap.MiniGame:
+                        SetMinigame();
+                    break;
+                    default:
+                        SetGameplay();
+                        Debug.LogWarning("You messed up someway");
+                        Debug.Break();
+                    break;
+                }
 
-            UpdateControlScheme(context);
+                UpdateControlScheme(context);
+            }
         }
 #endregion UI Input
     }
@@ -207,7 +191,6 @@ namespace Unknown.Samuele
 #region Enums
     public enum LastInputMap
     {
-        None,
         Player,
         MiniGame
     }

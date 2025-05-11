@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +21,8 @@ namespace Unknown.Samuele
         void Awake()
         {
             Instance = this;
+
+            cameras = new List<CinemachineVirtualCamera>();
         }
 
         // Start is called before the first frame update
@@ -35,17 +36,15 @@ namespace Unknown.Samuele
 
         public void AddCamera(CinemachineVirtualCamera camera)
         {
-            if (!cameras.Contains(camera))
-                cameras.Add(camera);
+            cameras.Add(camera);
         }
 
         public void RemoveCamera(CinemachineVirtualCamera camera)
         {
-            if (cameras.Contains(camera))
-                cameras.Remove(camera);
+            cameras.Remove(camera);
         }
 
-        public void SwitchCamera(CinemachineVirtualCamera camera, bool isMinigame = false)
+        public void SwitchCamera(CinemachineVirtualCamera camera)
         {
             activeCamera = camera;
 
@@ -54,24 +53,13 @@ namespace Unknown.Samuele
             foreach(var _cam in cameras)
                 if (_cam != activeCamera)
                     _cam.Priority = 10;
-
-            if (isMinigame)
-                StartCoroutine(WaitForBlend());
         }
 
         public void SwitchToMainCamera() =>
             SwitchCamera(playerCamera);
 
-        private IEnumerator WaitForBlend()
-        {
-            while (mainCamera.IsBlending)
-                yield return null;
-            
-            yield return null;
-
-            // Load Minigame scene
-            BlendingCompleteEvent?.Invoke();
-        }
+        public bool IsBlending =>
+            mainCamera.IsBlending;
 
         public void Load()
         {

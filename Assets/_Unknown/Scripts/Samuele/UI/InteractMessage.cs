@@ -32,6 +32,12 @@ namespace Unknown.Samuele
             PlayerInteraction.SendPromptEvent -= UpdateText;
         }
 
+        void Update()
+        {
+            if (GameManager.Instance.GetGameplay().IsMinigameOn && parent.activeSelf)
+                parent.SetActive(false);
+        }
+
         private void UpdateInputIcon(ActiveDevice ctx)
         {
             controls = ctx;
@@ -59,6 +65,9 @@ namespace Unknown.Samuele
                 break;
                 case ActiveDevice.Controller:
                     key = "xx";
+                break;
+                default:
+                    key = "e";
                 break;
             }
 

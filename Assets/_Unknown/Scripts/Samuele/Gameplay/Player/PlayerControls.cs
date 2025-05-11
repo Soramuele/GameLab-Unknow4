@@ -54,9 +54,11 @@ namespace Unknown.Samuele
 
         private void Movement()
         {
-            Vector3 move = new Vector3(movement.x * sprint, 0f, movement.y * sprint);
+            Vector3 move = new Vector3(movement.x, 0f, movement.y);
             move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
 
+            move *= sprint;
+            move.y = -1f;
             controller.Move(playerSpeed * Time.deltaTime * move);
         }
     }

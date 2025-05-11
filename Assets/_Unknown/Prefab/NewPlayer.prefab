@@ -163,8 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausable: 1
   playerInputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
-  playerSpeed: 0
-  sprintMultiplier: 0
+  playerSpeed: 2
+  sprintMultiplier: 2
   jumpForce: 0
 --- !u!114 &8012876380308685872
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6d96ed7ade9524e87e2175ce0b8560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 3.25
+  distance: 2
   interactLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 160
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 160
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X

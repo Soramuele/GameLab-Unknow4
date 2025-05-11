@@ -19,7 +19,14 @@ namespace Unknown.Samuele
         
         void OnDisable() =>
             PlayerInteraction.SendPromptEvent -= ChangeCrosshair;
-        
+
+        void Update()
+        {
+            if (GameManager.Instance.GetGameplay().IsMinigameOn && crosshair.gameObject.activeSelf)
+                crosshair.gameObject.SetActive(false);
+            else if (!GameManager.Instance.GetGameplay().IsMinigameOn && !crosshair.gameObject.activeSelf)
+                crosshair.gameObject.SetActive(true);
+        }
 
         private void ChangeCrosshair(string prompt)
         {

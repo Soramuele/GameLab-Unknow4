@@ -6,9 +6,10 @@ namespace Unknown.Samuele
     {
         [Header("Door")]
         [SerializeField] private bool needsKey;
-        [SerializeField] private SOKey key;
+        [SerializeField] private Item key;
         
         private Animator animator;
+        private bool isOpen = false;
 
         void Start()
         {
@@ -17,7 +18,33 @@ namespace Unknown.Samuele
 
         protected override void Interaction()
         {
-            // Make the interaction work lol
+            if (!needsKey)
+            {
+                ChangeDoorState();
+
+                return;
+            }
+            
+            if (PlayerInventory.Instance.CheckForItem(key))
+                ChangeDoorState();
+            else
+                Debug.Log("You need a key");
+        }
+
+        public void ChangeDoorState()
+        {
+            isOpen = !isOpen;
+            animator.SetBool(AnimHash.DoorOpen, isOpen);
+
+            SwitchPrompt();
+        }
+
+        private void SwitchPrompt()
+        {
+            if (Prompt == prompt)
+                Prompt = promptAlt;
+            else
+                Prompt = prompt;
         }
     }
 }

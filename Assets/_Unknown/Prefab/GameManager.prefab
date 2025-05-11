@@ -3295,7 +3295,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4582657687665445577}
   - component: {fileID: -1937666619119025182}
-  - component: {fileID: -2298746037321161942}
   - component: {fileID: -1785066029189848553}
   - component: {fileID: 3543109425569741579}
   - component: {fileID: -4174051526156793569}
@@ -3336,18 +3335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
---- !u!114 &-2298746037321161942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5159201739008329971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65cb5e69131591469c2be65cbdca1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1785066029189848553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,6 +3378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
+  cameras: []
 --- !u!1 &5409001430851931959
 GameObject:
   m_ObjectHideFlags: 0

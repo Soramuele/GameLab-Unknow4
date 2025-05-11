@@ -7,6 +7,9 @@ namespace Unknown.Samuele
         // Window
         public static int WindowOn = Animator.StringToHash("WindowOn");
 
+        // Door
+        public static int DoorOpen = Animator.StringToHash("DoorOpen");
+
         // Characters
         public static int Walking = Animator.StringToHash("isWalking");
         public static int Siting = Animator.StringToHash("isSitting");
