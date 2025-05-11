@@ -6,10 +6,10 @@ namespace Unknown.Samuele
     {
         [Header("Data")]
         [SerializeField] private Animator anim;
-        [SerializeField] private bool isOpen;
+        public bool isOpen;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             anim = GetComponent<Animator>();
             

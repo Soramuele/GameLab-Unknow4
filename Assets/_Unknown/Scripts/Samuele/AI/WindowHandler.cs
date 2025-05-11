@@ -16,6 +16,15 @@ namespace Unknown.Samuele
         // Start is called before the first frame update
         void Start()
         {
+            WindowInteractable openWindows = null;
+            foreach(var window in windows)
+            {
+                if (window.isOpen && openWindows == null)
+                    openWindows = window;
+                else if (window.isOpen)
+                    window.CloseWindow();
+            }
+
             StartTimer();
         }
 
@@ -33,7 +42,7 @@ namespace Unknown.Samuele
         {
             var time = Random.Range(timeRange.x, timeRange.y) + defaultTime;
 
-            StartCoroutine(Timer(time));
+            StartCoroutine(Timer(Mathf.Abs(time)));
         }
 
         private IEnumerator Timer(float time)
