@@ -1,19 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StimuliBar : MonoBehaviour
+namespace Unknown.Samuele
 {
-    [Header("Bar")]
-    [SerializeField] private Image image;
-
-    private StimuliManager stimuli;
-
-    void Start()
+    public class StimuliBar : MonoBehaviour
     {
-        stimuli = StimuliManager.Instance;
-    }
+        [Header("Bar")]
+        [SerializeField] private Image image;
 
-    // Update is called once per frame
-    void Update() =>
-        image.fillAmount = stimuli.Ratio / 100;
+        private StimuliManager stimuli;
+
+        void Start()
+        {
+            stimuli = StimuliManager.Instance;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            image.fillAmount = stimuli.Ratio / 100;
+
+            image.color = Color.Lerp(Color.white, Color.red, image.fillAmount);
+        }
+    }
 }

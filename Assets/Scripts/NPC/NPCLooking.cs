@@ -35,7 +35,7 @@ public class NPCLooking : MonoBehaviour
         // Check if player is looking towards npc
         var _dotResult = - Vector3.Dot(_playerSightDir, NPCEyes.transform.forward);
         
-        var stimuli = StimuliManager.Instance;
+        var stimuli = Unknown.Samuele.StimuliManager.Instance;
         // Damage the player based on how much he's looking
         if (_dotResult >= DOT_30Degrees)
         {

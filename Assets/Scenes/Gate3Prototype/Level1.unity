@@ -32658,7 +32658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene:
     sceneAsset: {fileID: 102900000, guid: fff8df405d2e1034087ccf4abddee532, type: 3}
-    scenePath: Assets/Scenes/Gate2Prototype/RRSCENE.unity
+    scenePath: Assets/Scenes/Gate3Prototype/RRSCENE.unity
 --- !u!54 &1242242925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59730,7 +59730,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1646747465192174485, guid: 18df56ebd5e535d4db10f3f3a57f0ca8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18df56ebd5e535d4db10f3f3a57f0ca8, type: 3}

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unknown.Samuele;
 
 public class StudentScript : MonoBehaviour
 {
@@ -19,14 +20,14 @@ public class StudentScript : MonoBehaviour
     public CanvasGroup fade;
     public GameObject standuppos;
     public TextMeshProUGUI hint;
-    private StimuliManager stimuli;
+    private Unknown.Samuele.StimuliManager stimuli;
     private float something = 0;
     
     private bool isPanelActive = false;
 
     void Start()
     {
-        stimuli = StimuliManager.Instance;
+        stimuli = Unknown.Samuele.StimuliManager.Instance;
     }
 
     void Update()
@@ -106,7 +107,7 @@ public class StudentScript : MonoBehaviour
     public void SitOnChair()
     {
         
-        if (Vector3.Distance(transform.position, chairtosit.transform.position) < 2f && Input.GetKeyDown(KeyCode.E))
+        if (Vector3.Distance(transform.position, chairtosit.transform.position) < 2f && Input.GetKeyDown(KeyCode.E)) 
         {
             characterController.enabled = false;
             Transform sitTransform = chairtosit.transform.GetChild(0);
@@ -121,6 +122,7 @@ public class StudentScript : MonoBehaviour
                 panel.SetActive(true);  
                 isPanelActive = true;    
             }
+
         }
     }
 

@@ -8,13 +8,13 @@ public class AddStimuli : MonoBehaviour
 
     private GameObject postProcessing;
 
-    private StimuliManager stimuli;
+    private Unknown.Samuele.StimuliManager stimuli;
     private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        stimuli = StimuliManager.Instance;
+        stimuli = Unknown.Samuele.StimuliManager.Instance;
         player = FindObjectOfType<PlayerController>().gameObject;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

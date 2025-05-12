@@ -9,6 +9,7 @@ TagManager:
   - Start
   - Volume
   - NextLevel
+  - interaction
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Lights
   - NPC
   - 
-  - 
+  - Interactable
   - 
   - 
   - 
