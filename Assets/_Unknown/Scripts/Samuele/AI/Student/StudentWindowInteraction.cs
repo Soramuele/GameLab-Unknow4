@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
+    [RequireComponent(typeof(StudentMovement))]
     public class StudentWindowInteraction : MonoBehaviour
     {
         [Header("Interaction")]

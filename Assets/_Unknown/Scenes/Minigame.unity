@@ -4030,7 +4030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1364326818
 Transform:
   m_ObjectHideFlags: 0
@@ -4134,6 +4134,7 @@ MonoBehaviour:
   inputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
   player: {fileID: 8390676531312431491}
   cam: {fileID: 854119201}
+  reward: {fileID: 0}
   mainScreen: {fileID: 2103715551}
   endScreen: {fileID: 20065609}
   minigameLevels:
@@ -5287,7 +5288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1717229665
 Transform:
   m_ObjectHideFlags: 0

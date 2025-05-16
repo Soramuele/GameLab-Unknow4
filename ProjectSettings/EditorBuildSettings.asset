@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/_Unknown/Scenes/Current/Level1.unity
     guid: d9a46d132baf6e840a3d46f7f9fe04f7
   - enabled: 1
-    path: Assets/_Unknown/Scenes/TitleScreen.unity
+    path: Assets/_Unknown/Scenes/NewClassroom.unity
     guid: b385b5b0872a90c4bb1ccef2bdb08be3
   - enabled: 1
     path: Assets/_Unknown/Scenes/Minigame.unity

@@ -59,8 +59,8 @@ namespace Unknown.Samuele
                 npcs[npc] = true;
                 npc.SetActive(true);
                 npc.transform.position = GetRandomPosition();
-                npc.GetComponent<NPCWalking>().isAtDoor = false;
-                npc.GetComponent<NPCWalking>().Start();
+                // npc.GetComponent<StudentMovement>().isAtDoor = false;
+                // npc.GetComponent<StudentMovement>().Start();
             }
             else
             {

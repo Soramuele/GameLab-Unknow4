@@ -5,6 +5,8 @@ namespace Unknown.Samuele
 {
     public class WindowHandler : MonoBehaviour
     {
+        public static WindowHandler Instance { get; private set; }
+
         [Header("Windows")]
         [SerializeField] private WindowInteractable[] windows;
 
@@ -12,6 +14,11 @@ namespace Unknown.Samuele
         [Tooltip("Range of time in seconds for reopening the window. Put the minimum time in X and maximum time in Y")]
         [SerializeField] private Vector2 timeRange;
         [SerializeField] private float defaultTime = 5f;
+
+        void Awake()
+        {
+            Instance = this;
+        }
 
         // Start is called before the first frame update
         void Start()
