@@ -57,11 +57,11 @@ public class StudentScript : MonoBehaviour
       
         if (!window.windowanimator.GetBool("WindowOn") && currentWeight < 1f )
         {
-            if (something + 0.04f > 100)
+            if (something + 0.07f > 100)
                 something = 100;
                 
             else
-                something += 0.04f;
+                something += 0.07f;
             
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
             
