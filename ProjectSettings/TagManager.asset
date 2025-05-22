@@ -10,6 +10,7 @@ TagManager:
   - Volume
   - NextLevel
   - interaction
+  - cHILL
   layers:
   - Default
   - TransparentFX
