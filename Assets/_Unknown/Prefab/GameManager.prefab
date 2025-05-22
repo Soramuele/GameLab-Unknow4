@@ -3297,7 +3297,6 @@ GameObject:
   - component: {fileID: -1937666619119025182}
   - component: {fileID: -1785066029189848553}
   - component: {fileID: 3543109425569741579}
-  - component: {fileID: -4174051526156793569}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3334,7 +3333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3532a203d68e1ce4490dc1b1fba49d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
 --- !u!114 &-1785066029189848553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3365,20 +3363,6 @@ MonoBehaviour:
   maxStimuli: 250
   timeBeforeHeal: 2.75
   amountOfHeal: 5.5
---- !u!114 &-4174051526156793569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5159201739008329971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f422ff4d6552294eb89f1a16935fbb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  cameras: []
 --- !u!1 &5409001430851931959
 GameObject:
   m_ObjectHideFlags: 0

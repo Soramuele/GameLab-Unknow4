@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if (sprint != 0)
             move *= sprintMultiplier;
 
-        move.y = 0f;
+        move.y = -1f;
         controller.Move(move * Time.deltaTime * playerSpeed);
        /* if (move != Vector3.zero)
         {
