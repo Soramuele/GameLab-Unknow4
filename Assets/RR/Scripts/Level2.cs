@@ -11,7 +11,7 @@ public class Level2 : MonoBehaviour
 {
     public Volume temperature;
     private float currentWeight = 0f;
-    private float transitionSpeed = 0.4f;
+    private float transitionSpeed = 0.25f;
     [SerializeField] CharacterController characterController;
     private Unknown.Samuele.StimuliManager stimuli;
     private float something = 0;
@@ -34,7 +34,7 @@ public class Level2 : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        print(transitionTime);
+       
     }
     private void HandleWeightTransition1()
     {
@@ -49,19 +49,17 @@ public class Level2 : MonoBehaviour
 
             }
                 
-       
-
-          
             else
                 something += 0.1f;
   
 
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
 
-            if (currentWeight < 1f && stimuli.Ratio > 10)
+            if (currentWeight < 1f && stimuli.Ratio > 0)
             {
                 currentWeight += transitionSpeed * Time.deltaTime;
-                if (currentWeight > 1f) currentWeight = 1f;
+                
+                
                 
             }
 
@@ -76,34 +74,52 @@ public class Level2 : MonoBehaviour
             hintik.enabled = true;
 
         }
-        stimuli.SubscribeDamagePercentage(this.gameObject, something);
-        if (currentWeight > 0f && stimuli.Ratio < 70)
-        {
-            currentWeight -= transitionSpeed * Time.deltaTime;
 
-            if (currentWeight < 0f) currentWeight = 0f;
-           
+
+        if(something == 0)
+        {
+
+            currentWeight = 0;
+
         }
+
+
+        if(something == 100)
+        {
+            currentWeight = 1;
+
+        }
+        stimuli.SubscribeDamagePercentage(this.gameObject, something);
+        //if (currentWeight > 0f && stimuli.Ratio < 70)
+        //{
+        //    currentWeight -= transitionSpeed * Time.deltaTime;
+
+        //    if (currentWeight < 0f) currentWeight = 0f;
+           
+        //}
 
 
     }
 
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        
-
-        if(other.CompareTag("cHILL") && something > 0)
+        if (other.CompareTag("cHILL") && something > 0)
         {
-           
+            print("adaad");
             transitionTime = 0;
             hintik.enabled = false;
-            
+            something -= 0.2f;
+            currentWeight -= 0.002f;
+
+
+            stimuli.SubscribeDamagePercentage(this.gameObject, something);
+
+         
+         
+
         }
-
-
     }
-    
-  
-    
+
+
 }
