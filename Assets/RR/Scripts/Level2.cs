@@ -17,7 +17,8 @@ public class Level2 : MonoBehaviour
     private float something = 0;
     private float transitionTime = 0;
     public TextMeshProUGUI hintik;
-
+    public PlayerController playerController;
+    public GameObject Door;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class Level2 : MonoBehaviour
         transitionTime += Time.deltaTime;
         temperature.weight = currentWeight;
         HandleWeightTransition1();
-
+        Finishing();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -46,11 +47,12 @@ public class Level2 : MonoBehaviour
             {
                 something = 100;
                 transitionTime = 0;
-
+                playerController.playerSpeed = 1f;
             }
                 
             else
                 something += 0.1f;
+                
   
 
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
@@ -72,22 +74,23 @@ public class Level2 : MonoBehaviour
         {
 
             hintik.enabled = true;
+            
 
         }
 
 
-        if(something == 0)
+        if(something <= 0)
         {
 
             currentWeight = 0;
-
+            playerController.playerSpeed = 2;
         }
 
 
         if(something == 100)
         {
             currentWeight = 1;
-
+          
         }
         stimuli.SubscribeDamagePercentage(this.gameObject, something);
         //if (currentWeight > 0f && stimuli.Ratio < 70)
@@ -111,7 +114,7 @@ public class Level2 : MonoBehaviour
             hintik.enabled = false;
             something -= 0.2f;
             currentWeight -= 0.002f;
-
+            
 
             stimuli.SubscribeDamagePercentage(this.gameObject, something);
 
@@ -121,5 +124,16 @@ public class Level2 : MonoBehaviour
         }
     }
 
+    
+    private void Finishing()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3) 
+        {
 
+            UnityEditor.EditorApplication.isPlaying = false;
+
+
+        }
+
+    }
 }
