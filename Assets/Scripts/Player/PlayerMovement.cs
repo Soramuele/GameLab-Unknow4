@@ -1,76 +1,58 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+namespace Unknown.Samuele
 {
-    private CharacterController controller;
-    private Vector3 playerMovement;
-
-    private InputManager inputManager;
-    private Transform cameraTransform;
-
-    [Header("Player")]
-    [SerializeField] private float playerSpeed = 5.0f;
-    [SerializeField] private float jumpHeight = 3.0f;
-    [SerializeField] private float sprintSpeed = 3f;
-
-    [Header("Physics")]
-    [SerializeField] private float gravityValue = -9.81f;
-
-    private void Start()
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerMovement : Pausable
     {
-        inputManager = InputManager.Instance;
+        [Header("Inputs")]
+        [SerializeField] private Inputs.InputHandler inputHandler;
 
-        controller = GetComponent<CharacterController>();
-
-        cameraTransform = Camera.main.transform;
+        [Header("Player")]
+        [SerializeField] private float playerSpeed = 5.0f;
+        [SerializeField] private float sprintSpeed = 3f;
+        private Vector2 playerMovement = new Vector2(0, 0);
+        private float sprint = 1;
         
-        // Inputs
-        inputManager.PlayerJump().started += Jump;
-    }
+        private CharacterController controller;
+        private Camera cam;
 
-    void Update()
-    {
-        Gravity();
-        Movement();
-        Sprint();
-    }
-
-    private void Gravity()
-    {
-        if (controller.isGrounded && playerMovement.y < 0)
-            playerMovement.y = 0;
-    }
-
-    private void Movement()
-    {
-        Vector2 movement = inputManager.GetPlayerMovement();
-        Vector3 move = new(movement.x, 0, movement.y);
-        move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
-        move.y = 0f;
-        controller.Move(playerSpeed * Time.deltaTime * move);
-    }
-
-    private void Sprint()
-    {
-        if (inputManager.GetPlayerSprint() != 0)
+        protected override void Start()
         {
-            // Perform sprint action
-            Debug.Log("Onions");
+            base.Start();
+
+            controller = GetComponent<CharacterController>();
+
+            cam = Camera.main;
         }
-    }
 
-    private void Jump(InputAction.CallbackContext ctx)
-    {
-        Debug.Log(ctx);
-        // Makes the player jump
-        // if (ctx.performed && controller.isGrounded)
-        // {
-        //     playerMovement.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
-        // }
+        void OnEnable()
+        {
+            inputHandler.OnMovementEvent += ctx => playerMovement = ctx;
+            inputHandler.OnSprintEvent += () => sprint = sprintSpeed;
+            inputHandler.OnSprintCancelledEvent += () => sprint = 1f;
+        }
 
-        // // playerMovement.y += gravityValue * Time.deltaTime;
-        // controller.Move(playerMovement * Time.deltaTime);
+        void OnDisable()
+        {
+            inputHandler.OnMovementEvent -= ctx => playerMovement = ctx;
+            inputHandler.OnSprintEvent -= () => sprint = sprintSpeed;
+            inputHandler.OnSprintCancelledEvent -= () => sprint = 1f;
+        }
+
+        void Update()
+        {
+            Movement();
+        }
+
+        private void Movement()
+        {
+            Vector3 move = new Vector3(playerMovement.x, 0, playerMovement.y);
+            move *= sprint;
+            move = cam.transform.forward * move.z + cam.transform.right * move.x;
+            move.y = -1f;
+
+            controller.Move(playerSpeed * Time.deltaTime * move);
+        }
     }
 }

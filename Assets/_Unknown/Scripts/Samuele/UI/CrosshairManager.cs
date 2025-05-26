@@ -9,7 +9,7 @@ namespace Unknown.Samuele
         [Header("Crosshair")]
         [SerializeField] private Image crosshair;
         [SerializeField] private Sprite interactionCrosshair;
-        
+
         private Sprite defaultCrosshair;
 
         private void Awake()
@@ -20,7 +20,7 @@ namespace Unknown.Samuele
         void Start() =>
             defaultCrosshair = crosshair.sprite;
 
-   
+
 
         public void ChangeCrosshair(string prompt)
         {
@@ -35,5 +35,11 @@ namespace Unknown.Samuele
                 crosshair.gameObject.SetActive(true);
             }
         }
+
+        public void Hide() =>
+            crosshair.gameObject.SetActive(false);
+        
+        public void Show() =>
+            crosshair.gameObject.SetActive(true);
     }
 }

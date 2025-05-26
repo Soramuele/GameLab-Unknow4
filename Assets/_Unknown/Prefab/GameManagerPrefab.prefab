@@ -511,9 +511,9 @@ RectTransform:
   - {fileID: 5025464323381854758}
   m_Father: {fileID: 5536661605298494784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -455}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3954269117003068351
@@ -2175,9 +2175,9 @@ RectTransform:
   - {fileID: 3006409509360494298}
   m_Father: {fileID: 5536661605298494784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -565}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2256044171784238162
@@ -2356,9 +2356,9 @@ RectTransform:
   - {fileID: 5560681469965914145}
   m_Father: {fileID: 5536661605298494784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -675}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7932048785913049226
@@ -3297,9 +3297,9 @@ GameObject:
   - component: {fileID: -1937666619119025182}
   - component: {fileID: -1785066029189848553}
   - component: {fileID: 3543109425569741579}
-  - component: {fileID: -4174051526156793569}
+  - component: {fileID: 3446223210729420043}
   m_Layer: 0
-  m_Name: Something
+  m_Name: GameManagerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3334,7 +3334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3532a203d68e1ce4490dc1b1fba49d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs: {fileID: 11400000, guid: f3f8046aa3e5088498809d5f1827db12, type: 2}
+  inputHandler: {fileID: 11400000, guid: 45c9906992512cf4fad98c8abd2f0aab, type: 2}
 --- !u!114 &-1785066029189848553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3365,7 +3365,7 @@ MonoBehaviour:
   maxStimuli: 250
   timeBeforeHeal: 2.75
   amountOfHeal: 5.5
---- !u!114 &-4174051526156793569
+--- !u!114 &3446223210729420043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3374,11 +3374,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5159201739008329971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f422ff4d6552294eb89f1a16935fbb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a92e1a3ee89695408de706b1b75ed9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  cameras: []
 --- !u!1 &5409001430851931959
 GameObject:
   m_ObjectHideFlags: 0

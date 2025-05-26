@@ -23,7 +23,6 @@ public class NPCBehaviour : MonoBehaviour
 
     void Start()
     {
-        startingTime = GameManager.Instance.InGameTimer;
         timePassed = startingTime;
 
         WalkAround(false);
