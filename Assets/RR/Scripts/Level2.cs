@@ -23,6 +23,7 @@ public class Level2 : MonoBehaviour
     void Start()
     {
         stimuli = Unknown.Samuele.StimuliManager.Instance;
+        
     }
 
     // Update is called once per frame
@@ -39,36 +40,36 @@ public class Level2 : MonoBehaviour
     }
     private void HandleWeightTransition1()
     {
+     
+            if (transitionTime > 5 && currentWeight < 1f)
 
-        if(transitionTime > 5 && currentWeight < 1f) 
-        
-        {
-            if (something + 0.02f > 100)
             {
-                something = 100;
-                transitionTime = 0;
-                playerController.playerSpeed = 1f;
+                if (something + 0.2f > 100)
+                {
+                    something = 100;
+                    transitionTime = 0;
+                    playerController.playerSpeed = 1f;
+                }
+
+                else
+                    something += 0.2f;
+
+
+
+                stimuli.SubscribeDamagePercentage(this.gameObject, something);
+
+                if (currentWeight < 1f && stimuli.Ratio > 10)
+                {
+                    currentWeight += transitionSpeed * Time.deltaTime;
+
+
+
+                }
+
             }
-                
-            else
-                something += 0.1f;
-                
-  
 
-            stimuli.SubscribeDamagePercentage(this.gameObject, something);
-
-            if (currentWeight < 1f && stimuli.Ratio > 0)
-            {
-                currentWeight += transitionSpeed * Time.deltaTime;
-                
-                
-                
-            }
-
-
-
-
-        }
+   
+      
 
         if( something > 70)
         {
@@ -90,9 +91,9 @@ public class Level2 : MonoBehaviour
         if(something == 100)
         {
             currentWeight = 1;
-          
+            playerController.playerSpeed = 1f;
         }
-        stimuli.SubscribeDamagePercentage(this.gameObject, something);
+        
         //if (currentWeight > 0f && stimuli.Ratio < 70)
         //{
         //    currentWeight -= transitionSpeed * Time.deltaTime;
