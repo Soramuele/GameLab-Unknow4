@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb7859679d7ed7a4faba73e0244fb0fc
+guid: e3bd262ef0603a34093c3266c95d008f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TT_color_00
-    second: {fileID: 2100000, guid: 745347cb12788aa43b1147a3854f26d1, type: 2}
+      name: TT_color_00.003
+    second: {fileID: 2100000, guid: 0f01792a98aadbd4da776584eea8167a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TT_color_01
-    second: {fileID: 2100000, guid: 6db0cb9b728b4714a8314d98ac3e6e46, type: 2}
+      name: TT_color_01.003
+    second: {fileID: 2100000, guid: 89bd29bbc0614184497388c5a995f183, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TT_color_01.004
+    second: {fileID: 2100000, guid: 7065127c0c10e36498c7ec55d8a65acb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TT_color_02.001
+    second: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

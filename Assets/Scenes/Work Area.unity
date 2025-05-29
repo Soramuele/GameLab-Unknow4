@@ -48471,7 +48471,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147472296}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &8033935305230446798
+--- !u!1001 &8432380656790767863
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -48479,55 +48479,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 7595788180679700654, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
+      propertyPath: m_Name
+      value: Work area props
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3424266966198569239, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+    - target: {fileID: 8175284107125123965, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707373799669674493, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
-      propertyPath: m_Name
-      value: Work area props
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f379d23ecd305cd45b4049a112f27083, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a75354ce58f296e4894ab219c78d31ba, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -48610,4 +48610,4 @@ SceneRoots:
   - {fileID: 1268115534}
   - {fileID: 1996237236}
   - {fileID: 604666284}
-  - {fileID: 8033935305230446798}
+  - {fileID: 8432380656790767863}
