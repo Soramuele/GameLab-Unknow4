@@ -28,12 +28,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (hitItem.transform.tag == "interaction")
             {
-                Unknown.Samuele.InteractMessage.Instance.UpdateText("Interact");
+                // Unknown.Samuele.InteractMessage.Instance.UpdateText("Interact");
                
             }
 
         }
         else
-            Unknown.Samuele.InteractMessage.Instance.UpdateText(string.Empty);
+            Debug.Log("HelloWorld");
+            // Unknown.Samuele.InteractMessage.Instance.UpdateText(string.Empty);
     }
 }

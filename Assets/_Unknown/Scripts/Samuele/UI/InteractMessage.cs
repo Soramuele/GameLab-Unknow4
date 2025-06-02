@@ -11,9 +11,7 @@ namespace Unknown.Samuele
         [SerializeField] private GameObject parent;
         [SerializeField] private TextMeshProUGUI prompt;
 
-        private GameManager gameManager;
-
-       /// private ActiveDevice controls = ActiveDevice.Keyboard;
+        private GameManager.CurrentDevice controls = GameManager.CurrentDevice.XBoxController;
         private string message;
 
         private void Awake()
@@ -28,57 +26,57 @@ namespace Unknown.Samuele
 
         void OnEnable()
         {
-            gameManager = GameManager.Instance;
-            //gameManager.ChangeDeviceEvent += UpdateInputIcon;
-            //PlayerInteraction.SendPromptEvent += UpdateText;
+            GameManager.Instance.OnChangeDeviceEvent += UpdateInputIcon;
         }
 
         void OnDisable()
         {
-            //.ChangeDeviceEvent -= UpdateInputIcon;
-            //PlayerInteraction.SendPromptEvent -= UpdateText;
+            GameManager.Instance.OnChangeDeviceEvent -= UpdateInputIcon;
         }
 
-        void Update()
+        private void UpdateInputIcon(GameManager.CurrentDevice ctx)
         {
-            //if (GameManager.Instance.GetGameplay().IsMinigameOn && parent.activeSelf)
-              //  parent.SetActive(false);
+            controls = ctx;
         }
-
-        //private void UpdateInputIcon(ActiveDevice ctx)
-       // {
-//controls = ctx;
-       //     UpdateText(message);
-       // }
 
         public void UpdateText(string message)
         {
-            this.message = message;
-            // Enable or disable the interaction prompt
-            if (message == string.Empty)
-            {
-                parent.SetActive(false);
-                return;
-            }
-            else
+            if (!parent.activeSelf && message != string.Empty)
                 parent.SetActive(true);
-            
-            // Change controls key image based on current device
-            var key = "e";
-            //switch (controls)
-           // {
-           //     case ActiveDevice.Keyboard:
-           //         key = "e";
-//break;
-           //     case ActiveDevice.Controller:
-           //         key = "xx";
-           //     break;
-            //    default:
-           //         key = "e";
-            //    break;
-            //}
 
-            prompt.text = $"Press <sprite name={key}> to {message}";
+            this.message = message;
+
+            // Change controls key image based on current device
+            var key = "";
+            switch (controls)
+            {
+                case GameManager.CurrentDevice.Keyboard_Mouse:
+                    key = "e";
+                    break;
+                case GameManager.CurrentDevice.XBoxController:
+                    key = "xx";
+                    break;
+                case GameManager.CurrentDevice.PlayStationController:
+                    key = "ps";
+                    break;
+                default:
+                    key = "e";
+                    break;
+            }
+
+            prompt.text = $"Press <sprite name={key}> to {this.message}";
         }
+
+        public void ClearText()
+        {
+            parent.SetActive(false);
+            message = string.Empty;
+        }
+
+        public void Hide() =>
+            prompt.gameObject.SetActive(false);
+
+        public void Show() =>
+            prompt.gameObject.SetActive(true);
     }
 }
