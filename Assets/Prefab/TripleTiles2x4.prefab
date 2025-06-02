@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3963352036480927503}
+  - component: {fileID: 5202822018370231528}
   m_Layer: 0
   m_Name: TripleTiles2x4
   m_TagString: Untagged
@@ -33,6 +34,28 @@ Transform:
   - {fileID: 4005579468076824296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5202822018370231528
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874120008112151745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &482964895622755840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,13 +115,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3714117995339171454}
   m_SourcePrefab: {fileID: 100100000, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
 --- !u!4 &88224258897908203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
   m_PrefabInstance: {fileID: 482964895622755840}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &752874998110014289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
+  m_PrefabInstance: {fileID: 482964895622755840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &3714117995339171454
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752874998110014289}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
 --- !u!1001 &3466668012729028867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,10 +211,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3414539466529350978}
   m_SourcePrefab: {fileID: 100100000, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
 --- !u!4 &4005579468076824296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
   m_PrefabInstance: {fileID: 3466668012729028867}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4385800018941013074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
+  m_PrefabInstance: {fileID: 3466668012729028867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &3414539466529350978
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385800018941013074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 39be328977ed40146bc52c2ca655ab0d, type: 3}
