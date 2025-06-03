@@ -13,6 +13,7 @@ TagManager:
   - cHILL
   - Obstacle
   - Scoring
+  - notes
   layers:
   - Default
   - TransparentFX

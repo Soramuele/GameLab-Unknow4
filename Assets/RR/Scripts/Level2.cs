@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEditor.PackageManager.UI;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Level2 : MonoBehaviour
 
@@ -19,6 +21,11 @@ public class Level2 : MonoBehaviour
     public TextMeshProUGUI hintik;
     public PlayerController playerController;
     public GameObject Door;
+    public TextMeshProUGUI hintforplay;
+    public GameObject note1;
+    public GameObject note2;
+    public GameObject note3;
+    bool Notesfound = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,7 @@ public class Level2 : MonoBehaviour
         temperature.weight = currentWeight;
         HandleWeightTransition1();
         Finishing();
+        PickupNotes();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -135,13 +143,49 @@ public class Level2 : MonoBehaviour
     
     private void Finishing()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3) 
+        if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3 && Notesfound) 
         {
 
-            UnityEditor.EditorApplication.isPlaying = false;
+            SceneManager.LoadScene("RRSCENE");
 
 
         }
 
     }
+
+
+    public void PickupNotes()
+    {
+       if((Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, note1.transform.position) < 3))
+       {
+            note1.SetActive(false);
+
+
+        }
+
+        if ((Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, note2.transform.position) < 3))
+        {
+            note2.SetActive(false);
+
+
+        }
+
+
+        if ((Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, note3.transform.position) < 3))
+        {
+            note3.SetActive(false);
+            
+
+        }
+
+        if(!note1.activeSelf && !note2.activeSelf && !note3.activeSelf)
+        {
+          
+            hintforplay.text = "FIND THE CLASSROOM";
+            Notesfound = true;
+        }
+
+
+    }
+
 }

@@ -33,8 +33,8 @@ public class PlayerInteraction : MonoBehaviour
             }
 
         }
-        else
-            Debug.Log("HelloWorld");
+        //else
+        //    Debug.Log("HelloWorld");
             // Unknown.Samuele.InteractMessage.Instance.UpdateText(string.Empty);
     }
 }
