@@ -143,13 +143,13 @@ public class Level2 : MonoBehaviour
     
     private void Finishing()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3 && Notesfound) 
-        {
+        //if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3 && Notesfound) 
+        //{
 
-            SceneManager.LoadScene("RRSCENE");
+        //    SceneManager.LoadScene("RRSCENE");
 
 
-        }
+        //}
 
     }
 

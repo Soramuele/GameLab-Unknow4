@@ -33981,8 +33981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: a8b2cf5988de02146a1733eb675866c8, type: 3}
-    scenePath: Assets/Scenes/Level2and4Map.unity
+    sceneAsset: {fileID: 102900000, guid: 819ed195c5df780429925076f44a3eb3, type: 3}
+    scenePath: Assets/Scenes/Level2and4Map With props.unity
 --- !u!54 &1242242925
 Rigidbody:
   m_ObjectHideFlags: 0
