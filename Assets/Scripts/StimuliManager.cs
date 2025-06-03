@@ -14,7 +14,7 @@ namespace Unknown.Samuele
         [SerializeField] private float timeBeforeHeal = 2.75f;
         [SerializeField] private float amountOfHeal = 5.5f;
 
-        private float currentStimuli;
+        public float currentStimuli;
         private float timePassed;
 
         private SerializedDictionary<GameObject, float> damagePercentage = new SerializedDictionary<GameObject, float>();

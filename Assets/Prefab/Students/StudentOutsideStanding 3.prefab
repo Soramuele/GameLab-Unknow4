@@ -70,6 +70,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3354424411554348049}
+    - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3146697158415650694}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
 --- !u!1 &1200065270432287404 stripped
 GameObject:
@@ -103,6 +106,29 @@ MonoBehaviour:
   damage: 5
   NPCEyes: {fileID: 3124734394643457322}
   playerDistance: 10
+--- !u!136 &3146697158415650694
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200065270432287404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26272053
+  m_Height: 2.7833154
+  m_Direction: 1
+  m_Center: {x: -0.004835367, y: 0.8916577, z: -0.06857425}
 --- !u!4 &2358876185533404919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 306119076055766114, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}

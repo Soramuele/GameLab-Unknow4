@@ -10,7 +10,7 @@ public class AddStimuli : MonoBehaviour
 
     private Unknown.Samuele.StimuliManager stimuli;
     private GameObject player;
-
+    public PlayerController playerok;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +30,17 @@ public class AddStimuli : MonoBehaviour
             if (_dist <= minDistance){
                 stimuli.SubscribeDamagePercentage(gameObject, 50);
                 postProcessing.SetActive(true);
-            }else
+               
+
+            }
+            else
             {
                 var _range = maxDistance - minDistance;
                 var _pos = maxDistance - _dist;
                 var _damage = ((100 / _range) * _pos) / 2;
-
+                
                 stimuli.SubscribeDamagePercentage(gameObject, _damage);
+              
             }
         }
         else
@@ -44,5 +48,15 @@ public class AddStimuli : MonoBehaviour
             stimuli.UnsubscribeDamagePercentage(gameObject);
             postProcessing.SetActive(false);
         }
+
+       if(stimuli.currentStimuli <= 80)
+        {
+            playerok.playerSpeed = 0.5f;
+
+        }
+
+        else { playerok.playerSpeed = 2; }
+        
+        
     }
 }

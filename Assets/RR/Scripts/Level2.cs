@@ -40,8 +40,9 @@ public class Level2 : MonoBehaviour
     }
     private void HandleWeightTransition1()
     {
-     
-            if (transitionTime > 5 && currentWeight < 1f)
+        if(stimuli.currentStimuli >= 0)
+        {
+            if (transitionTime > 10 && currentWeight < 1f)
 
             {
                 if (something + 0.2f > 100)
@@ -67,6 +68,12 @@ public class Level2 : MonoBehaviour
                 }
 
             }
+
+
+
+
+        }
+            
 
    
       

@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1072169836537594944}
+    - targetCorrespondingSourceObject: {fileID: 3757297074613831737, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6166465483400419241}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdc7a964d384d3408482be6cfb630b8, type: 3}
 --- !u!1 &5456613491046988947 stripped
 GameObject:
@@ -82,3 +85,26 @@ MonoBehaviour:
   checkDistance: 1
   isAtDoor: 0
   agent: {fileID: 0}
+--- !u!136 &6166465483400419241
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456613491046988947}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35474038
+  m_Height: 2.7466342
+  m_Direction: 1
+  m_Center: {x: -0.069652855, y: 0.8733171, z: -0.07560682}
