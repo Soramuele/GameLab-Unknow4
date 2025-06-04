@@ -1,4 +1,5 @@
 using StateMachine;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -69,14 +70,17 @@ namespace Unknown.Samuele
         void OnEnable()
         {
             // Event for going to bother the player
-            PlayerInteract.OnStartMinigameEvent += GoBotherThePlayer;
+            PlayerInteract.OnStartMinigameEvent += () => StartCoroutine(GoBotherThePlayer());
             FloppyManager.Instance.OnCloseEvent += () => botherPlayer = false;
+
+
+
         }
 
         void OnDisable()
         {
             // Event for goint to bother the player
-            PlayerInteract.OnStartMinigameEvent -= GoBotherThePlayer;
+            PlayerInteract.OnStartMinigameEvent -= () => StartCoroutine(GoBotherThePlayer());
             FloppyManager.Instance.OnCloseEvent -= () => botherPlayer = false;
         }
 
@@ -90,12 +94,14 @@ namespace Unknown.Samuele
 
         public void SetDestination(Vector3 destination)
         {
+
             this.destination = destination;
         }
 
-        private void GoBotherThePlayer()
+        private IEnumerator GoBotherThePlayer()
         {
-            bool canGo = Random.value > 0.5f;
+            yield return new WaitForSeconds(15);
+            bool canGo = Random.value > 0f;
 
             if (canGo && canBotherAgain)
             {
