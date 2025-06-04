@@ -29,11 +29,15 @@ namespace Unknown.Samuele
         [SerializeField] private AudioSource sfxSource;
         [SerializeField] private SOAudio audios;
 
+        [Header("Stimuli")]
+        [SerializeField] private float stimuliDamage;
+
         private NavMeshAgent agent;
         private Animator anim;
 
         private bool dancing = false;
         private bool botherPlayer = false;
+        private bool canBotherAgain = true;
 
         // Getters
         public NavMeshAgent Agent => agent;
@@ -44,8 +48,10 @@ namespace Unknown.Samuele
         public AudioSource Source => source;
         public AudioSource SFXSource => sfxSource;
         public SOAudio Audios => audios;
+        public float StimuliDamage => stimuliDamage;
         public bool Dancing => dancing;
         public bool BotherPlayer => botherPlayer;
+        public bool CanBotherAgain { get => canBotherAgain; set => canBotherAgain = value; }
 
         void Awake()
         {
@@ -91,7 +97,7 @@ namespace Unknown.Samuele
         {
             bool canGo = Random.value > 0.5f;
 
-            if (canGo)
+            if (canGo && canBotherAgain)
             {
                 SetDestination(FindObjectOfType<PlayerMovement>().transform.position);
                 botherPlayer = true;

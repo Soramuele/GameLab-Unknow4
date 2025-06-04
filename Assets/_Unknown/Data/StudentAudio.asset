@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: StudentAudio
   m_EditorClassIdentifier: 
   musicClips:
-    _serializedList: []
+    _serializedList:
+    - Key: Bother
+      Value:
+      - {fileID: 8300000, guid: 2caddf0b9f0b5344a822f7ff579e3ad9, type: 3}
   sfxClips:
-    _serializedList: []
+    _serializedList:
+    - Key: Bother
+      Value:
+      - {fileID: 8300000, guid: f71cba52fda7f2b478a9bcb0c0f4b1bf, type: 3}
+      - {fileID: 8300000, guid: f71cba52fda7f2b478a9bcb0c0f4b1bf, type: 3}
