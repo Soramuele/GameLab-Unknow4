@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
 
 namespace Unknown.Samuele
 {
@@ -9,13 +10,15 @@ namespace Unknown.Samuele
     {
         public static AudioManager Instance { get; private set; }
 
-        [Header("Mixer & Groups")]
+        [Header("Mixer")]
         [SerializeField] private AudioMixer mixer;
-        [SerializeField] private AudioMixerGroup musicMixerGroup;
-        [SerializeField] private AudioMixerGroup soundFXMixerGroup;
+
+        [Header("Groups")]
+        [SerializeField] private AudioMixerGroup musicGroup;
+        [SerializeField] private AudioMixerGroup sfxGroup;
+        [SerializeField] private AudioMixerGroup uiGroup;
 
         private List<AudioSource> sfxPool = new List<AudioSource>();
-
         private GameObject sfxPoolParent;
 
         void Awake()
@@ -29,110 +32,84 @@ namespace Unknown.Samuele
             sfxPoolParent = new GameObject("SFX Pool Parent");
         }
 
-    #region Public functions
-    #region Music
-        public void PlayAudio(AudioClip clip, AudioSource source, float fadeDuration = 1)
+#region Public functions
+#region Music
+        public void PlayAudio(AudioClip clip, AudioSource source, float fadeDuration = .5f)
         {
-            source.outputAudioMixerGroup = musicMixerGroup;
+            source.outputAudioMixerGroup = musicGroup;
 
-            if (source.clip != null)
+            if (source.clip != null && source.isPlaying)
             {
                 // Fade out music, then start new one
-                StartCoroutine(FadeMusic(clip, source, fadeDuration));
+                FadeOut(source, fadeDuration, () => FadeIn(clip, source, fadeDuration));
             }
             else
             {
                 // Start new music
-                source.clip = clip;
-                source.Play();
+                FadeIn(clip, source, fadeDuration);
             }
         }
+#endregion Music
 
-        public void PlayAudio(AudioClip clip, GameObject customSource, float fadeDuration = 1)
-        {
-            // Find existing source in customSource or create new one as child
-            var source = GetOrCreateNewAudioSource(customSource, musicMixerGroup);
-
-            PlayAudio(clip, source, fadeDuration);
-        }
-
-        public void PlayAudio(AudioClip[] clip, AudioSource source, float fadeDuration = 1)
-        {
-            var myClip = GetRandomClip(clip);
-
-            PlayAudio(myClip, source, fadeDuration);
-        }
-
-        public void PlayAudio(AudioClip[] clip, GameObject customSource, float fadeDuration = 1)
-        {
-            // Find existing source in customSource or create new one ac child
-            var source = GetOrCreateNewAudioSource(customSource, musicMixerGroup);
-
-            var myClip = GetRandomClip(clip);
-
-            PlayAudio(myClip, source, fadeDuration);
-        }
-    #endregion Music
-
-    #region SoundFX
+#region SoundFX
         public void PlaySFX(AudioClip clip, Vector3 position)
         {
             // Check for available AudioSource in pool, if not create one
             // Play SFX clip at position
             // Deactivate after 
         }
-    #endregion SoundFX
-    #endregion Public functions
+#endregion SoundFX
 
-    #region Utilities
-        private AudioClip GetRandomClip(AudioClip[] clip) =>
-            clip[Random.Range(0, clip.Length - 1)];
+#region UI
+        public void PlayUISound(AudioClip clip)
+        {
+            // Play 2D audio for UI
+        }
+#endregion UI
+#endregion Public functions
 
+#region Utilities
         private AudioSource RandomizePitch(AudioSource source)
         {
             source.pitch = Random.Range(0.8f, 1.2f);
             return source;
         }
 
-        private AudioSource GetOrCreateNewAudioSource(GameObject customSource, AudioMixerGroup mixer)
+        private void FadeIn(AudioClip clip, AudioSource source, float fadeDuration)
         {
-            var source = customSource.GetComponent<AudioSource>();
-            
-            if (source == null)
-                source = customSource.GetComponentInChildren<AudioSource>();
-            if (source == null)
-                source = new GameObject("AudioSource").AddComponent<AudioSource>();
-            
-            source.outputAudioMixerGroup = mixer;
-            Instantiate(source, customSource.transform);
-            
-            return source;
-        }
-
-        private IEnumerator FadeMusic(AudioClip clip, AudioSource source, float fadeDuration)
-        {
-            float startVolume = source.volume;
-
-            // Fade out
-            for (float i = 0; i < fadeDuration; i += Time.deltaTime)
-            {
-                source.volume = Mathf.Lerp(startVolume, 0, i / fadeDuration);
-                yield return null;
-            }
+            DOTween.Kill(source);
+            mixer.GetFloat("MusicVolume", out var endVolume);
+            endVolume = Mathf.Pow(10, endVolume / 20);
 
             source.clip = clip;
+            source.volume = 0;
             source.Play();
 
-            // Fade in
-            for (float i = 0; i < fadeDuration; i += Time.deltaTime)
-            {
-                source.volume = Mathf.Lerp(0, startVolume, i / fadeDuration);
-                yield return null;
-            }
+            source.DOFade(endVolume, fadeDuration)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .SetId(source);
         }
-    #endregion Utilities
 
-    #region Settings
+        private void FadeOut(AudioSource source, float fadeDuration, TweenCallback onComplete = null)
+        {
+            DOTween.Kill(source);
+            var currentVolume = source.volume;
+
+            source.DOFade(0f, fadeDuration)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .OnComplete(() =>
+                {
+                    source.Stop();
+                    source.volume = currentVolume;
+                    onComplete?.Invoke();
+                })
+                .SetId(source);
+        }
+#endregion Utilities
+
+#region Settings
         public void SetMasterVolume(float level) =>
             mixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20);
         
@@ -142,7 +119,7 @@ namespace Unknown.Samuele
         public void SetSoundFXVolume(float level) =>
             mixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20);
 
-    #region Manager functions
+#region Manager functions
         public void Save()
         {
             mixer.GetFloat("MasterVolume", out float masterVolume);
@@ -164,7 +141,7 @@ namespace Unknown.Samuele
             mixer.SetFloat("MusicVolume", Mathf.Pow(10, musicVolume / 20));
             mixer.SetFloat("SoundFXVolume", Mathf.Pow(10, soundFXVolume / 20));
         }
-    #endregion Manager functions
-    #endregion Settings
+#endregion Manager functions
+#endregion Settings
     }
 }

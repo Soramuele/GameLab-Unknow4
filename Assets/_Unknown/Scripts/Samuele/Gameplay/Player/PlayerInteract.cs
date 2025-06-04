@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
@@ -19,10 +20,12 @@ namespace Unknown.Samuele
         private Ray ray;
         private Interactable interactable;
 
+        public static UnityAction OnStartMinigameEvent;
+
         protected override void Start()
         {
             base.Start();
-            
+
             cam = Camera.main;
         }
 
@@ -72,6 +75,8 @@ namespace Unknown.Samuele
                 return;
 
             interactable.Interact();
+
+            OnStartMinigameEvent?.Invoke();
         }
 
         private void ClearRaycast()

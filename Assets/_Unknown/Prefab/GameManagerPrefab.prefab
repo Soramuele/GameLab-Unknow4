@@ -3348,8 +3348,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
-  musicMixerGroup: {fileID: 2425808625476996439, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
-  soundFXMixerGroup: {fileID: 2692222941059642507, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  musicGroup: {fileID: 2425808625476996439, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  sfxGroup: {fileID: 2692222941059642507, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  ambienceGroup: {fileID: 8659971328387413014, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
+  uiGroup: {fileID: 3579021232478138004, guid: 73f69bf3b6d5a8b40a83458c946b912b, type: 2}
 --- !u!114 &3543109425569741579
 MonoBehaviour:
   m_ObjectHideFlags: 0
