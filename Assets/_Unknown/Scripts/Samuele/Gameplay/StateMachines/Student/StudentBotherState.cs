@@ -20,7 +20,9 @@ namespace Unknown.Samuele
         }
 
         public override void Update()
-        {   }
+        {
+            // Update stimuli bar according to time passed
+        }
 
         public override void Exit()
         {
