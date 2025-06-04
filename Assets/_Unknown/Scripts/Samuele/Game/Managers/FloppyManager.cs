@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
@@ -29,6 +30,8 @@ namespace Unknown.Samuele
         private bool isPlaying = false;
 
         private PipeSpawner pipeSpawner;
+
+        public UnityAction OnCloseEvent;
 
         void Awake()
         {
@@ -150,6 +153,8 @@ namespace Unknown.Samuele
 
             Debug.LogWarning("Go back!");
             StartCoroutine(WaitForBlend());
+
+            OnCloseEvent?.Invoke();
         }
         
         private IEnumerator WaitForBlend()

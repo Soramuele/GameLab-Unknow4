@@ -257,9 +257,9 @@ namespace Unknown.Samuele.Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""0c04ce27-a3db-4b79-9e28-bd61bf9a5af7"",
+                    ""id"": ""4268e3e7-cc89-482b-99d0-4d011132b8b9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -275,9 +275,9 @@ namespace Unknown.Samuele.Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""4268e3e7-cc89-482b-99d0-4d011132b8b9"",
+                    ""id"": ""0c04ce27-a3db-4b79-9e28-bd61bf9a5af7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -342,28 +342,6 @@ namespace Unknown.Samuele.Inputs
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f0322540-594e-4f41-9471-e737d7b12a55"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d46c119e-e4fd-44ef-a3f3-7586fe2e9df2"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""dd8f54be-f60d-4473-9098-2866d19fc51d"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -381,6 +359,28 @@ namespace Unknown.Samuele.Inputs
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0322540-594e-4f41-9471-e737d7b12a55"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d46c119e-e4fd-44ef-a3f3-7586fe2e9df2"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -466,9 +466,9 @@ namespace Unknown.Samuele.Inputs
             // Minigame
             m_Minigame = asset.FindActionMap("Minigame", throwIfNotFound: true);
             m_Minigame_Move = m_Minigame.FindAction("Move", throwIfNotFound: true);
-            m_Minigame_Pause = m_Minigame.FindAction("Pause", throwIfNotFound: true);
-            m_Minigame_Back = m_Minigame.FindAction("Back", throwIfNotFound: true);
             m_Minigame_Jump = m_Minigame.FindAction("Jump", throwIfNotFound: true);
+            m_Minigame_Back = m_Minigame.FindAction("Back", throwIfNotFound: true);
+            m_Minigame_Pause = m_Minigame.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
@@ -612,17 +612,17 @@ namespace Unknown.Samuele.Inputs
         private readonly InputActionMap m_Minigame;
         private List<IMinigameActions> m_MinigameActionsCallbackInterfaces = new List<IMinigameActions>();
         private readonly InputAction m_Minigame_Move;
-        private readonly InputAction m_Minigame_Pause;
-        private readonly InputAction m_Minigame_Back;
         private readonly InputAction m_Minigame_Jump;
+        private readonly InputAction m_Minigame_Back;
+        private readonly InputAction m_Minigame_Pause;
         public struct MinigameActions
         {
             private @GameInputs m_Wrapper;
             public MinigameActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Minigame_Move;
-            public InputAction @Pause => m_Wrapper.m_Minigame_Pause;
-            public InputAction @Back => m_Wrapper.m_Minigame_Back;
             public InputAction @Jump => m_Wrapper.m_Minigame_Jump;
+            public InputAction @Back => m_Wrapper.m_Minigame_Back;
+            public InputAction @Pause => m_Wrapper.m_Minigame_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Minigame; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -635,15 +635,15 @@ namespace Unknown.Samuele.Inputs
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
-                @Back.started += instance.OnBack;
-                @Back.performed += instance.OnBack;
-                @Back.canceled += instance.OnBack;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IMinigameActions instance)
@@ -651,15 +651,15 @@ namespace Unknown.Samuele.Inputs
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
-                @Pause.started -= instance.OnPause;
-                @Pause.performed -= instance.OnPause;
-                @Pause.canceled -= instance.OnPause;
-                @Back.started -= instance.OnBack;
-                @Back.performed -= instance.OnBack;
-                @Back.canceled -= instance.OnBack;
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Back.started -= instance.OnBack;
+                @Back.performed -= instance.OnBack;
+                @Back.canceled -= instance.OnBack;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IMinigameActions instance)
@@ -752,9 +752,9 @@ namespace Unknown.Samuele.Inputs
         public interface IMinigameActions
         {
             void OnMove(InputAction.CallbackContext context);
-            void OnPause(InputAction.CallbackContext context);
-            void OnBack(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnBack(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
