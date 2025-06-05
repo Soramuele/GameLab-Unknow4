@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: -678588488315902003, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74664baee618023409acf4dfb2dd049a, type: 2}
+      objectReference: {fileID: 2100000, guid: 37bfd7b491ab89a45b63ad8c803f9530, type: 2}
     - target: {fileID: 919132149155446097, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Name
       value: HanzeChair (31)
@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: -678588488315902003, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74664baee618023409acf4dfb2dd049a, type: 2}
+      objectReference: {fileID: 2100000, guid: 37bfd7b491ab89a45b63ad8c803f9530, type: 2}
     - target: {fileID: 919132149155446097, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Name
       value: HanzeChair (2)
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: -678588488315902003, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74664baee618023409acf4dfb2dd049a, type: 2}
+      objectReference: {fileID: 2100000, guid: 37bfd7b491ab89a45b63ad8c803f9530, type: 2}
     - target: {fileID: 919132149155446097, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Name
       value: HanzeChair (3)
@@ -514,7 +514,7 @@ PrefabInstance:
     - target: {fileID: -678588488315902003, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74664baee618023409acf4dfb2dd049a, type: 2}
+      objectReference: {fileID: 2100000, guid: 37bfd7b491ab89a45b63ad8c803f9530, type: 2}
     - target: {fileID: 919132149155446097, guid: ee08ecdfe9b1e7049b4fc41722bd5f3d, type: 3}
       propertyPath: m_Name
       value: HanzeChair (38)

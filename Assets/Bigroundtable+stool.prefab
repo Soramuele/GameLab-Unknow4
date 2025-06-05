@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (176)
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (177)
@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (174)
@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (175)

@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 331920540954536494}
+  - {fileID: 3768726737352151420}
   - {fileID: 6281967906137984664}
   - {fileID: 657326584811643631}
   - {fileID: 6482909258241063684}
@@ -89,7 +89,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (143)
@@ -138,97 +138,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1001 &221114555646692805
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3372190411183390492}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.98
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.544
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -117.67
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      propertyPath: m_Name
-      value: MetalTable 3 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8051641894815427984}
-  m_SourcePrefab: {fileID: 100100000, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
---- !u!4 &331920540954536494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-  m_PrefabInstance: {fileID: 221114555646692805}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1139665060867633300 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bb7859679d7ed7a4faba73e0244fb0fc, type: 3}
-  m_PrefabInstance: {fileID: 221114555646692805}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &8051641894815427984
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1139665060867633300}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.4338715, y: 1.0546496, z: 0.793281}
-  m_Center: {x: 0, y: 0, z: -0.4158472}
 --- !u!1001 &546796054023905998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +189,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (141)
@@ -380,7 +289,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (13)
@@ -480,7 +389,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (142)
@@ -529,6 +438,97 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
   m_PrefabInstance: {fileID: 2002951566209187891}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3731105286909933207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3372190411183390492}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.544
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -117.67
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      propertyPath: m_Name
+      value: MetalTable 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6063197017249579089}
+  m_SourcePrefab: {fileID: 100100000, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+--- !u!4 &3768726737352151420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+  m_PrefabInstance: {fileID: 3731105286909933207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4541569803727670214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c77916fe663e1c24d99414b50a9dfee2, type: 3}
+  m_PrefabInstance: {fileID: 3731105286909933207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6063197017249579089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541569803727670214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4338715, y: 1.0546496, z: 0.793281}
+  m_Center: {x: 0, y: 0, z: -0.4158472}
 --- !u!1001 &5810965112982284659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (14)
@@ -680,7 +680,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2ff51e6c2f2c6645b6d24ef47e5fcda, type: 2}
+      objectReference: {fileID: 2100000, guid: 16602b3d232c39c4aa9afde453765318, type: 2}
     - target: {fileID: 919132149155446097, guid: e96381672e0b06541ae5fe10d901677d, type: 3}
       propertyPath: m_Name
       value: WhiteStool (12)

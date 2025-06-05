@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TT_color_00
-    second: {fileID: 2100000, guid: 6dc4aae918fc0944ca1e34602f5eaabe, type: 2}
+    second: {fileID: 2100000, guid: e94ecfd9a44a1f14aa1a875afe33cf3a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TT_color_03
-    second: {fileID: 2100000, guid: 2c783429cdd6af9439a860f4a23b3176, type: 2}
+    second: {fileID: 2100000, guid: db5a8bee6db2b6d49ac21fc711d387e0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
