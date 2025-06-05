@@ -70055,6 +70055,7 @@ GameObject:
   - component: {fileID: 6038527295113498870}
   - component: {fileID: 4433088789809429800}
   - component: {fileID: 8855157810273664666}
+  - component: {fileID: 8855157810273664667}
   m_Layer: 0
   m_Name: OuterCylinder
   m_TagString: Untagged
@@ -70084,6 +70085,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6433152334162730394, guid: 81c993524d3650c4fa38716dbbbda6a6, type: 3}
+--- !u!114 &8855157810273664667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855157810273664665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!33 &8884613171736756061
 MeshFilter:
   m_ObjectHideFlags: 0

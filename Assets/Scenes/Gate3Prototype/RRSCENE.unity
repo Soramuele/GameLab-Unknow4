@@ -10831,7 +10831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press "Space" to leave
+  m_text: Press "G to leave
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17178,6 +17178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7941231781202564420}
   - component: {fileID: 8197028025193993325}
+  - component: {fileID: 8197028025193993326}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -17991,6 +17992,7 @@ GameObject:
   - component: {fileID: 588373632893237756}
   - component: {fileID: 5405728820879835298}
   - component: {fileID: 5405728820879835299}
+  - component: {fileID: 5405728820879835300}
   m_Layer: 10
   m_Name: WindowFrame
   m_TagString: interaction
@@ -29108,6 +29110,24 @@ MonoBehaviour:
   windowanimator: {fileID: 5857086266469634973}
   player: {fileID: 1497929634}
   timer: {fileID: 6833641928279801533}
+--- !u!114 &5405728820879835300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562401832156358251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5427850816487347120
 GameObject:
   m_ObjectHideFlags: 0
@@ -37345,6 +37365,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.007457635, y: 0.0007746842, z: -0.013189054}
     m_Extent: {x: 0.0009852503, y: 0.00025103352, z: 0.00018398557}
   m_DirtyAABB: 0
+--- !u!114 &8197028025193993326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226999209250910202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 20
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!23 &8210196836532002618
 MeshRenderer:
   m_ObjectHideFlags: 0

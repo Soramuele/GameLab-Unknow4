@@ -128,7 +128,7 @@ public class StudentScript : MonoBehaviour
 
     public void StandUP()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !characterController.enabled)
+        if (Input.GetKeyDown(KeyCode.G) && !characterController.enabled)
         {
            
             transform.position = standuppos.transform.position;
