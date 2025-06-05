@@ -16,7 +16,11 @@ MonoBehaviour:
     _serializedList:
     - Key: Bother
       Value:
-      - {fileID: 8300000, guid: 2caddf0b9f0b5344a822f7ff579e3ad9, type: 3}
+      - {fileID: 8300000, guid: d69c0dabca4e03e4287d6b222d882213, type: 3}
+      - {fileID: 8300000, guid: d69c0dabca4e03e4287d6b222d882213, type: 3}
+      - {fileID: 8300000, guid: d69c0dabca4e03e4287d6b222d882213, type: 3}
+      - {fileID: 8300000, guid: d69c0dabca4e03e4287d6b222d882213, type: 3}
+      - {fileID: 8300000, guid: d69c0dabca4e03e4287d6b222d882213, type: 3}
   sfxClips:
     _serializedList:
     - Key: Bother

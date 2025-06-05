@@ -365,7 +365,7 @@ namespace Unknown.Samuele.Inputs
                 {
                     ""name"": """",
                     ""id"": ""f0322540-594e-4f41-9471-e737d7b12a55"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""path"": ""<Keyboard>/g"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",

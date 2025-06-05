@@ -25,9 +25,9 @@ namespace Unknown.Samuele
         [SerializeField] private GameObject gameOver;
         private TMP_Text recordText;
 
-        private int score = 0;
-        private int record = 0;
-        private bool isPlaying = false;
+        public int score = 0;
+        public int record = 0;
+        public bool isPlaying = false;
 
         private PipeSpawner pipeSpawner;
 
@@ -52,6 +52,7 @@ namespace Unknown.Samuele
             playerStartingPosition = player.transform.position;
         }
 
+   
         void OnEnable()
         {
             GameManager.Instance.OnChangeDeviceEvent += ChangeDeviceForPlay;
@@ -172,5 +173,9 @@ namespace Unknown.Samuele
 
             gameManager.ChangeInputMap(GameManager.InputMap.Gameplay);
         }
+
+
+  
+        
     }
 }

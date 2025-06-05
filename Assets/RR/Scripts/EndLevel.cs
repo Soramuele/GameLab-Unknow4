@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class EndLevel : MonoBehaviour
     {
         if (other.CompareTag("NextLevel") && dooranimation.enabled)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            SceneManager.LoadScene("Levele4");
             ///change the scene
         }
     }

@@ -100,7 +100,7 @@ namespace Unknown.Samuele
 
         private IEnumerator GoBotherThePlayer()
         {
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(10);
             bool canGo = Random.value > 0f;
 
             if (canGo && canBotherAgain)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using StateMachine;
 using DG.Tweening;
+using static System.TimeZoneInfo;
 
 namespace Unknown.Samuele
 {
@@ -15,14 +16,15 @@ namespace Unknown.Samuele
         private float timer;
         private float damage;
         private float stimuliDamage;
-
+        private float somethingnew = 0;
+        public GameObject player;
         public override void Enter()
         {
             stimuli = StimuliManager.Instance;
             timer = 0f;
             damage = 0f;
             stimuliDamage = Student.StimuliDamage;
-
+            player = GameObject.FindObjectOfType<PlayerMovement>().gameObject;
             var clipIndex = Random.Range(0, Student.Audios.musicClips["Bother"].Count);
             var randomClip = Student.Audios.musicClips["Bother"][clipIndex];
             AudioManager.Instance.PlayAudio(randomClip, Student.Source);
@@ -33,16 +35,9 @@ namespace Unknown.Samuele
         public override void Update()
         {
             // Update stimuli bar according to time passed
-            if (timer > 5f)
-            {
-                stimuli.SubscribeDamagePercentage(Student.gameObject, damage);
-                damage += Time.deltaTime;
-
-                if (damage > stimuliDamage)
-                    damage = stimuliDamage;
-            }
-
-            timer += Time.deltaTime;
+         
+           
+            
         }
 
         public override void Exit()
@@ -63,7 +58,14 @@ namespace Unknown.Samuele
         {
             DOTween.To(() => damage, x => damage = x, 0f, 2.5f)
                 .SetUpdate(true)
+                //.OnUpdate(() => Dicrese())
                 .OnComplete(() => Student.CanBotherAgain = true);
+
+
+
+
         }
+
+       
     }
 }

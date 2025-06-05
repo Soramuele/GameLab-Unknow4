@@ -8,8 +8,8 @@ public class PlayGame : MonoBehaviour
 
     public void PlayDaGame()
     {
-        SceneManager.LoadScene(essentialScene, LoadSceneMode.Single);
-        SceneManager.LoadScene(NextScene, LoadSceneMode.Additive);
+        
+        SceneManager.LoadScene(NextScene, LoadSceneMode.Single);
 
         Debug.Log("I love Onions!");
     }
