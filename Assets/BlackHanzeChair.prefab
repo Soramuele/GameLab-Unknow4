@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 64039825496654726, guid: f7348c38a32a8ae4e94c43d961407610, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e5628a8f40910984cbc46c3992b02f40, type: 2}
+      objectReference: {fileID: 2100000, guid: 7ac421e4e173d7747b89a41361734122, type: 2}
     - target: {fileID: 919132149155446097, guid: f7348c38a32a8ae4e94c43d961407610, type: 3}
       propertyPath: m_Name
       value: BlackHanzeChair

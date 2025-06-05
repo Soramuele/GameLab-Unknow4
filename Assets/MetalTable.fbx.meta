@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TT_color_01
-    second: {fileID: 2100000, guid: 6db0cb9b728b4714a8314d98ac3e6e46, type: 2}
+    second: {fileID: 2100000, guid: 9025d1554c3bbd040b3f94c2f0e7961a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
