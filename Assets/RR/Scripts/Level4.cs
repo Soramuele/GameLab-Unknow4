@@ -127,7 +127,7 @@ public class Level4 : MonoBehaviour
     private void Finishingeeg()
     {
 
-            if (playing.record >= 50)
+            if (playing.record >= 25)
             {
             globalhint.text = "Leave the area";
                 finishwall1.SetActive(true);
