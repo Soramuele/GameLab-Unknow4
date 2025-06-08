@@ -50,7 +50,7 @@ public class Level2 : MonoBehaviour
     {
         if(stimuli.currentStimuli >= 0)
         {
-            if (transitionTime > 40 && currentWeight < 1f)
+            if (transitionTime > 30 && currentWeight < 1f)
 
             {
                 if (something + 0.2f > 100)

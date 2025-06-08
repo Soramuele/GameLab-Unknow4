@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Unknown.Samuele;
 using static System.TimeZoneInfo;
 
@@ -20,6 +21,8 @@ public class Level4 : MonoBehaviour
     public GameObject student;
     public GameObject finishwall1;
     public GameObject finishwall2;
+    public GameObject finishdoor;
+    public GameObject finishdoor2;
     public FloppyManager playing;
     // Start is called before the first frame update
     void Start()
@@ -49,7 +52,12 @@ public class Level4 : MonoBehaviour
             textik.enabled = false;
         }
 
+        if(playing.isPlaying)
+        {
 
+            globalhint.text = "get 35 points";
+
+        }
 
         Stimuli();
         Finishingeeg();
@@ -127,17 +135,32 @@ public class Level4 : MonoBehaviour
     private void Finishingeeg()
     {
 
-            if (playing.record >= 25)
+            if (playing.record >= 30)
             {
-            globalhint.text = "Leave the area";
-                finishwall1.SetActive(true);
-                finishwall2.SetActive(true);
-
+            globalhint.text = "Leave the building";
+               
+             finishdoor.SetActive(true);
+             finishdoor2.SetActive(true);
 
             }
 
+            if(Vector3.Distance(this.transform.position, finishdoor.transform.position) < 3 && Input.GetKeyDown(KeyCode.E))
+                {
 
-        
+
+            SceneManager.LoadScene("TitleScreen");
+
+                }
+
+
+        if (Vector3.Distance(this.transform.position, finishdoor2.transform.position) < 3 && Input.GetKeyDown(KeyCode.E))
+        {
+
+
+            SceneManager.LoadScene("TitleScreen");
+
+        }
+
 
 
 
@@ -148,9 +171,23 @@ public class Level4 : MonoBehaviour
     {
         if(other.gameObject.CompareTag("NextLevel"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            globalhint.text = "OPEN LAPTOP";
+            finishwall1.SetActive(false);
+            finishwall2.SetActive(false);
 
+        }
+
+
+
+        if (other.gameObject.tag == "End")
+        {
+
+            SceneManager.LoadScene("TitleScreen");
 
         }
     }
+
+
+
+  
 }
