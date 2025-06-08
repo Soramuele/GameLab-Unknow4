@@ -14,6 +14,7 @@ TagManager:
   - Obstacle
   - Scoring
   - notes
+  - End
   layers:
   - Default
   - TransparentFX
