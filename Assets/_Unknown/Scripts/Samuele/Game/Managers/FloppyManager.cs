@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
@@ -24,11 +25,13 @@ namespace Unknown.Samuele
         [SerializeField] private GameObject gameOver;
         private TMP_Text recordText;
 
-        private int score = 0;
-        private int record = 0;
-        private bool isPlaying = false;
+        public int score = 0;
+        public int record = 0;
+        public bool isPlaying = false;
 
         private PipeSpawner pipeSpawner;
+
+        public UnityAction OnCloseEvent;
 
         void Awake()
         {
@@ -49,6 +52,7 @@ namespace Unknown.Samuele
             playerStartingPosition = player.transform.position;
         }
 
+   
         void OnEnable()
         {
             GameManager.Instance.OnChangeDeviceEvent += ChangeDeviceForPlay;
@@ -150,6 +154,8 @@ namespace Unknown.Samuele
 
             Debug.LogWarning("Go back!");
             StartCoroutine(WaitForBlend());
+
+            OnCloseEvent?.Invoke();
         }
         
         private IEnumerator WaitForBlend()
@@ -167,5 +173,9 @@ namespace Unknown.Samuele
 
             gameManager.ChangeInputMap(GameManager.InputMap.Gameplay);
         }
+
+
+  
+        
     }
 }

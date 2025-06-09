@@ -88,7 +88,7 @@ namespace Unknown.Samuele.Inputs
 
         public void OnInteract(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed)
+            if (ctx.started)
             {
                 OnInteractEvent?.Invoke();
 

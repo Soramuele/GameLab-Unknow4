@@ -233,9 +233,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "0c04ce27-a3db-4b79-9e28-bd61bf9a5af7",
+                    "id": "4268e3e7-cc89-482b-99d0-4d011132b8b9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,9 +251,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "4268e3e7-cc89-482b-99d0-4d011132b8b9",
+                    "id": "0c04ce27-a3db-4b79-9e28-bd61bf9a5af7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -318,28 +318,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f0322540-594e-4f41-9471-e737d7b12a55",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Back",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d46c119e-e4fd-44ef-a3f3-7586fe2e9df2",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Back",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dd8f54be-f60d-4473-9098-2866d19fc51d",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -357,6 +335,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0322540-594e-4f41-9471-e737d7b12a55",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d46c119e-e4fd-44ef-a3f3-7586fe2e9df2",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

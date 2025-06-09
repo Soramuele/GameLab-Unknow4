@@ -50,7 +50,7 @@ public class Level2 : MonoBehaviour
     {
         if(stimuli.currentStimuli >= 0)
         {
-            if (transitionTime > 10 && currentWeight < 1f)
+            if (transitionTime > 30 && currentWeight < 1f)
 
             {
                 if (something + 0.2f > 100)
@@ -143,14 +143,20 @@ public class Level2 : MonoBehaviour
     
     private void Finishing()
     {
-        //if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3 && Notesfound) 
-        //{
-
-        //    SceneManager.LoadScene("RRSCENE");
 
 
-        //}
+        if (Notesfound)
+        {
+            Door.SetActive(true);
 
+            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, Door.transform.position) < 3)
+            {
+
+                SceneManager.LoadScene("RRSCENE");
+
+
+            }
+        }
     }
 
 
