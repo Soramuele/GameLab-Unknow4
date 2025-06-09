@@ -37,8 +37,8 @@ public class StudentScript : MonoBehaviour
     {
         temperature.weight = currentWeight;
 
-        SitOnChair();
-        StandUP();
+        // SitOnChair();
+        // StandUP();
 
         
         if(hint.enabled)
@@ -46,11 +46,11 @@ public class StudentScript : MonoBehaviour
             
         }
         
-        if (!panel.activeSelf || !gameManager.Paused)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        // if (!panel.activeSelf || !gameManager.Paused)
+        // {
+        //     Cursor.visible = false;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        // }
 
         HandleWeightTransition();
     }
@@ -111,49 +111,49 @@ public class StudentScript : MonoBehaviour
 
     }
 
-    public void SitOnChair()
-    {
+    // public void SitOnChair()
+    // {
         
-        if (Vector3.Distance(transform.position, chairtosit.transform.position) < 2f && Input.GetKeyDown(KeyCode.E)) 
-        {
-            characterController.enabled = false;
-            Transform sitTransform = chairtosit.transform.GetChild(0);
-            transform.position = sitTransform.position;
-            transform.rotation = sitTransform.rotation;
-            transform.SetParent(chairtosit.transform, true);
-            GetComponent<PlayerController>().enabled = false;
-            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = false;
+    //     if (Vector3.Distance(transform.position, chairtosit.transform.position) < 2f && Input.GetKeyDown(KeyCode.E)) 
+    //     {
+    //         characterController.enabled = false;
+    //         Transform sitTransform = chairtosit.transform.GetChild(0);
+    //         transform.position = sitTransform.position;
+    //         transform.rotation = sitTransform.rotation;
+    //         transform.SetParent(chairtosit.transform, true);
+    //         GetComponent<PlayerController>().enabled = false;
+    //         virtualCamera.GetComponent<CinemachineInputProvider>().enabled = false;
 
-            if (!isPanelActive)
-            {
-                panel.SetActive(true);  
-                isPanelActive = true;    
-            }
+    //         if (!isPanelActive)
+    //         {
+    //             panel.SetActive(true);  
+    //             isPanelActive = true;    
+    //         }
 
-        }
-    }
+    //     }
+    // }
 
-    public void StandUP()
-    {
-        if (Input.GetKeyDown(KeyCode.G) && !characterController.enabled)
-        {
+    // public void StandUP()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.G) && !characterController.enabled)
+    //     {
            
-            transform.position = standuppos.transform.position;
-            transform.rotation = standuppos.transform.rotation;
+    //         transform.position = standuppos.transform.position;
+    //         transform.rotation = standuppos.transform.rotation;
 
-            virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
-            characterController.enabled = true;
-            GetComponent<PlayerController>().enabled = true;
-            transform.SetParent(null);
-            if (isPanelActive)
-            {
-                panel.SetActive(false); 
-                isPanelActive = false;  
-            }
-        }
-
-
+    //         virtualCamera.GetComponent<CinemachineInputProvider>().enabled = true;
+    //         characterController.enabled = true;
+    //         GetComponent<PlayerController>().enabled = true;
+    //         transform.SetParent(null);
+    //         if (isPanelActive)
+    //         {
+    //             panel.SetActive(false); 
+    //             isPanelActive = false;  
+    //         }
+    //     }
 
 
-    }
+
+
+    // }
 }
