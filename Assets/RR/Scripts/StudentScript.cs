@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using Unknown.Samuele;
 
 public class StudentScript : MonoBehaviour
@@ -22,7 +23,7 @@ public class StudentScript : MonoBehaviour
     public TextMeshProUGUI hint;
     private Unknown.Samuele.StimuliManager stimuli;
     private float something = 0;
-    
+    public Image fire;
     private bool isPanelActive = false;
 
     void Start()
@@ -75,6 +76,9 @@ public class StudentScript : MonoBehaviour
         else if (window.windowanimator.GetBool("WindowOn") )
         {
             hint.enabled = false;
+            fire.enabled = false;
+
+
             if (something - 0.02f < 0)
                 something = 0;
             else
@@ -95,6 +99,7 @@ public class StudentScript : MonoBehaviour
         {
 
             hint.enabled = true;
+            fire.enabled = true;
 
         }
 
