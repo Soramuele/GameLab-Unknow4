@@ -112,12 +112,27 @@ namespace Unknown.Samuele
 #region Settings
         public void SetMasterVolume(float level) =>
             mixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20);
+        public float GetMasterVolume()
+        {
+            mixer.GetFloat("MasterVolume", out float masterVolume);
+            return Mathf.Pow(10, masterVolume / 20);
+        }
         
         public void SetMusicVolume(float level) =>
             mixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
+        public float GetMusicVolume()
+        {
+            mixer.GetFloat("MusicVolume", out float masterVolume);
+            return Mathf.Pow(10, masterVolume / 20);
+        }
         
         public void SetSoundFXVolume(float level) =>
             mixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20);
+        public float GetSoundFXVolume()
+        {
+            mixer.GetFloat("SoundFXVolume", out float masterVolume);
+            return Mathf.Pow(10, masterVolume / 20);
+        }
 
 #region Manager functions
         public void Save()
@@ -137,9 +152,9 @@ namespace Unknown.Samuele
             var musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0);
             var soundFXVolume = PlayerPrefs.GetFloat("SoundFXVolume", 0);
 
-            mixer.SetFloat("MasterVolume", Mathf.Pow(10, masterVolume / 20));
-            mixer.SetFloat("MusicVolume", Mathf.Pow(10, musicVolume / 20));
-            mixer.SetFloat("SoundFXVolume", Mathf.Pow(10, soundFXVolume / 20));
+            mixer.SetFloat("MasterVolume", masterVolume);
+            mixer.SetFloat("MusicVolume", musicVolume);
+            mixer.SetFloat("SoundFXVolume", soundFXVolume);
         }
 #endregion Manager functions
 #endregion Settings
