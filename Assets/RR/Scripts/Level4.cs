@@ -34,8 +34,8 @@ public class Level4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
         transitionTime += Time.deltaTime;
         temperature333.weight = currentWeight;
 

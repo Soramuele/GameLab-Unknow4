@@ -40,8 +40,8 @@ public class MiniGameScript : MonoBehaviour
     {
        
 
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.Confined;
+        // Cursor.visible = true;
         
         if (!allowCursorMovement) return;
 

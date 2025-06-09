@@ -27,6 +27,7 @@ namespace Unknown.Samuele
         }
 
         private bool paused = false;
+        public bool Paused => paused;
 
 #region Events
         public UnityAction<CurrentDevice> OnChangeDeviceEvent;
@@ -99,12 +100,24 @@ namespace Unknown.Samuele
         {
             paused = true;
             OnPauseEvent?.Invoke();
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         private void ResumeGame()
         {
             paused = false;
             OnResumeEvent?.Invoke();
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        public void ResumeGameFromSettings()
+        {
+            inputHandler.SetPreviousInputMap();
+            ResumeGame();
         }
 
         public void ChangeScene(SceneReference scene, LoadSceneMode mode)

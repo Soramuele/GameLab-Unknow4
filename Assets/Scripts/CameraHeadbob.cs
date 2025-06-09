@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class CameraHeadBob : MonoBehaviour
 {
     public CinemachineVirtualCamera virtualCamera;
-    private InputManager inputManager;
+    public Unknown.Samuele.Inputs.InputHandler inputManager;
 
     public float movingFrequency = 4f; // Frequency when moving
     public float movingAmplitude = 0.1f; // Amplitude when moving
@@ -19,22 +19,32 @@ public class CameraHeadBob : MonoBehaviour
     private float currentFrequency;
     private float currentAmplitude;
 
+    private Vector2 movement;
+
     void Start()
     {
         if (virtualCamera == null)
             virtualCamera = GetComponent<CinemachineVirtualCamera>();
 
         noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        inputManager = InputManager.Instance;
 
         // Start with idle values
         currentFrequency = idleFrequency;
         currentAmplitude = idleAmplitude;
     }
 
+    void OnEnable()
+    {
+        inputManager.OnMovementEvent += ctx => movement = ctx;
+    }
+    
+    void OnDisable()
+    {
+        inputManager.OnMovementEvent -= ctx => movement = ctx;
+    }
+
     void Update()
     {
-        Vector2 movement = inputManager.GetPlayerMovement();
         bool isMoving = movement.magnitude > 0f;
 
         // Target values based on movement

@@ -25,10 +25,12 @@ public class StudentScript : MonoBehaviour
     private float something = 0;
     public Image fire;
     private bool isPanelActive = false;
+    private GameManager gameManager;
 
     void Start()
     {
         stimuli = Unknown.Samuele.StimuliManager.Instance;
+        gameManager = GameManager.Instance;
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class StudentScript : MonoBehaviour
             
         }
         
-        if (!panel.activeSelf)
+        if (!panel.activeSelf || !gameManager.Paused)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

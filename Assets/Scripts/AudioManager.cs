@@ -107,11 +107,12 @@ namespace Unknown.Samuele
                 })
                 .SetId(source);
         }
-#endregion Utilities
+        #endregion Utilities
 
-#region Settings
+        #region Settings
         public void SetMasterVolume(float level) =>
             mixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20);
+
         public float GetMasterVolume()
         {
             mixer.GetFloat("MasterVolume", out float masterVolume);
@@ -120,6 +121,7 @@ namespace Unknown.Samuele
         
         public void SetMusicVolume(float level) =>
             mixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
+
         public float GetMusicVolume()
         {
             mixer.GetFloat("MusicVolume", out float masterVolume);
@@ -128,6 +130,7 @@ namespace Unknown.Samuele
         
         public void SetSoundFXVolume(float level) =>
             mixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20);
+
         public float GetSoundFXVolume()
         {
             mixer.GetFloat("SoundFXVolume", out float masterVolume);

@@ -167,7 +167,7 @@ namespace Unknown.Samuele.Inputs
                 {
                     ""name"": """",
                     ""id"": ""776ff97c-2659-4ac2-89e0-70d476ace2b1"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",

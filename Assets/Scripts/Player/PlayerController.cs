@@ -1,29 +1,45 @@
 using UnityEngine;
+using Unknown.Samuele;
+using Unknown.Samuele.Inputs;
 
 [RequireComponent (typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Pausable
 {
-    [SerializeField]
     public float playerSpeed = 2.0f;
     [SerializeField, Range(1f, 5f)] private float sprintMultiplier = 2;
     [SerializeField]
     private float jumpHeight = 0f;
     [SerializeField]
     private float gravityValue = -9.81f;
-
+    [SerializeField] private InputHandler inputs;
    
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private InputManager inputManager;
     private Transform cameraTransform;
+
+    private Vector2 movement = new Vector2();
+    private float sprint = 1f;
     
         
-    private void Start()
+    protected override void Start()
     {
         controller = GetComponent<CharacterController>();
-        inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
+    }
+
+    void OnEnable()
+    {
+        inputs.OnMovementEvent += ctx => movement = ctx;
+        inputs.OnSprintEvent += () => sprint = 3f;
+        inputs.OnSprintCancelledEvent += () => sprint = 1f;
+    }
+
+    void OnDisable()
+    {
+        inputs.OnMovementEvent -= ctx => movement = ctx;
+        inputs.OnSprintEvent -= () => sprint = 3f;
+        inputs.OnSprintCancelledEvent -= () => sprint = 1f;
     }
 
     void Update()
@@ -34,26 +50,13 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
 
-        float sprint = inputManager.GetPlayerSprint();
-        if (sprint != 0)
-            move *= sprintMultiplier;
+        move *= sprint;
 
         move.y = 0f;
-        controller.Move(move * Time.deltaTime * playerSpeed);
-       /* if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        } */
-
-        // Makes the player jump
-        if (inputManager.PlayerJump().triggered && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
-        }
+        controller.Move(playerSpeed * Time.deltaTime * move);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);

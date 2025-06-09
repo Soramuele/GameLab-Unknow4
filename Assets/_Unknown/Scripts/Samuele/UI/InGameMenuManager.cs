@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,31 +12,36 @@ namespace Unknown.Samuele
         [SerializeField] private Button resumeButton;
         [SerializeField] private Button quitButton;
 
-        [Header("Sliders")]
-        [SerializeField] private Slider masterVolumeSlider;
-        [SerializeField] private Slider musicVolumeSlider;
-        [SerializeField] private Slider sfxVolumeSlider;
+        // [Header("Sliders")]
+        // [SerializeField] private Slider masterVolumeSlider;
+        // [SerializeField] private Slider musicVolumeSlider;
+        // [SerializeField] private Slider sfxVolumeSlider;
 
         private GameManager gameManager;
         private AudioManager audioManager;
 
+        void Awake()
+        {
+            gameManager = GameManager.Instance;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            gameManager = GameManager.Instance;
             audioManager = AudioManager.Instance;
 
             // Setup sliders
-            InitiateSliders();
+            // InitiateSliders();
 
             // Add listeners to UI elements
             resumeButton.onClick.AddListener(ButtonResumeGame);
             quitButton.onClick.AddListener(QuitGame);
-            masterVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetMasterVolume(ctx));
-            musicVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetMusicVolume(ctx));
-            sfxVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetSoundFXVolume(ctx));
+            
+            // masterVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetMasterVolume(ctx));
+            // musicVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetMusicVolume(ctx));
+            // sfxVolumeSlider.onValueChanged.AddListener(ctx => audioManager.SetSoundFXVolume(ctx));
 
-            ResumeGame();
+            menu.SetActive(false);
         }
 
         void OnEnable()
@@ -52,15 +56,31 @@ namespace Unknown.Samuele
             gameManager.OnResumeEvent -= ResumeGame;
         }
 
-        private void InitiateSliders()
+        public void ChangeMasterVolume(float value)
         {
-            masterVolumeSlider.value = audioManager.GetMasterVolume();
-            musicVolumeSlider.value = audioManager.GetMusicVolume();
-            sfxVolumeSlider.value = audioManager.GetSoundFXVolume();
+            audioManager.SetMasterVolume(value);
         }
+
+        public void ChangeMusicVolume(float value)
+        {
+            audioManager.SetMusicVolume(value);
+        }
+
+        public void ChangeSoundFXVolume(float value)
+        {
+            audioManager.SetSoundFXVolume(value);
+        }
+
+        // private void InitiateSliders()
+        // {
+        //     masterVolumeSlider.value = audioManager.GetMasterVolume();
+        //     musicVolumeSlider.value = audioManager.GetMusicVolume();
+        //     sfxVolumeSlider.value = audioManager.GetSoundFXVolume();
+        // }
 
         private void PauseGame()
         {
+            Debug.Log("Dio cane");
             menu.SetActive(true);
         }
 
@@ -71,7 +91,7 @@ namespace Unknown.Samuele
 
         private void ButtonResumeGame()
         {
-            gameManager.OnResumeEvent?.Invoke();
+            GameManager.Instance.ResumeGameFromSettings();
         }
 
         private void QuitGame()

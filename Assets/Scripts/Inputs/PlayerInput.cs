@@ -198,7 +198,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""d756e775-3bb5-4d68-9a4a-deeaa7dee627"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.5,y=0.5)"",
                     ""groups"": ""Keyboard_Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,

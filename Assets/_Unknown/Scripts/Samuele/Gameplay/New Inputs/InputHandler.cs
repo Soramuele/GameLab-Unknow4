@@ -186,7 +186,7 @@ namespace Unknown.Samuele.Inputs
             inputActions.UI.Disable();
         }
 
-        private void SetPreviousInputMap()
+        public void SetPreviousInputMap()
         {
             switch (previousInput)
             {
