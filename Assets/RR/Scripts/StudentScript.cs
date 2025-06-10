@@ -25,7 +25,8 @@ public class StudentScript : MonoBehaviour
     private float something = 0;
     public Image fire;
     private bool isPanelActive = false;
-
+    public Image Crosshair;
+    public TextMeshProUGUI crosshair2;
     void Start()
     {
         stimuli = Unknown.Samuele.StimuliManager.Instance;
@@ -126,6 +127,8 @@ public class StudentScript : MonoBehaviour
             {
                 panel.SetActive(true);  
                 isPanelActive = true;    
+                Crosshair.enabled = false;
+                crosshair2.enabled = false;
             }
 
         }
@@ -146,7 +149,9 @@ public class StudentScript : MonoBehaviour
             if (isPanelActive)
             {
                 panel.SetActive(false); 
-                isPanelActive = false;  
+                isPanelActive = false;
+                Crosshair.enabled = true;
+                crosshair2.enabled= true;
             }
         }
 
