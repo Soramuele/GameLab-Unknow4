@@ -110,8 +110,11 @@ namespace Unknown.Samuele
             paused = false;
             OnResumeEvent?.Invoke();
 
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (inputHandler.InputMap != Inputs.InputHandler.PreviousInput.Minigame && SceneManager.GetActiveScene().ToString() != "RRSCENE")
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
 
         public void ResumeGameFromSettings()

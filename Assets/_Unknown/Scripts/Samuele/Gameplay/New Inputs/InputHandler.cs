@@ -32,12 +32,13 @@ namespace Unknown.Samuele.Inputs
         public UnityAction<string> OnChangeDeviceEvent;
 #endregion Events
 
-        private enum PreviousInput {
+        public enum PreviousInput {
             Gameplay,
             Minigame
         }
         private PreviousInput previousInput;
         private InputDevice lastInputDevice;
+        public PreviousInput InputMap => previousInput;
         
         void OnEnable()
         {
