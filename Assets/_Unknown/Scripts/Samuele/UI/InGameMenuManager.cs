@@ -91,7 +91,7 @@ namespace Unknown.Samuele
 
         private void ButtonResumeGame()
         {
-            GameManager.Instance.ResumeGameFromSettings();
+            // GameManager.Instance.ResumeGameFromSettings();
         }
 
         private void QuitGame()

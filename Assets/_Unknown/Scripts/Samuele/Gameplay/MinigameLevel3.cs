@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unknown.Samuele
@@ -71,7 +69,7 @@ namespace Unknown.Samuele
 
             gameObject.SetActive(false);
             CameraManager.Instance.SwitchToMainCamera();
-            GameManager.Instance.ChangeInputMap(GameManager.InputMap.Gameplay);
+            GameManager.Instance.ChangeInputMap(InputMap.Gameplay);
         }
 
         public void OnBreakEnter()

@@ -20,5 +20,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levele4.unity
     guid: 2386d6e00faaacd4eaaf5ff5245ec8bb
+  - enabled: 1
+    path: Assets/_Unknown/Scene/MainMenu.unity
+    guid: 06d3fd10d53ecc741b6727805c4cfda2
+  - enabled: 1
+    path: Assets/_Unknown/Scene/Outside.unity
+    guid: f8f8ed86acbbf4e4a8adb5860217ec16
+  - enabled: 1
+    path: Assets/_Unknown/Scene/Persistant.unity
+    guid: 5cac3bb8e0a5bbb4dad372b2cc5bfaad
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0c1fc5d9b5782af4f84bbe44ef70159c, type: 2}

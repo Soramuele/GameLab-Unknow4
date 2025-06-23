@@ -10,13 +10,13 @@ namespace Unknown.Samuele
 
         private Player Player => (Player)Context;
 
-        private float stimuliRatio;
+        private float stimuliPercentage;
         private float playerSpeed;
         private float slowdownMultiplier = 1;
 
         public override void Enter()
         {
-            stimuliRatio = StimuliManager.Instance.Ratio;
+            stimuliPercentage = StimuliManager.Instance.Percentage;
             playerSpeed = Player.Speed;
         }
 
@@ -27,7 +27,7 @@ namespace Unknown.Samuele
             movement.y = -1f;
 
             // Slowdown the player based on the amount of stimuli
-            slowdownMultiplier = Mathf.Max(0f, (stimuliRatio - Player.StimuliThreshold) / (100 - Player.StimuliThreshold)) * (1f - Player.SlowdownMultiplier);
+            slowdownMultiplier = 1 - Mathf.Max(0f, (stimuliPercentage - Player.StimuliThreshold) / (1 - Player.StimuliThreshold)) * (1f - Player.SlowdownMultiplier);
 
             Player.Controller.Move(playerSpeed * slowdownMultiplier * Time.deltaTime * movement);
         }
@@ -39,8 +39,6 @@ namespace Unknown.Samuele
         {
             if (Player.PlayerMovement == Vector2.zero)
                 return Player.PlayerStates.Idle;
-            else if (Player.IsJumpPressed)
-                return Player.PlayerStates.Jump;
             else if (Player.IsRunning)
                 return Player.PlayerStates.Run;
 

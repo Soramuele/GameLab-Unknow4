@@ -123,18 +123,18 @@ namespace Unknown.Samuele
 
         }
 
-        private void ChangeDeviceForPlay(GameManager.CurrentDevice ctx)
+        private void ChangeDeviceForPlay(CurrentDevice ctx)
         {
             var key = "";
             switch (ctx)
             {
-                case GameManager.CurrentDevice.Keyboard_Mouse:
+                case CurrentDevice.Keyboard_Mouse:
                     key = "space";
                     break;
-                case GameManager.CurrentDevice.XBoxController:
+                case CurrentDevice.XBoxController:
                     key = "xa";
                     break;
-                case GameManager.CurrentDevice.PlayStationController:
+                case CurrentDevice.PlayStationController:
                     key = "px";
                     break;
                 default:
@@ -149,7 +149,7 @@ namespace Unknown.Samuele
         {
             GameOver();
 
-            GameManager.Instance.ChangeInputMap(GameManager.InputMap.None);
+            GameManager.Instance.ChangeInputMap(InputMap.None);
             CameraManager.Instance.SwitchToMainCamera();
 
             Debug.LogWarning("Go back!");
@@ -169,9 +169,7 @@ namespace Unknown.Samuele
             while (cameraManager.IsBlending)
                 yield return null;
 
-            gameManager.ShowUI();
-
-            gameManager.ChangeInputMap(GameManager.InputMap.Gameplay);
+            gameManager.ChangeInputMap(InputMap.Gameplay);
         }
 
 

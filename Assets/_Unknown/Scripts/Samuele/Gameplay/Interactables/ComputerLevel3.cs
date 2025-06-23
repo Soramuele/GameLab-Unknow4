@@ -25,10 +25,9 @@ namespace Unknown.Samuele
 
         protected override void Interaction()
         {
-            Debug.Log("DIo cane");
             cameraManager.SwitchCamera(viewportCam);
 
-            gameManager.ChangeInputMap(GameManager.InputMap.None);
+            gameManager.ChangeInputMap(InputMap.None);
 
             StartCoroutine(WaitForBlend());
         }
@@ -37,12 +36,10 @@ namespace Unknown.Samuele
         {
             yield return null;
 
-            gameManager.HideUI();
-
             while (cameraManager.IsBlending)
                 yield return null;
 
-            gameManager.ChangeInputMap(GameManager.InputMap.Minigame);
+            gameManager.ChangeInputMap(InputMap.Minigame);
 
             minigameCanvas.SetActive(true);
         }

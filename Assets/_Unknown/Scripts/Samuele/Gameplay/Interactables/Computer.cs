@@ -24,7 +24,7 @@ namespace Unknown.Samuele
         {
             cameraManager.SwitchCamera(viewportCam);
 
-            gameManager.ChangeInputMap(GameManager.InputMap.None);
+            gameManager.ChangeInputMap(InputMap.None);
 
             StartCoroutine(WaitForBlend());
         }
@@ -33,12 +33,10 @@ namespace Unknown.Samuele
         {
             yield return null;
 
-            gameManager.HideUI();
-
             while (cameraManager.IsBlending)
                 yield return null;
 
-            gameManager.ChangeInputMap(GameManager.InputMap.Minigame);
+            gameManager.ChangeInputMap(InputMap.Minigame);
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Unknown.Samuele
             damage = 0f;
             stimuliDamage = Student.StimuliDamage;
             player = GameObject.FindObjectOfType<PlayerMovement>().gameObject;
-            var clipIndex = Random.Range(0, Student.Audios.musicClips["Bother"].Count);
-            var randomClip = Student.Audios.musicClips["Bother"][clipIndex];
+            var clipIndex = Random.Range(0, Student.Audios.MusicClips["Bother"].Count);
+            var randomClip = Student.Audios.MusicClips["Bother"][clipIndex];
             AudioManager.Instance.PlayAudio(randomClip, Student.Source);
 
             Student.Source.loop = true;

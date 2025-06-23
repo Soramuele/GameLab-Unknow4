@@ -1,28 +1,28 @@
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class NPCDamageLimit : MonoBehaviour
-{
-    private static List<NPCLooking> npcDamage = new List<NPCLooking>();
-    public static int maxEnemyDamage = 3;
+// public class NPCDamageLimit : MonoBehaviour
+// {
+//     private static List<NPCLooking> npcDamage = new List<NPCLooking>();
+//     public static int maxEnemyDamage = 3;
 
-    private bool damageFrame = true;
+//     private bool damageFrame = true;
     
-    // Update is called once per frame
-    void Update()
-    {
-        if (!damageFrame)
-            npcDamage.Clear();
+//     // Update is called once per frame
+//     void Update()
+//     {
+//         if (!damageFrame)
+//             npcDamage.Clear();
 
-        damageFrame = !damageFrame;
-    }
+//         damageFrame = !damageFrame;
+//     }
 
-    public static bool TryRegister(NPCLooking npc)
-    {
-        if (npcDamage.Count >= maxEnemyDamage)
-            return false;
+//     public static bool TryRegister(NPCLooking npc)
+//     {
+//         if (npcDamage.Count >= maxEnemyDamage)
+//             return false;
         
-        npcDamage.Add(npc);
-        return true;
-    }
-}
+//         npcDamage.Add(npc);
+//         return true;
+//     }
+// }

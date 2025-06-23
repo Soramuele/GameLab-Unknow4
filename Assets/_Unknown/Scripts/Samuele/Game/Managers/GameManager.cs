@@ -11,23 +11,14 @@ namespace Unknown.Samuele
         [Header("Inputs")]
         [SerializeField] private Inputs.InputHandler inputHandler;
 
-        public enum CurrentDevice
-        {
-            Keyboard_Mouse,
-            XBoxController,
-            PlayStationController
-        }
-        private CurrentDevice currentDevice = CurrentDevice.Keyboard_Mouse;
-        public enum InputMap
-        {
-            None,
-            Gameplay,
-            Minigame,
-            UI
-        }
+        [Header("Title Screen")]
+        [SerializeField] private SceneReference titleScreen;
 
-        private bool paused = false;
-        public bool Paused => paused;
+        private CurrentDevice currentDevice = CurrentDevice.Keyboard_Mouse;
+        private InputMap currentInputMap = InputMap.UI;
+        private InputMap previousInputMap;
+
+        public CurrentDevice CurrentDevice => currentDevice;
 
 #region Events
         public UnityAction<CurrentDevice> OnChangeDeviceEvent;
@@ -38,7 +29,13 @@ namespace Unknown.Samuele
 
         void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+                Instance = this;
+        }
+
+        void Start()
+        {
+            ChangeInputMap(InputMap.Gameplay);
         }
 
         void OnEnable()
@@ -55,12 +52,13 @@ namespace Unknown.Samuele
             inputHandler.OnResumeEvent -= ResumeGame;
         }
 
+#region Inputs
         private void ChangeCurrentDevice(string device)
         {
             switch (device)
             {
-                case "Keyboard":
                 case "Mouse":
+                case "Keyboard":
                     currentDevice = CurrentDevice.Keyboard_Mouse;
                     break;
                 case "XInputControllerWindows":
@@ -69,6 +67,10 @@ namespace Unknown.Samuele
                 case "DualShock4GamepadHID":
                 case "DualSenseGamepadHID":
                     currentDevice = CurrentDevice.PlayStationController;
+                    break;
+                default:
+                    Debug.Log($"Another device? {device}");
+                    currentDevice = CurrentDevice.Keyboard_Mouse;
                     break;
             }
 
@@ -86,58 +88,57 @@ namespace Unknown.Samuele
                     break;
                 case InputMap.Gameplay:
                     inputHandler.SetGameplay();
+                    previousInputMap = currentInputMap;
+                    currentInputMap = InputMap.Gameplay;
                     break;
                 case InputMap.Minigame:
                     inputHandler.SetMinigame();
+                    previousInputMap = currentInputMap;
+                    currentInputMap = InputMap.Minigame;
                     break;
                 case InputMap.UI:
-                    Debug.Log("Not Implemented yet");
+                    inputHandler.SetUI();
+                    previousInputMap = currentInputMap;
+                    currentInputMap = InputMap.UI;
                     break;
             }
         }
+#endregion Inputs
 
+#region Pause System
         private void PauseGame()
         {
-            paused = true;
             OnPauseEvent?.Invoke();
-
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            ChangeInputMap(InputMap.UI);
         }
 
         private void ResumeGame()
         {
-            paused = false;
             OnResumeEvent?.Invoke();
-
-            if (inputHandler.InputMap != Inputs.InputHandler.PreviousInput.Minigame && SceneManager.GetActiveScene().ToString() != "RRSCENE")
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            ChangeInputMap(previousInputMap);
         }
 
-        public void ResumeGameFromSettings()
+        public void ResumeFromSettings()
         {
-            inputHandler.SetPreviousInputMap();
             ResumeGame();
         }
+#endregion Pause System
 
-        public void ChangeScene(SceneReference scene, LoadSceneMode mode)
+#region Scene Management
+        public void LoadSceneAsync(SceneReference scene)
         {
-            SceneManager.LoadScene(scene, mode);
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
         }
 
-        public void HideUI()
+        public void UnloadSceneAsync(SceneReference scene)
         {
-            GetComponentInChildren<InteractMessage>().Hide();
-            GetComponentInChildren<CrosshairManager>().Hide();
+            SceneManager.UnloadSceneAsync(scene);
         }
 
-        public void ShowUI()
+        public void BackToTitleScreen()
         {
-            GetComponentInChildren<InteractMessage>().Show();
-            GetComponentInChildren<CrosshairManager>().Show();
+            SceneManager.LoadSceneAsync(titleScreen);
         }
+#endregion Scene Management
     }
 }

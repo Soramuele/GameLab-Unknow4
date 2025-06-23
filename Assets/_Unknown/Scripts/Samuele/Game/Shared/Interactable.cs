@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
+    [RequireComponent(typeof(Outline))]
     public abstract class Interactable : MonoBehaviour
     {
         [Header("Interaction Prompt")]

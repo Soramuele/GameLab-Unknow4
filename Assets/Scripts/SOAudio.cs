@@ -6,8 +6,11 @@ using UnityEngine;
 public class SOAudio : ScriptableObject
 {
     [Header("Music")]
-    public SerializedDictionary<string, List<AudioClip>> musicClips;
+    [SerializeField] private SerializedDictionary<string, List<AudioClip>> musicClips;
 
     [Header("SoundFX")]
-    public SerializedDictionary<string, List<AudioClip>> sfxClips;
+    [SerializeField] private SerializedDictionary<string, List<AudioClip>> sfxClips;
+
+    public SerializedDictionary<string, List<AudioClip>> MusicClips => musicClips;
+    public SerializedDictionary<string, List<AudioClip>> SFXClips => sfxClips;
 }

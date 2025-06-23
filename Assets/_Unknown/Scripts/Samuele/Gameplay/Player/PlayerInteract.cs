@@ -13,7 +13,7 @@ namespace Unknown.Samuele
         [SerializeField] private LayerMask interactionLayers;
 
         [Header("UI")]
-        [SerializeField] private InteractMessage interactMessage;
+        [SerializeField] private InteractionUI interactMessage;
 
         private Camera cam;
         private Ray ray;
@@ -55,7 +55,7 @@ namespace Unknown.Samuele
                     interactable.EnableOutline();
 
                     // Update screen message
-                    interactMessage.UpdateText(interactable.Prompt);
+                    interactMessage.ShowText(interactable.Prompt);
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace Unknown.Samuele
                 interactable.DisableOutline();
                 interactable = null;
 
-                interactMessage.ClearText();
+                interactMessage.HideText();
             }
         }
     }

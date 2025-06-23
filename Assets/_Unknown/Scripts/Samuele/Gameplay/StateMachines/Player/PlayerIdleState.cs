@@ -25,10 +25,9 @@ namespace Unknown.Samuele
 
         public override Player.PlayerStates GetNextState()
         {
-            if (Player.IsJumpPressed)
-                return Player.PlayerStates.Jump;
-            else if (Player.PlayerMovement != Vector2.zero)
+            if (Player.PlayerMovement != Vector2.zero)
                 return Player.PlayerStates.Walk;
+            
             return StateKey;
         }
     }
