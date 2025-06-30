@@ -71,7 +71,7 @@ public class InputManager : MonoBehaviour
 
         ClosePauseMenu();
     }
-    #endregion
+#endregion
 
     private void OpenPauseMenu()
     {
