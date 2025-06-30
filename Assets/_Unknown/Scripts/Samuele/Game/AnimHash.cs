@@ -6,5 +6,7 @@ namespace Unknown.Samuele
     {
         public static readonly int Walk = Animator.StringToHash("isWalking");
         public static readonly int Dance = Animator.StringToHash("isDancing");
+        public static readonly int Sit = Animator.StringToHash("isSitting");
+        public static readonly int Window = Animator.StringToHash("isOpen");
     }
 }
