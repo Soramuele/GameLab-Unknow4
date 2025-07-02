@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class StimuliDamageState : State<StimuliManager.StimuliState>
+    public class StimuliDamageState : State<StimuliManager.States>
     {
-        public StimuliDamageState(StimuliManager.StimuliState key, StateManager<StimuliManager.StimuliState> context)
+        public StimuliDamageState(StimuliManager.States key, StateManager<StimuliManager.States> context)
             : base(key, context) { }
 
         private StimuliManager StimuliManager => (StimuliManager)Context;
@@ -37,22 +37,19 @@ namespace Unknown.Samuele
             timer = 0f;
         }
 
-        public override StimuliManager.StimuliState GetNextState()
+        public override StimuliManager.States GetNextState()
         {
             if (timer >= healAfterDamage)
-                return StimuliManager.StimuliState.Heal;
+                return StimuliManager.States.Heal;
             else if (StimuliManager.Percentage == 1)
-                return StimuliManager.StimuliState.Overstimuli;
+                return StimuliManager.States.Overstimuli;
             
             return StateKey;
         }
 
         private void ApplyDamage()
         {
-            if (StimuliManager.CurrentStimuli + StimuliManager.DamageRequested > StimuliManager.MaxStimuli)
-                StimuliManager.CurrentStimuli = StimuliManager.MaxStimuli;
-            else
-                StimuliManager.CurrentStimuli += StimuliManager.DamageRequested;
+            StimuliManager.CurrentStimuli = Mathf.Min(StimuliManager.CurrentStimuli + StimuliManager.DamageRequested, StimuliManager.MaxStimuli);
 
             StimuliManager.OnStimuliChangedEvent?.Invoke(StimuliManager.Percentage);
         }

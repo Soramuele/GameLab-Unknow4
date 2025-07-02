@@ -10,14 +10,13 @@ namespace Unknown.Samuele
         [SerializeField, TextArea] private string description;
 
         [Header("Requirement")]
-        [SerializeField] private Item itemToPickup;
-        [SerializeField] private int amount;
+        [SerializeField] private Item[] itemsToPickup;
         [SerializeField] private float failTime = -1;
 
         public string Title => title;
         public string Description => description;
-        public Item ItemToPickup => itemToPickup;
-        public int Amount => amount;
+        public Item[] ItemsToPickup => itemsToPickup;
+        public int Amount => itemsToPickup.Length;
         public float FailTime => failTime;
     }
 }

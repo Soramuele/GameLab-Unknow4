@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9954643, y: 0.99999803, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
@@ -445,7 +445,6 @@ MonoBehaviour:
   components:
   - {fileID: -9167874883656233139}
   - {fileID: 1918650496244738858}
-  - {fileID: 853819529557874667}
   - {fileID: 1052315754049611418}
   - {fileID: -1170528603972255243}
   - {fileID: -8270506406425502121}
@@ -461,9 +460,6 @@ MonoBehaviour:
   - {fileID: -4463884970436517307}
   - {fileID: -6288072647309666549}
   - {fileID: 7518938298396184218}
-  - {fileID: -1410297666881709256}
-  - {fileID: -7750755424749557576}
-  - {fileID: -5139089513906902183}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -591,7 +587,7 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 1
+          inSlope: 0
           outSlope: 1
           tangentMode: 0
           weightedMode: 0
@@ -601,7 +597,7 @@ MonoBehaviour:
           time: 1
           value: 1
           inSlope: 1
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0

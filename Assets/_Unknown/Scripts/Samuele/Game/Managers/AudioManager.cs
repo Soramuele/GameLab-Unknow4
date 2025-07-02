@@ -16,6 +16,9 @@ namespace Unknown.Samuele
         [SerializeField] private AudioSource uiSource;
         [SerializeField] private AudioSource ambientSource;
 
+        [Header("SFX Prefab")]
+        [SerializeField] private AudioSource sfxSource;
+
         private List<AudioSource> sfxPool = new();
         private GameObject sfxPoolParent;
 
@@ -30,17 +33,53 @@ namespace Unknown.Samuele
             sfxPoolParent = new GameObject("SFX Pool Parent");
         }
 
-#region Functions
+        #region Functions
         public void PlayAudio(AudioClip clip, AudioSource source, float fadeDuration = .5f)
         {
-            
+            if (source.isPlaying)
+                Fade(clip, source, fadeDuration);
+            else
+                FadeIn(clip, source, fadeDuration);
+
+            source.loop = true;
         }
+
+        public void StopAudio(AudioSource source)
+        {
+            FadeOut(source);
+
+            source.loop = false;
+        }
+
         public void PlaySFX(AudioClip clip, Vector3 position)
         {
-            // Check for available AudioSource in pool, if not create one
-            // Play SFX clip at position
-            // Deactivate after 
+            AudioSource availableSfx = null;
+            foreach (var sfx in sfxPool)
+                if (!sfx.isPlaying)
+                {
+                    availableSfx = sfx;
+                    break;
+                }
+
+            if (availableSfx == null)
+            {
+                availableSfx = Instantiate(sfxSource, sfxPoolParent.transform);
+                sfxPool.Add(availableSfx);
+            }
+
+            availableSfx.transform.position = position;
+            availableSfx.clip = clip;
+            availableSfx.Play();
         }
+
+        public void PlayFootsteps(AudioClip clip, AudioSource source)
+        {
+            source.loop = false;
+            source.clip = clip;
+            RandomizePitch(source);
+            source.Play();
+        }
+
         public void PlayUISound()
         {
             uiSource.Play();
@@ -48,10 +87,24 @@ namespace Unknown.Samuele
 #endregion Functions
 
 #region Utilities
-        private AudioSource RandomizePitch(AudioSource source)
+        private void RandomizePitch(AudioSource source) =>
+            source.pitch = Random.Range(0.85f, 1.15f);
+
+        private void Fade(AudioClip clip, AudioSource source, float fadeDuration)
         {
-            source.pitch = Random.Range(0.8f, 1.2f);
-            return source;
+            DOTween.Kill(source);
+            var currentVolume = source.volume;
+
+            source.DOFade(0f, fadeDuration)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .OnComplete(() =>
+                {
+                    source.Stop();
+                    source.volume = currentVolume;
+                    FadeIn(clip, source, fadeDuration);
+                })
+                .SetId(source);
         }
 
         private void FadeIn(AudioClip clip, AudioSource source, float fadeDuration)
@@ -70,7 +123,7 @@ namespace Unknown.Samuele
                 .SetId(source);
         }
 
-        private void FadeOut(AudioSource source, float fadeDuration, TweenCallback onComplete = null)
+        private void FadeOut(AudioSource source, float fadeDuration = 0.5f)
         {
             DOTween.Kill(source);
             var currentVolume = source.volume;
@@ -82,7 +135,6 @@ namespace Unknown.Samuele
                 {
                     source.Stop();
                     source.volume = currentVolume;
-                    onComplete?.Invoke();
                 })
                 .SetId(source);
         }

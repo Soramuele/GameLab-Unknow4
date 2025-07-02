@@ -3,9 +3,9 @@ using StateMachine;
 
 namespace Unknown.Samuele
 {
-    public class StudentWalkState : State<Student.StudentStates>
+    public class StudentWalkState : State<Student.States>
     {
-        public StudentWalkState(Student.StudentStates key, StateManager<Student.StudentStates> context)
+        public StudentWalkState(Student.States key, StateManager<Student.States> context)
             : base(key, context) {  }
 
         private Student Student => (Student)Context;
@@ -34,15 +34,12 @@ namespace Unknown.Samuele
             Student.Destination = Vector3.zero;
         }
 
-        public override Student.StudentStates GetNextState()
+        public override Student.States GetNextState()
         {
-            if (Student.Destination == Vector3.zero)
-                return Student.StudentStates.Idle;
-            
             if (Student.Agent.remainingDistance <= Student.RemainingDistance && !Student.BotherPlayer)
-                return Student.StudentStates.Idle;
+                return Student.States.Idle;
             else if (Student.Agent.remainingDistance <= Student.RemainingDistance && Student.BotherPlayer)
-                return Student.StudentStates.Bother;
+                return Student.States.Bother;
 
             return StateKey;
         }

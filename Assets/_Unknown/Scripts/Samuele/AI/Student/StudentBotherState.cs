@@ -1,71 +1,45 @@
 using UnityEngine;
 using StateMachine;
-using DG.Tweening;
-using static System.TimeZoneInfo;
 
 namespace Unknown.Samuele
 {
-    public class StudentBotherState : State<Student.StudentStates>
+    public class StudentBotherState : State<Student.States>
     {
-        public StudentBotherState(Student.StudentStates key, StateManager<Student.StudentStates> context)
+        public StudentBotherState(Student.States key, StateManager<Student.States> context)
             : base(key, context) { }
 
         private Student Student => (Student)Context;
 
-        private StimuliManager stimuli;
-        private float timer;
-        private float damage;
-        private float stimuliDamage;
-        private float somethingnew = 0;
-        public GameObject player;
+        private AudioManager audioManager;
+        private DamageSource damageSource;
+        private AudioClip randomClip;
+
         public override void Enter()
         {
-            stimuli = StimuliManager.Instance;
-            timer = 0f;
-            damage = 0f;
-            stimuliDamage = Student.StimuliDamage;
-            player = GameObject.FindObjectOfType<PlayerMovement>().gameObject;
-            var clipIndex = Random.Range(0, Student.Audios.MusicClips["Bother"].Count);
-            var randomClip = Student.Audios.MusicClips["Bother"][clipIndex];
-            AudioManager.Instance.PlayAudio(randomClip, Student.Source);
+            audioManager = AudioManager.Instance;
+            damageSource = Student.GetComponent<DamageSource>();
 
-            Student.Source.loop = true;
+            var clipIndex = Random.Range(0, Student.Audios.MusicClips["Bother"].Count);
+            randomClip = Student.Audios.SFXClips["Bother"][clipIndex];
+            audioManager.PlayAudio(randomClip, Student.Source);
         }
 
         public override void Update()
         {
-            // Update stimuli bar according to time passed
-         
-           
-            
+            damageSource.StimulatePlayer(Time.deltaTime);
         }
 
         public override void Exit()
         {
-            Student.Source.loop = false;
-            RemoveStimuliFromThis();
+            audioManager.StopAudio(Student.Source);
         }
 
-        public override Student.StudentStates GetNextState()
+        public override Student.States GetNextState()
         {
             if (!Student.BotherPlayer)
-                return Student.StudentStates.Idle;
+                return Student.States.Idle;
 
             return StateKey;
         }
-
-        private void RemoveStimuliFromThis()
-        {
-            DOTween.To(() => damage, x => damage = x, 0f, 2.5f)
-                .SetUpdate(true)
-                //.OnUpdate(() => Dicrese())
-                .OnComplete(() => Student.CanBotherAgain = true);
-
-
-
-
-        }
-
-       
     }
 }

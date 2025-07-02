@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class PlayerIdleState : State<Player.PlayerStates>
+    public class PlayerIdleState : State<Player.States>
     {
-        public PlayerIdleState(Player.PlayerStates key, StateManager<Player.PlayerStates> context)
+        public PlayerIdleState(Player.States key, StateManager<Player.States> context)
             : base(key, context) {  }
 
         private Player Player => (Player)Context;
@@ -23,10 +23,10 @@ namespace Unknown.Samuele
         public override void Exit()
         {   }
 
-        public override Player.PlayerStates GetNextState()
+        public override Player.States GetNextState()
         {
             if (Player.PlayerMovement != Vector2.zero)
-                return Player.PlayerStates.Walk;
+                return Player.States.Walk;
             
             return StateKey;
         }

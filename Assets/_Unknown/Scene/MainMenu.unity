@@ -2010,8 +2010,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene:
-    sceneAsset: {fileID: 102900000, guid: f8f8ed86acbbf4e4a8adb5860217ec16, type: 3}
-    scenePath: Assets/_Unknown/Scene/Outside.unity
+    sceneAsset: {fileID: 102900000, guid: 1c32fab92d2f8a84680e3be81fda753a, type: 3}
+    scenePath: Assets/Scenes/Gate3Prototype/Level1 UpdatedTextures.unity
   persistantScene:
     sceneAsset: {fileID: 102900000, guid: 5cac3bb8e0a5bbb4dad372b2cc5bfaad, type: 3}
     scenePath: Assets/_Unknown/Scene/Persistant.unity

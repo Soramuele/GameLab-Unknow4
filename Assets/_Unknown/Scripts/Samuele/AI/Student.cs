@@ -6,9 +6,9 @@ using UnityEngine.AI;
 namespace Unknown.Samuele
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Student : StateManager<Student.StudentStates>
+    public class Student : StateManager<Student.States>
     {
-        public enum StudentStates
+        public enum States
         {
             None,
             Idle,
@@ -18,7 +18,7 @@ namespace Unknown.Samuele
         }
 
         [Header("State")]
-        [SerializeField] private StudentStates startingState;
+        [SerializeField] private States startingState;
 
         [Header("Movement")]
         [SerializeField] private float remainingDistance = 0.1f;
@@ -61,8 +61,8 @@ namespace Unknown.Samuele
 
             InitializeStates();
 
-            if (startingState == StudentStates.None)
-                currentState = states[StudentStates.Idle];
+            if (startingState == States.None)
+                currentState = states[States.Idle];
             else
                 currentState = states[startingState];
         }
@@ -72,9 +72,6 @@ namespace Unknown.Samuele
             // Event for going to bother the player
             PlayerInteract.OnStartMinigameEvent += () => StartCoroutine(GoBotherThePlayer());
             FloppyManager.Instance.OnCloseEvent += () => botherPlayer = false;
-
-
-
         }
 
         void OnDisable()
@@ -86,15 +83,14 @@ namespace Unknown.Samuele
 
         protected override void InitializeStates()
         {
-            states.Add(StudentStates.Idle, new StudentIdleState(StudentStates.Idle, this));
-            states.Add(StudentStates.Walk, new StudentWalkState(StudentStates.Walk, this));
-            states.Add(StudentStates.Dance, new StudentDanceState(StudentStates.Dance, this));
-            states.Add(StudentStates.Bother, new StudentBotherState(StudentStates.Bother, this));
+            states.Add(States.Idle, new StudentIdleState(States.Idle, this));
+            states.Add(States.Walk, new StudentWalkState(States.Walk, this));
+            states.Add(States.Dance, new StudentDanceState(States.Dance, this));
+            states.Add(States.Bother, new StudentBotherState(States.Bother, this));
         }
 
         public void SetDestination(Vector3 destination)
         {
-
             this.destination = destination;
         }
 
@@ -105,7 +101,7 @@ namespace Unknown.Samuele
 
             if (canGo && canBotherAgain)
             {
-                SetDestination(FindObjectOfType<PlayerMovement>().transform.position);
+                SetDestination(FindObjectOfType<Player>().transform.position);
                 botherPlayer = true;
             }
         }

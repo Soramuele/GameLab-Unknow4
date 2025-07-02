@@ -13,6 +13,11 @@ namespace Unknown.Samuele
 
         private GameManager gameManager;
 
+        void Start()
+        {
+            parent.SetActive(false);
+        }
+
         void OnEnable()
         {
             gameManager = GameManager.Instance;

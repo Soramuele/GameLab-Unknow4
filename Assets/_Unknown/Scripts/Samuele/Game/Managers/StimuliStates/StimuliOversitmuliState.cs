@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class StimuliOversitmuliState : State<StimuliManager.StimuliState>
+    public class StimuliOversitmuliState : State<StimuliManager.States>
     {
-        public StimuliOversitmuliState(StimuliManager.StimuliState key, StateManager<StimuliManager.StimuliState> context)
+        public StimuliOversitmuliState(StimuliManager.States key, StateManager<StimuliManager.States> context)
             : base(key, context) { }
 
         private StimuliManager StimuliManager => (StimuliManager)Context;
@@ -36,12 +36,12 @@ namespace Unknown.Samuele
             healTimer = 0f;
         }
 
-        public override StimuliManager.StimuliState GetNextState()
+        public override StimuliManager.States GetNextState()
         {
             if (panicTimer >= timeBeforePanicing)
-                return StimuliManager.StimuliState.Panicing;
+                return StimuliManager.States.Panicing;
             else if (healTimer >= healAfterPanic)
-                return StimuliManager.StimuliState.Heal;
+                return StimuliManager.States.Heal;
 
             return StateKey;
         }

@@ -2,9 +2,9 @@ using StateMachine;
 
 namespace Unknown.Samuele
 {
-    public class StimuliPanicingState : State<StimuliManager.StimuliState>
+    public class StimuliPanicingState : State<StimuliManager.States>
     {
-        public StimuliPanicingState(StimuliManager.StimuliState key, StateManager<StimuliManager.StimuliState> context)
+        public StimuliPanicingState(StimuliManager.States key, StateManager<StimuliManager.States> context)
             : base(key, context) { }
 
         private StimuliManager StimuliManager => (StimuliManager)Context;
@@ -18,7 +18,7 @@ namespace Unknown.Samuele
         public override void Exit()
         { }
 
-        public override StimuliManager.StimuliState GetNextState()
+        public override StimuliManager.States GetNextState()
         {
             return StateKey;
         }

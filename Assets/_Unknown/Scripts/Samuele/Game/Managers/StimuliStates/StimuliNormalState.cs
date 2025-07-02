@@ -2,9 +2,9 @@ using StateMachine;
 
 namespace Unknown.Samuele
 {
-    public class StimuliNormalState : State<StimuliManager.StimuliState>
+    public class StimuliNormalState : State<StimuliManager.States>
     {
-        public StimuliNormalState(StimuliManager.StimuliState key, StateManager<StimuliManager.StimuliState> context)
+        public StimuliNormalState(StimuliManager.States key, StateManager<StimuliManager.States> context)
             : base(key, context) { }
 
         private StimuliManager StimuliManager => (StimuliManager)Context;
@@ -20,10 +20,10 @@ namespace Unknown.Samuele
             StimuliManager.RequestDamage = false;
         }
 
-        public override StimuliManager.StimuliState GetNextState()
+        public override StimuliManager.States GetNextState()
         {
             if (StimuliManager.RequestDamage)
-                return StimuliManager.StimuliState.Damage;
+                return StimuliManager.States.Damage;
             
             return StateKey;
         }

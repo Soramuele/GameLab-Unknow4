@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class StimuliHealState : State<StimuliManager.StimuliState>
+    public class StimuliHealState : State<StimuliManager.States>
     {
-        public StimuliHealState(StimuliManager.StimuliState key, StateManager<StimuliManager.StimuliState> context)
+        public StimuliHealState(StimuliManager.States key, StateManager<StimuliManager.States> context)
             : base(key, context) { }
 
         private StimuliManager StimuliManager => (StimuliManager)Context;
@@ -34,22 +34,29 @@ namespace Unknown.Samuele
             timer = 0f;
         }
 
-        public override StimuliManager.StimuliState GetNextState()
+        public override StimuliManager.States GetNextState()
         {
-            if (StimuliManager.Percentage == 0)
-                return StimuliManager.StimuliState.Normal;
+            if (StimuliManager.Percentage == 0f)
+                return StimuliManager.States.Normal;
             else if (StimuliManager.RequestDamage)
-                return StimuliManager.StimuliState.Damage;
+                return StimuliManager.States.Damage;
 
             return StateKey;
         }
 
         private void Heal()
         {
-            if (StimuliManager.CurrentStimuli - StimuliManager.HealAmount <= 0f)
-                StimuliManager.CurrentStimuli = 0f;
+            float healingAmount;
+            
+            if (StimuliManager.CurrentStimuli - StimuliManager.HealAmount > 0f)
+                healingAmount = StimuliManager.CurrentStimuli - StimuliManager.HealAmount;
             else
-                StimuliManager.CurrentStimuli -= StimuliManager.HealAmount;
+                healingAmount = StimuliManager.CurrentStimuli;
+
+            foreach (var source in StimuliManager.DamageSources)
+                source.ReduceTotalStimuliDealt(healingAmount / StimuliManager.DamageSources.Count);
+
+            StimuliManager.CurrentStimuli = healingAmount;
 
             StimuliManager.OnStimuliChangedEvent?.Invoke(StimuliManager.Percentage);
         }

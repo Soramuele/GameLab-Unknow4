@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class StudentDanceState : State<Student.StudentStates>
+    public class StudentDanceState : State<Student.States>
     {
-        public StudentDanceState(Student.StudentStates key, StateManager<Student.StudentStates> context)
+        public StudentDanceState(Student.States key, StateManager<Student.States> context)
             : base(key, context) {  }
 
         private Student Student => (Student)Context;
@@ -26,10 +26,10 @@ namespace Unknown.Samuele
             Student.Animator.SetBool(AnimHash.Dance, false);
         }
 
-        public override Student.StudentStates GetNextState()
+        public override Student.States GetNextState()
         {
             if (info.normalizedTime >= 1f)
-                return Student.StudentStates.Idle;
+                return Student.States.Idle;
             
             return StateKey;
         }

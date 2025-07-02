@@ -3,21 +3,27 @@ using UnityEngine;
 
 namespace Unknown.Samuele
 {
-    public class PlayerRunState : State<Player.PlayerStates>
+    public class PlayerRunState : State<Player.States>
     {
-        public PlayerRunState(Player.PlayerStates key, StateManager<Player.PlayerStates> context)
+        public PlayerRunState(Player.States key, StateManager<Player.States> context)
             : base(key, context) {  }
 
         private Player Player => (Player)Context;
 
+        private AudioManager audioManager;
         private float stimuliPercentage;
         private float playerSpeed;
         private float slowdownMultiplier = 1;
+        private float tick = 0.1f;
+        private float timer;
 
         public override void Enter()
         {
+            audioManager = AudioManager.Instance;
             stimuliPercentage = StimuliManager.Instance.Percentage;
             playerSpeed = Player.Speed + Player.RunSpeedMultiplier;
+
+            timer = 0f;
         }
 
         public override void Update()
@@ -30,17 +36,24 @@ namespace Unknown.Samuele
             slowdownMultiplier = 1 - Mathf.Max(0f, (stimuliPercentage - Player.StimuliThreshold) / (100 - Player.StimuliThreshold)) * (1f - Player.SlowdownMultiplier);
 
             Player.Controller.Move(playerSpeed * slowdownMultiplier * Time.deltaTime * movement);
+
+            timer += Time.deltaTime;
+            if (timer > tick)
+            {
+                timer = 0f;
+                audioManager.PlayFootsteps(Player.Audios.SFXClips["Footsteps"][1], Player.SFXSource);
+            }
         }
 
         public override void Exit()
         {   }
 
-        public override Player.PlayerStates GetNextState()
+        public override Player.States GetNextState()
         {
             if (Player.PlayerMovement == Vector2.zero)
-                return Player.PlayerStates.Idle;
+                return Player.States.Idle;
             else if (Player.PlayerMovement != Vector2.zero && !Player.IsRunning)
-                return Player.PlayerStates.Walk;
+                return Player.States.Walk;
 
             return StateKey;
         }

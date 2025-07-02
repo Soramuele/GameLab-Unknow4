@@ -4,9 +4,9 @@ using StateMachine;
 namespace Unknown.Samuele
 {
     [RequireComponent(typeof(CharacterController))]
-    public class Player : StateManager<Player.PlayerStates>
+    public class Player : StateManager<Player.States>
     {
-        public enum PlayerStates
+        public enum States
         {
             Idle,
             Walk,
@@ -19,6 +19,10 @@ namespace Unknown.Samuele
         [Header("Movement")]
         [SerializeField] private float speed = 4.5f;
         [SerializeField] private float runSpeedMultiplier = 2.75f;
+
+        [Header("Audios")]
+        [SerializeField] private AudioSource sfxSource;
+        [SerializeField] private SOAudio audios;
 
         [Header("Stimuli")]
         [SerializeField, Range(0, 1)] private float stimuliThreshold = 0.32f;
@@ -35,6 +39,8 @@ namespace Unknown.Samuele
         public bool IsRunning { get => isRunning; set => isRunning = value; }
         public float Speed => speed;
         public float RunSpeedMultiplier => runSpeedMultiplier;
+        public AudioSource SFXSource => sfxSource;
+        public SOAudio Audios => audios;
         public float StimuliThreshold => stimuliThreshold;
         public float SlowdownMultiplier => slowdownMultiplier;
         public CharacterController Controller => controller;
@@ -47,7 +53,7 @@ namespace Unknown.Samuele
 
             InitializeStates();
 
-            currentState = states[PlayerStates.Idle];
+            currentState = states[States.Idle];
         }
 
         void OnEnable()
@@ -66,9 +72,9 @@ namespace Unknown.Samuele
 
         protected override void InitializeStates()
         {
-            states.Add(PlayerStates.Idle, new PlayerIdleState(PlayerStates.Idle, this));
-            states.Add(PlayerStates.Walk, new PlayerWalkState(PlayerStates.Walk, this));
-            states.Add(PlayerStates.Run, new PlayerRunState(PlayerStates.Run, this));
+            states.Add(States.Idle, new PlayerIdleState(States.Idle, this));
+            states.Add(States.Walk, new PlayerWalkState(States.Walk, this));
+            states.Add(States.Run, new PlayerRunState(States.Run, this));
         }
 
         private void GetMovement(Vector2 ctx) =>

@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 using StateMachine;
+using System.Collections.Generic;
 
 namespace Unknown.Samuele
 {
-    public class StimuliManager : StateManager<StimuliManager.StimuliState>
+    public class StimuliManager : StateManager<StimuliManager.States>
     {
         public static StimuliManager Instance { get; private set; }
 
-        public enum StimuliState
+        public enum States
         {
             Normal,
             Heal,
@@ -32,6 +33,8 @@ namespace Unknown.Samuele
         private float currentStimuli = 0f;
         private bool requestDamage = false;
         private float damageRequested = 0f;
+        private bool isSafeZone = false;
+        private List<DamageSource> damageSources = new();
 
         // Getters
         public float MaxStimuli => maxStimuli;
@@ -43,8 +46,8 @@ namespace Unknown.Samuele
         public float PanicingTime => panicingTime;
         public bool RequestDamage { get => requestDamage; set => requestDamage = value; }
         public float DamageRequested => damageRequested;
-
-        /// <summary> Stimuli percentage in decimal (0 to 1) </summary>
+        public List<DamageSource> DamageSources => damageSources;
+        
         public float Percentage { get => currentStimuli / maxStimuli; }
 
         public UnityAction<float> OnStimuliChangedEvent;
@@ -55,22 +58,38 @@ namespace Unknown.Samuele
 
             InitializeStates();
 
-            currentState = states[StimuliState.Normal];
+            currentState = states[States.Normal];
         }
 
         protected override void InitializeStates()
         {
-            states.Add(StimuliState.Normal, new StimuliNormalState(StimuliState.Normal, this));
-            states.Add(StimuliState.Heal, new StimuliHealState(StimuliState.Heal, this));
-            states.Add(StimuliState.Damage, new StimuliDamageState(StimuliState.Damage, this));
-            states.Add(StimuliState.Overstimuli, new StimuliOversitmuliState(StimuliState.Overstimuli, this));
-            states.Add(StimuliState.Panicing, new StimuliPanicingState(StimuliState.Panicing, this));
+            states.Add(States.Normal, new StimuliNormalState(States.Normal, this));
+            states.Add(States.Heal, new StimuliHealState(States.Heal, this));
+            states.Add(States.Damage, new StimuliDamageState(States.Damage, this));
+            states.Add(States.Overstimuli, new StimuliOversitmuliState(States.Overstimuli, this));
+            states.Add(States.Panicing, new StimuliPanicingState(States.Panicing, this));
         }
 
-        public void ApplyDamage(float value)
+        public void ApplyDamage(DamageSource damageSource, float value, out bool canDamage)
         {
+            if (isSafeZone)
+            {
+                canDamage = false;
+                return;
+            }
+
+            canDamage = true;
             requestDamage = true;
             damageRequested = value;
+
+            if (!damageSources.Contains(damageSource))
+                damageSources.Add(damageSource);
         }
+
+        public void SetSafeZone(bool value) =>
+            isSafeZone = value;
+
+        public void RemoveSource(DamageSource source) =>
+            damageSources.Remove(source);
     }
 }
