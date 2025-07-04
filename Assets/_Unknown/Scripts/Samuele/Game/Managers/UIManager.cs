@@ -8,29 +8,12 @@ namespace Unknown.Samuele
         [SerializeField] private float tickTime = 0.2f;
 
         private float timer = 0f;
-        private bool gameIsPaused = false;
 
         private GameManager gameManager;
 
-        // Start is called before the first frame update
         void Start()
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        void OnEnable()
-        {
             gameManager = GameManager.Instance;
-
-            gameManager.OnPauseEvent += Pause;
-            gameManager.OnResumeEvent += Resume;
-        }
-
-        void OnDisable()
-        {
-            gameManager.OnPauseEvent -= Pause;
-            gameManager.OnResumeEvent -= Resume;
         }
 
         // Update is called once per frame
@@ -42,13 +25,18 @@ namespace Unknown.Samuele
             {
                 timer = 0f;
 
-                if (gameIsPaused)
-                    CheckForMouseUI();
+                CheckForMouseUI();
             }
         }
 
         private void CheckForMouseUI()
         {
+            if (gameManager.CurrentInputMap != InputMap.UI)
+            {
+                HideCursor();
+                return;
+            }
+
             if (gameManager.CurrentDevice == CurrentDevice.Keyboard_Mouse)
             {
                 Cursor.visible = true;
@@ -56,20 +44,12 @@ namespace Unknown.Samuele
             }
             else
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                HideCursor();
             }
         }
 
-        private void Pause()
+        private void HideCursor()
         {
-            gameIsPaused = true;
-        }
-
-        private void Resume()
-        {
-            gameIsPaused = false;
-
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }

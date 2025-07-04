@@ -19,6 +19,7 @@ namespace Unknown.Samuele
         private InputMap previousInputMap;
 
         public CurrentDevice CurrentDevice => currentDevice;
+        public InputMap CurrentInputMap => currentInputMap;
 
 #region Events
         public UnityAction<CurrentDevice> OnChangeDeviceEvent;
