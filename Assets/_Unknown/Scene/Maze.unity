@@ -283,8 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2087913003943073581}
   startBlock: {fileID: 8645165066394729186}
-  spawnParticle: {fileID: 0}
-  dieParticle: {fileID: 0}
+  spawnParticle: {fileID: 6210644896245702075, guid: 219ad53db32463a4183ea634605a4af1, type: 3}
+  dieParticle: {fileID: 2366011043352893929, guid: 826959bda252587499e3bd1ccbb42688, type: 3}
 --- !u!4 &226035458
 Transform:
   m_ObjectHideFlags: 0
