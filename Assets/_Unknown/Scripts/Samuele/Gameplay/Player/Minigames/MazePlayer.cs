@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unknown.Samuele
 {
@@ -10,14 +11,24 @@ namespace Unknown.Samuele
         [Header("Movement")]
         [SerializeField] private float speed = 10f;
 
+        [Header("Audios")]
+        [SerializeField] private SOAudio audios;
+
         private Rigidbody2D rb;
         private Vector2 movement;
+
+        private AudioManager audioManager;
+
+        public UnityAction OnWinEvent;
+        public UnityAction OnDieEvent;
 
         protected override void Start()
         {
             base.Start();
 
             rb = GetComponent<Rigidbody2D>();
+
+            audioManager = AudioManager.Instance;
         }
 
         void OnEnable()
@@ -43,9 +54,15 @@ namespace Unknown.Samuele
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.CompareTag("Obstacle"))
-                Debug.Log("player is dead");
+            {
+                audioManager.PlaySFX(audios.SFXClips["Die"][0], transform.position);
+                OnDieEvent?.Invoke();
+            }
             else if (collider.CompareTag("Scoring"))
-                Debug.Log("player reached finish");
+            {
+                audioManager.PlaySFX(audios.SFXClips["Score"][0], transform.position);
+                OnWinEvent?.Invoke();
+            }
         }
     }
 }
